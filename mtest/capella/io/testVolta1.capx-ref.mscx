@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<museScore version="3.00">
+  <Score>
+    <LayerTag id="0" tag="default"></LayerTag>
+    <currentLayer>0</currentLayer>
+    <Division>480</Division>
+    <Style>
+      <minSystemDistance>8</minSystemDistance>
+      <maxSystemDistance>12</maxSystemDistance>
+      <measureSpacing>1</measureSpacing>
+      <smallStaffMag>0.681818</smallStaffMag>
+      <Spatium>1.76</Spatium>
+      </Style>
+    <showInvisible>1</showInvisible>
+    <showUnprintable>1</showUnprintable>
+    <showFrames>1</showFrames>
+    <showMargins>0</showMargins>
+    <metaTag name="arranger"></metaTag>
+    <metaTag name="composer"></metaTag>
+    <metaTag name="copyright"></metaTag>
+    <metaTag name="lyricist"></metaTag>
+    <metaTag name="movementNumber"></metaTag>
+    <metaTag name="movementTitle"></metaTag>
+    <metaTag name="originalFormat">capx</metaTag>
+    <metaTag name="poet"></metaTag>
+    <metaTag name="source"></metaTag>
+    <metaTag name="translator"></metaTag>
+    <metaTag name="workNumber"></metaTag>
+    <metaTag name="workTitle"></metaTag>
+    <Part>
+      <Staff id="1">
+        <StaffType group="pitched">
+          </StaffType>
+        <barLineSpan>1</barLineSpan>
+        </Staff>
+      <trackName></trackName>
+      <Instrument>
+        <longName>Guitar</longName>
+        <shortName>Gtr.</shortName>
+        <trackName></trackName>
+        <Channel>
+          <program value="24"/>
+          </Channel>
+        </Instrument>
+      </Part>
+    <Staff id="1">
+      <VBox>
+        <height>14</height>
+        </VBox>
+      <Measure number="1">
+        <Clef>
+          <concertClefType>G8vb</concertClefType>
+          <transposingClefType>G8vb</transposingClefType>
+          </Clef>
+        <TimeSig>
+          <sigN>4</sigN>
+          <sigD>4</sigD>
+          </TimeSig>
+        <StaffText>
+          <pos x="25" y="-17"/>
+          <family>Arial</family>
+          <size>24</size>
+          <bold>1</bold>
+          <align>center,baseline</align>
+          <offset x="0" y="2"/>
+          <text>Volta 1</text>
+          </StaffText>
+        <StaffText>
+          <pos x="25" y="-12"/>
+          <family>Arial</family>
+          <bold>1</bold>
+          <align>center,baseline</align>
+          <offset x="0" y="2"/>
+          <text>MuseScore testfile</text>
+          </StaffText>
+        <Chord>
+          <durationType>whole</durationType>
+          <Note>
+            <pitch>55</pitch>
+            <tpc>15</tpc>
+            </Note>
+          </Chord>
+        </Measure>
+      <Measure number="2">
+        <endRepeat>2</endRepeat>
+        <Volta id="2">
+          <endHookType>1</endHookType>
+          <beginText>1.</beginText>
+          <endings>1</endings>
+          </Volta>
+        <Chord>
+          <durationType>whole</durationType>
+          <Note>
+            <pitch>57</pitch>
+            <tpc>17</tpc>
+            </Note>
+          </Chord>
+        </Measure>
+      <Measure number="3">
+        <endSpanner id="2"/>
+        <Volta id="3">
+          <beginText>2.</beginText>
+          <endings>2</endings>
+          </Volta>
+        <Chord>
+          <durationType>whole</durationType>
+          <Note>
+            <pitch>59</pitch>
+            <tpc>19</tpc>
+            </Note>
+          </Chord>
+        </Measure>
+      <Measure number="4">
+        <LayoutBreak>
+          <subtype>line</subtype>
+          </LayoutBreak>
+        <StaffText>
+          <pos x="5" y="-8"/>
+          <family>Arial</family>
+          <bold>1</bold>
+          <align>center,baseline</align>
+          <offset x="0" y="2"/>
+          <text>Leon Vinken</text>
+          </StaffText>
+        <endSpanner id="3"/>
+        <Chord>
+          <durationType>whole</durationType>
+          <Note>
+            <pitch>60</pitch>
+            <tpc>14</tpc>
+            </Note>
+          </Chord>
+        </Measure>
+      </Staff>
+    </Score>
+  </museScore>

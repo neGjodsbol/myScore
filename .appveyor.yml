@@ -1,0 +1,50 @@
+# clone directory
+clone_folder: C:\MuseScore
+
+# set clone depth
+clone_depth: 3                      # clone entire repository history if not defined
+
+# build cache to preserve files/folders between builds
+cache:
+  - dependencies.7z
+  - C:\Qt\Tools\mingw530_32\lib
+  - C:\Qt\Tools\mingw530_32\i686-w64-mingw32
+  - C:\Program Files (x86)\Jack
+  - C:\MuseScore\build.release\thirdparty
+  - C:\ccache
+
+# build platform, i.e. x86, x64, Any CPU. This setting is optional.
+platform:
+  - x86
+
+#environment:
+
+# build Configuration, i.e. Debug, Release, etc.
+configuration: Release
+
+# Stop Appveyor from "Discovering Tests"
+test: off
+
+install:
+  - IF DEFINED ENCRYPT_SECRET_SSH (
+    nuget install secure-file -ExcludeVersion &&
+    secure-file\tools\secure-file -decrypt C:\MuseScore\build\appveyor\resources\osuosl_nighlies_rsa_nopp.enc -secret %ENCRYPT_SECRET_SSH%
+    )
+  - IF DEFINED ENCRYPT_SECRET_CERTIFICATE (
+    nuget install secure-file -ExcludeVersion &&
+    secure-file\tools\secure-file -decrypt C:\MuseScore\build\appveyor\resources\musescore.p12.enc -secret %ENCRYPT_SECRET_CERTIFICATE%
+    )
+
+# scripts to run before build
+before_build:
+  - cmd: C:\MuseScore\build\appveyor\before_build.bat
+
+build_script:
+  - cmd: C:\MuseScore\build\appveyor\build_script.bat
+
+after_build:
+  - cmd: C:\MuseScore\build\appveyor\after_build.bat
+
+artifacts:
+  - path: $(ARTIFACT_NAME)
+
