@@ -1,16 +1,3 @@
-myScore, free and open source music notation software
-
-The myScore project is experimental in nature.
-The aim is to check the feasibility of scaling down the MuseScore
-music notation software, so that it may be deployed to Android and IOS
-tablets.
-
-The program is free software, but any restrictions valid for the 
-MuseScore software should be observed.
-
-Please find the contents of the LICENCE.GPL for MuseScore below.
-
-
 MuseScore, free and open source music notation software
 Copyright (C) 2002-2017 Werner Schweer and others
 

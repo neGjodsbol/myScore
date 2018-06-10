@@ -1,14 +1,11 @@
-#myScore
+![MuseScore](mscore/data/musescore_logo_full.png)  
  Music notation and composition software
- 
- myScore is based on the current version - 09.06.2018 - of MuseScore.
- The intention is to scale down MuseScore, so that it may be deployed to 
- Android and IOS tablets.
- At the same tile a new GUI will be developed to fit with the possibilities
- and best practies of tablet applications.
- 
- For installtion and building the project please see the MuseScore Developers handbook.
- (https://musescore.org/da/handbook/developers-handbook)
+
+[![Travis CI](https://secure.travis-ci.org/musescore/MuseScore.svg)](https://travis-ci.org/musescore/MuseScore)
+[![Appveyor](https://ci.appveyor.com/api/projects/status/bp3ww6v985i64ece/branch/master?svg=true)](https://ci.appveyor.com/project/MuseScore/musescore/branch/master)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+
+MuseScore is an open source and free music notation software. For support, contribution, and bug reports visit MuseScore.org. Fork and make pull requests!
 
 ## Features
 
