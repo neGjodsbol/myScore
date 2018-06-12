@@ -79,6 +79,9 @@ set(MSCORE_UNSTABLE   TRUE)          # Mark as unstable
 set(USE_SSE           TRUE)
 set(SCRIPT_INTERFACE  TRUE)
 
+# For building Tablet version uncomment next line:
+set (TABLET		TRUE)
+
 # Disable components not supported on Windows
 if (MINGW)
       set(WIN_NOT_AVAIL "Not available on Windows")

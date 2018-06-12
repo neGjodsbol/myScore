@@ -17,6 +17,7 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //=============================================================================
+#define TABLET
 
 #include "globals.h"
 #include "icons.h"
@@ -156,6 +157,27 @@ static const char* iconNames[] = {
       "window-close.svg",
       "arrow_up.svg",
       "arrow_down.svg"
+    #ifdef TABLET      //Icons for myScore Tablet version
+      ,
+      "palette.png",
+      "palette-clefs.svg",
+      "palette-keysignatures.svg",
+      "palette-timesignatures.svg",
+      "palette-accidentals.svg",
+      "palette-articulations.svg",
+      "palette-lines.svg",
+      "palette-barlines.svg",
+      "palette-texts.svg",
+      "palette-tempi.svg",
+      "palette-dynamics.svg",
+      "palette-endings.svg",
+      "palette-jumps.svg",
+      "menu-3-lines.svg",
+      "menu-3-dots.svg",
+      "ballpoint-pen.png",
+      "magnifying-glass.png",
+      "settings-dial.png"
+    #endif
       };
 
 //---------------------------------------------------------
