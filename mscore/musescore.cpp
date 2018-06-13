@@ -5975,7 +5975,19 @@ int main(int argc, char* av[])
 
       const char* appName;
       const char* appName2;
+#ifdef TABLET
       if (MuseScore::unstable()) {
+
+            appName2 = "myscore-dev0";
+            appName  = "MyScoreDevelopment";
+            }
+      else {
+            appName2 = "myscore0";
+            appName  = "MyScore0";
+            }
+#else
+      if (MuseScore::unstable()) {
+
             appName2 = "mscore-dev3";
             appName  = "MuseScoreDevelopment";
             }
@@ -5983,6 +5995,7 @@ int main(int argc, char* av[])
             appName2 = "mscore3";
             appName  = "MuseScore3";
             }
+#endif
 
       MuseScoreApplication* app = new MuseScoreApplication(appName2, argc, av);
       QCoreApplication::setApplicationName(appName);
@@ -6280,7 +6293,11 @@ int main(int argc, char* av[])
       QSplashScreen* sc = 0;
       QTimer* stimer = 0;
       if (!MScore::noGui && preferences.getBool(PREF_UI_APP_STARTUP_SHOWSPLASHSCREEN)) {
-            QPixmap pm(":/data/splash.png");
+#ifdef TABLET
+          QPixmap pm(":/data/mySplash.png");
+#else
+          QPixmap pm(":/data/splash.png");
+#endif
             sc = new QSplashScreen(pm);
             sc->setWindowTitle(QString("MuseScore Startup"));
 #ifdef Q_OS_MAC // to have session dialog on top of splashscreen on mac
