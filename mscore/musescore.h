@@ -21,6 +21,8 @@
 #ifndef __MUSESCORE_H__
 #define __MUSESCORE_H__
 
+#define TABLET
+
 #include "config.h"
 #include "globals.h"
 #include "ui_measuresdialog.h"

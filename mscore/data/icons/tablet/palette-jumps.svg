@@ -15,7 +15,7 @@
    version="1.1"
    id="svg858"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="jumps.svg">
+   sodipodi:docname="palette-jumps.svg">
   <defs
      id="defs852" />
   <sodipodi:namedview
@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="-75.714286"
+     inkscape:cx="-204.99116"
      inkscape:cy="560"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -52,22 +52,17 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       style="fill:none;stroke:#000000;stroke-width:6.16499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 114.14881,58.875001 V 230.47619"
-       id="path1446"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:14.865;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 135.31548,58.119045 V 229.72022"
-       id="path1446-8"
-       inkscape:connector-curvature="0" />
-    <ellipse
-       style="fill:#000000;stroke-width:14.86499977;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
-       id="path1463"
-       cx="83.154762"
-       cy="106.5"
-       rx="17.386906"
-       ry="16.630953" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:153.79666138px;line-height:1.25;font-family:'Bodoni MT';-inkscape-font-specification:'Bodoni MT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.84498858"
+       x="28.795473"
+       y="169.24782"
+       id="text817"
+       transform="scale(0.82130699,1.2175715)"><tspan
+         sodipodi:role="line"
+         id="tspan815"
+         x="28.795473"
+         y="169.24782"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:153.79666138px;font-family:'Bodoni MT';-inkscape-font-specification:'Bodoni MT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:3.84498858">DS</tspan></text>
   </g>
 </svg>

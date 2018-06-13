@@ -2851,7 +2851,7 @@ Shortcut Shortcut::_sc[] = {
          QT_TRANSLATE_NOOP("action","Toggle metronome playback"),
          QT_TRANSLATE_NOOP("action","Play metronome during playback"),
          Icons::metronome_ICON,
-         Qt::WindowShortcut,
+		  Qt::WindowShortcut,
          ShortcutFlags::A_CHECKABLE
          },
       {
