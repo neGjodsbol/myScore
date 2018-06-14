@@ -3528,6 +3528,214 @@ Shortcut Shortcut::_sc[] = {
          Icons::Invalid_ICON,
          Qt::ApplicationShortcut
          },
+// --------------------------------------------
+// TABLET specific shortcuts (myScore)
+// --------------------------------------------
+     {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "toggle-palette",
+        QT_TRANSLATE_NOOP("action","Palette"),
+        QT_TRANSLATE_NOOP("action","Toggle palette toolbars"),
+        0,
+        Icons::metronome_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+      {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "clefs",
+        QT_TRANSLATE_NOOP("action","Clefs"),
+        QT_TRANSLATE_NOOP("action","Show clefs palette"),
+        0,
+        Icons::clefs_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+     {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "keysignatures",
+        QT_TRANSLATE_NOOP("action","Keysignatures"),
+        QT_TRANSLATE_NOOP("action","Show keysignatures palette"),
+        0,
+        Icons::keysignatures_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "timesignatures",
+        QT_TRANSLATE_NOOP("action","Timesignatures"),
+        QT_TRANSLATE_NOOP("action","Show timesignatures palette"),
+        0,
+        Icons::timesignatures_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "accidentals",
+        QT_TRANSLATE_NOOP("action","Accidentals"),
+        QT_TRANSLATE_NOOP("action","Show accidentals palette"),
+        0,
+        Icons::accidentals_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+     {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "articulations",
+        QT_TRANSLATE_NOOP("action","Articulations"),
+        QT_TRANSLATE_NOOP("action","Show articulations palette"),
+        0,
+        Icons::articulations_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+     {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "lines",
+        QT_TRANSLATE_NOOP("action","Lines"),
+        QT_TRANSLATE_NOOP("action","Show lines palette"),
+        0,
+        Icons::lines_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "barlines",
+        QT_TRANSLATE_NOOP("action","Barlines"),
+        QT_TRANSLATE_NOOP("action","Show barlines palette"),
+        0,
+        Icons::barlines_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "texts",
+        QT_TRANSLATE_NOOP("action","Texts"),
+        QT_TRANSLATE_NOOP("action","Show texts palette"),
+        0,
+        Icons::texts_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL  | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "tempi",
+        QT_TRANSLATE_NOOP("action","Tempi"),
+        QT_TRANSLATE_NOOP("action","Show tempi palette"),
+        0,
+        Icons::tempi_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL  | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "dynamics",
+        QT_TRANSLATE_NOOP("action","Dynamics"),
+        QT_TRANSLATE_NOOP("action","Show dynamics palette"),
+        0,
+        Icons::dynamics_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "endings",
+        QT_TRANSLATE_NOOP("action","Endings"),
+        QT_TRANSLATE_NOOP("action","Show endings palette"),
+        0,
+        Icons::endings_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+     {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "jumps",
+        QT_TRANSLATE_NOOP("action","Jumps"),
+        QT_TRANSLATE_NOOP("action","Show jumps palette"),
+        0,
+        Icons::jumps_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "gracenotes",
+        QT_TRANSLATE_NOOP("action","Gracenotes"),
+        QT_TRANSLATE_NOOP("action","Show gracenotes palette"),
+        0,
+        Icons::appoggiatura_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "zoom-menu",
+        QT_TRANSLATE_NOOP("action","Zoom"),
+        QT_TRANSLATE_NOOP("action","Show zoom menu"),
+        0,
+        Icons::zoom_ICON,
+        Qt::WindowShortcut
+        },
+     {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "toggle-playback",
+        QT_TRANSLATE_NOOP("action","Playback"),
+        QT_TRANSLATE_NOOP("action","Open/close playback"),
+        0,
+        Icons::speaker_ICON,
+        Qt::WindowShortcut,
+        ShortcutFlags::A_CHECKABLE
+        },
+     {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "file-menu",
+        QT_TRANSLATE_NOOP("action","File menu"),
+        QT_TRANSLATE_NOOP("action","Show file menu"),
+        0,
+        Icons::fileOpen_ICON,
+        Qt::WindowShortcut
+        },
+     {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "open-edit-tools",
+        QT_TRANSLATE_NOOP("action","Edit"),
+        QT_TRANSLATE_NOOP("action","Show  edit tools"),
+        0,
+        Icons::edit_tools_ICON,
+        Qt::WindowShortcut
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "open-score-settings",
+        QT_TRANSLATE_NOOP("action","Score settings"),
+        QT_TRANSLATE_NOOP("action","Show score settings "),
+        0,
+        Icons::menu_dots_ICON,
+        Qt::WindowShortcut},
+
 #ifndef NDEBUG
       {
          MsWidget::MAIN_WINDOW,
