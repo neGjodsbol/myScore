@@ -267,6 +267,9 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       QToolBar* fileTools;
       QToolBar* transportTools;
       QToolBar* entryTools;
+	  QToolBar* paletteOneTools;
+	  QToolBar* paletteTwoTools;
+	  
       TextTools* _textTools                { 0 };
       PianoTools* _pianoTools              { 0 };
       MediaDialog* _mediaDialog            { 0 };

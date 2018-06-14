@@ -815,6 +815,7 @@ MuseScore::MuseScore()
       getAction("swap")->setEnabled(false);
       selectionChanged(SelState::NONE);
 
+
       //---------------------------------------------------
       //    File Tool Bar
       //---------------------------------------------------
@@ -896,6 +897,39 @@ MuseScore::MuseScore()
       entryTools->setObjectName("entry-tools");
 
       populateNoteInputMenu();
+
+#ifdef TABLET
+      //  -----------------------------------------------------
+      //  Palette toolbars
+      //  -----------------------------------------------------
+
+          addToolBarBreak();
+
+      paletteOneTools = addToolBar("");
+      paletteOneTools->addAction(getAction("clefs"));
+      paletteOneTools->addAction(getAction("keysignatures"));
+      paletteOneTools->addAction(getAction("timesignatures"));
+      paletteOneTools->addAction(getAction("accidentals"));
+      paletteOneTools->addAction(getAction("articulations"));
+      paletteOneTools->addAction(getAction("gracenotes"));
+      paletteOneTools->addAction(getAction("lines"));
+      paletteOneTools->setVisible(true);
+      paletteOneTools->setMovable(false);
+//      connect(paletteOneTools,SIGNAL(actionTriggered(QAction*)), SLOT(mpCmd(QAction*)));
+
+
+      paletteTwoTools = addToolBar("");
+      paletteTwoTools->addAction(getAction("barlines"));
+      paletteTwoTools->addAction(getAction("texts"));
+      paletteTwoTools->addAction(getAction("tempi"));
+      paletteTwoTools->addAction(getAction("dynamics"));
+      paletteTwoTools->addAction(getAction("endings"));
+      paletteTwoTools->addAction(getAction("jumps"));
+      paletteTwoTools->addAction(getAction("beams"));
+      paletteTwoTools->setVisible(true);
+      paletteTwoTools->setMovable(false);
+//		connect(paletteTwoTools,SIGNAL(actionTriggered(QAction*)), SLOT(mpCmd(QAction*)));
+#endif
 
       //---------------------
       //    Menus

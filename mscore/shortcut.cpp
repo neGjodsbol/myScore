@@ -3528,17 +3528,17 @@ Shortcut Shortcut::_sc[] = {
          Icons::Invalid_ICON,
          Qt::ApplicationShortcut
          },
-// --------------------------------------------
-// TABLET specific shortcuts (myScore)
-// --------------------------------------------
+    // --------------------------------------------
+    // TABLET specific shortcuts (myScore)
+    // --------------------------------------------
      {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "toggle-palette",
+        "toggle-palette-tools",
         QT_TRANSLATE_NOOP("action","Palette"),
         QT_TRANSLATE_NOOP("action","Toggle palette toolbars"),
         0,
-        Icons::metronome_ICON,
+        Icons::palette_ICON,
         Qt::WindowShortcut,
         ShortcutFlags::A_CHECKABLE
         },
@@ -3597,6 +3597,17 @@ Shortcut Shortcut::_sc[] = {
         Qt::WindowShortcut,
         ShortcutFlags::A_CHECKABLE
         },
+    {
+       MsWidget::MAIN_WINDOW,
+       STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+       "gracenotes",
+       QT_TRANSLATE_NOOP("action","Gracenotes"),
+       QT_TRANSLATE_NOOP("action","Show gracenotes palette"),
+       0,
+       Icons::grace16_ICON,
+       Qt::WindowShortcut,
+       ShortcutFlags::A_CHECKABLE
+       },
      {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
@@ -3677,11 +3688,11 @@ Shortcut Shortcut::_sc[] = {
     {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "gracenotes",
-        QT_TRANSLATE_NOOP("action","Gracenotes"),
-        QT_TRANSLATE_NOOP("action","Show gracenotes palette"),
+        "beams",
+        QT_TRANSLATE_NOOP("action","Beams"),
+        QT_TRANSLATE_NOOP("action","Show beams palette"),
         0,
-        Icons::appoggiatura_ICON,
+        Icons::mbeam_ICON,
         Qt::WindowShortcut,
         ShortcutFlags::A_CHECKABLE
         },
