@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="7.9195959"
-     inkscape:cx="-23.147176"
-     inkscape:cy="12.812571"
+     inkscape:cx="6.3366516"
+     inkscape:cy="10.448574"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -56,15 +56,15 @@
      transform="translate(0,-290.64999)">
     <text
        xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.25758314px;line-height:1.25;font-family:'Calisto MT';-inkscape-font-specification:'Calisto MT, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.18144181"
-       x="0.78157049"
-       y="247.8286"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.12429762px;line-height:1.25;font-family:'Calisto MT';-inkscape-font-specification:'Calisto MT, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15310933"
+       x="0.82091379"
+       y="260.96899"
        id="text1408"
-       transform="scale(0.84053178,1.189723)"><tspan
+       transform="scale(0.88482621,1.1301654)"><tspan
          sodipodi:role="line"
          id="tspan1406"
-         x="0.78157049"
-         y="247.8286"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.25758314px;font-family:'Calisto MT';-inkscape-font-specification:'Calisto MT, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.18144181">pp</tspan></text>
+         x="0.82091379"
+         y="260.96899"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.12429762px;font-family:'Calisto MT';-inkscape-font-specification:'Calisto MT, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.15310933">pp</tspan></text>
   </g>
 </svg>

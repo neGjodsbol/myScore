@@ -274,9 +274,12 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       QToolBar *paletteOneTools;
       QToolBar *paletteTwoTools;
       QToolBar *entryTools;
+      QToolButton *mpFileButton;
+      QToolButton  *mpMagButton;
       QMenu *mpFileMenu;
       QMenu *mpMagMenu;
       QMenu *mpMenuTuplets;
+      QMenu *mpMenuAddText;
       void mpPrepareToolbars ();
 #endif
 	  
