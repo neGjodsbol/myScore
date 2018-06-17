@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="24"
+   height="24"
+   viewBox="0 0 6.3499999 6.3500002"
    version="1.1"
    id="svg858"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="tempi.svg">
+   sodipodi:docname="palette-tempi.svg">
   <defs
      id="defs852" />
   <sodipodi:namedview
@@ -25,17 +25,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="-75.714286"
-     inkscape:cy="560"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:zoom="11.2"
+     inkscape:cx="4.107822"
+     inkscape:cy="15.251549"
+     inkscape:document-units="px"
+     inkscape:current-layer="g6-4"
      showgrid="false"
      inkscape:window-width="1440"
      inkscape:window-height="837"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     units="px" />
   <metadata
      id="metadata855">
     <rdf:RDF>
@@ -44,39 +45,40 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(0,-290.64999)">
     <g
-       transform="matrix(4.415361,0,0,6.254808,-1610.3662,-1358.6718)"
+       transform="matrix(-0.1383063,0,0,0.18096456,56.999391,250.67498)"
        id="g6-4">
       <path
          inkscape:connector-curvature="0"
-         d="m 372.97847,244.13685 c -1.21704,0 -2.35613,0.44556 -3.41731,1.33666 -1.06118,0.8911 -1.59177,1.84904 -1.59176,2.87381 0,0.62377 0.23004,1.12501 0.69013,1.50373 0.4601,0.37872 1.06118,0.56809 1.80327,0.56809 1.21702,0 2.35609,-0.44556 3.41728,-1.33666 1.06119,-0.8911 1.59178,-1.84904 1.59178,-2.87381 0,-0.62377 -0.23004,-1.12502 -0.69014,-1.50373 -0.46009,-0.37873 -1.06119,-0.56809 -1.80325,-0.56809"
-         style="fill:#3b3f45"
+         d="m 411.42918,243.10361 c -0.3918,-0.41524 -1.07541,-0.71933 -2.05082,-0.91239 -0.97542,-0.19302 -1.82756,-0.19236 -2.55644,0.002 -0.44369,0.11831 -0.72614,0.29185 -0.84738,0.52067 -0.12119,0.22882 -0.0624,0.46982 0.17645,0.723 0.39178,0.41521 1.07539,0.71934 2.05081,0.91237 0.97541,0.19304 1.82756,0.19236 2.55644,-0.002 0.44369,-0.11833 0.72612,-0.29188 0.84737,-0.5207 0.12118,-0.2288 0.0624,-0.4698 -0.17643,-0.72297"
+         style="fill:#241f1c;stroke-width:0.55111527"
          id="path2-9" />
       <path
          inkscape:connector-curvature="0"
-         d="m 373.37644,228.73588 c 0,0 0.99962,-0.99963 1.99962,-0.99963 2.6e-4,0.0105 0,17.77554 0,17.77554 h -2 z"
-         style="fill:#3b3f45;stroke-width:1.50800002"
+         d="m 405.95069,242.47056 c 0,0 0.70799,0.63516 1.42598,0.63516 3e-4,-0.008 0.17251,-11.29407 0.17251,-11.29407 h -1.43597 z"
+         style="fill:#241f1c;stroke-width:1.01852226"
          id="path4-6" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:13.93968296px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.34849209"
-         x="446.95599"
-         y="212.26068"
-         id="text1432"
-         transform="scale(0.85216205,1.1734857)"><tspan
+         style="font-style:normal;font-weight:normal;font-size:20.66519928px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.51662999"
+         x="-538.49432"
+         y="186.60002"
+         id="text5414"
+         transform="scale(-0.7494086,1.3343855)"><tspan
            sodipodi:role="line"
-           x="446.95599"
-           y="212.26068"
-           style="stroke-width:0.34849209"
-           id="tspan1434">= 80</tspan></text>
+           id="tspan5412"
+           x="-538.49432"
+           y="186.60002"
+           style="stroke-width:0.51662999">= 80</tspan></text>
     </g>
   </g>
 </svg>
