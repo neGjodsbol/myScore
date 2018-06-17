@@ -266,9 +266,19 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       QToolBar* fotoTools;
       QToolBar* fileTools;
       QToolBar* transportTools;
-      QToolBar* entryTools;
-	  QToolBar* paletteOneTools;
-	  QToolBar* paletteTwoTools;
+
+#ifdef TABLET
+      QToolBar *mpMainTools;
+      QToolBar *mpEntryTools;
+      QToolBar *mpPlayTools;
+      QToolBar *paletteOneTools;
+      QToolBar *paletteTwoTools;
+      QToolBar *entryTools;
+      QMenu *mpFileMenu;
+      QMenu *mpMagMenu;
+      QMenu *mpMenuTuplets;
+      void mpPrepareToolbars ();
+#endif
 	  
       TextTools* _textTools                { 0 };
       PianoTools* _pianoTools              { 0 };
