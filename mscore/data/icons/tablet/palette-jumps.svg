@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="24"
+   height="24"
+   viewBox="0 0 6.3499999 6.3500002"
    version="1.1"
    id="svg858"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
@@ -25,17 +25,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="-204.99116"
-     inkscape:cy="560"
-     inkscape:document-units="mm"
+     inkscape:zoom="11.2"
+     inkscape:cx="8.2321429"
+     inkscape:cy="20.824343"
+     inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1440"
      inkscape:window-height="837"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     units="px" />
   <metadata
      id="metadata855">
     <rdf:RDF>
@@ -44,25 +45,26 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(0,-290.64999)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:153.79666138px;line-height:1.25;font-family:'Bodoni MT';-inkscape-font-specification:'Bodoni MT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.84498858"
-       x="28.795473"
-       y="169.24782"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.47643471px;line-height:1.25;font-family:'Calisto MT';-inkscape-font-specification:'Calisto MT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.11178905"
+       x="0.07172852"
+       y="239.10794"
        id="text817"
-       transform="scale(0.82130699,1.2175715)"><tspan
+       transform="scale(0.80889748,1.2362506)"><tspan
          sodipodi:role="line"
          id="tspan815"
-         x="28.795473"
-         y="169.24782"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:153.79666138px;font-family:'Bodoni MT';-inkscape-font-specification:'Bodoni MT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:3.84498858">DS</tspan></text>
+         x="0.07172852"
+         y="239.10794"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.47643471px;font-family:'Calisto MT';-inkscape-font-specification:'Calisto MT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.11178905">D.S.</tspan></text>
   </g>
 </svg>

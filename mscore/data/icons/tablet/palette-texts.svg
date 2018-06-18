@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="24"
+   height="24"
+   viewBox="0 0 6.3499999 6.3500002"
    version="1.1"
    id="svg842"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="texts.svg">
+   sodipodi:docname="palette-texts.svg">
   <defs
      id="defs836" />
   <sodipodi:namedview
@@ -25,17 +25,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="-75.714284"
-     inkscape:cy="560"
-     inkscape:document-units="mm"
+     inkscape:zoom="22.4"
+     inkscape:cx="12.327218"
+     inkscape:cy="11.813602"
+     inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1440"
      inkscape:window-height="837"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     units="px" />
   <metadata
      id="metadata839">
     <rdf:RDF>
@@ -51,30 +52,31 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(0,-290.64999)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:209.64097595px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:5.24102449"
-       x="23.178734"
-       y="210.12137"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.02441311px;line-height:1.25;font-family:'Calisto MT';-inkscape-font-specification:'Calisto MT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.20286335"
+       x="0.06034844"
+       y="283.87604"
        id="text846"
-       transform="scale(0.94580724,1.0572979)"><tspan
+       transform="scale(0.95782504,1.044032)"><tspan
          sodipodi:role="line"
          id="tspan844"
-         x="23.178734"
-         y="210.12137"
-         style="stroke-width:5.24102449">T</tspan></text>
+         x="0.06034844"
+         y="283.87604"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.02441311px;font-family:'Calisto MT';-inkscape-font-specification:'Calisto MT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.20286335">T</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:153.33062744px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.83326578"
-       x="105.66771"
-       y="212.5363"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.44475746px;line-height:1.25;font-family:'Calisto MT';-inkscape-font-specification:'Calisto MT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.14837351"
+       x="3.5944583"
+       y="287.15155"
        id="text850"
-       transform="scale(0.95667763,1.0452842)"><tspan
+       transform="scale(0.96883368,1.0321689)"><tspan
          sodipodi:role="line"
          id="tspan848"
-         x="105.66771"
-         y="212.5363"
-         style="stroke-width:3.83326578">x</tspan></text>
+         x="3.5944583"
+         y="287.15155"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.44475746px;font-family:'Calisto MT';-inkscape-font-specification:'Calisto MT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.14837351">x</tspan></text>
   </g>
 </svg>

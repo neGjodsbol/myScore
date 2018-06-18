@@ -175,7 +175,8 @@ static const char* iconNames[] = {
       "menu-3-dots.svg",
       "ballpoint-pen.png",
       "magnifying-glass.png",
-      "settings-dial.png"
+      "settings-dial.png",
+      "mixer.png"
     #endif
       };
 

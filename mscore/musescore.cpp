@@ -106,6 +106,7 @@
 #include "fluid/fluid.h"
 #include "qmlplugin.h"
 #include "accessibletoolbutton.h"
+#include "mptoolbutton.h"
 #include "toolbuttonmenu.h"
 #include "searchComboBox.h"
 #include "startcenter.h"
@@ -815,6 +816,7 @@ MuseScore::MuseScore()
       getAction("swap")->setEnabled(false);
       selectionChanged(SelState::NONE);
 
+
       //---------------------------------------------------
       //    File Tool Bar
       //---------------------------------------------------
@@ -896,6 +898,11 @@ MuseScore::MuseScore()
       entryTools->setObjectName("entry-tools");
 
       populateNoteInputMenu();
+
+      // TABLET toolbars
+#ifdef TABLET
+      mpPrepareToolbars();
+#endif
 
       //---------------------
       //    Menus
@@ -5942,6 +5949,142 @@ void MuseScore::updateUiStyleAndTheme()
       genIcons();
       Shortcut::refreshIcons();
       }
+// ----------------------------------------------------
+// TABLET functions
+// ----------------------------------------------------
+void MuseScore::mpPrepareToolbars ()
+{
+//  ---------------------------------------------------
+//  Playback toolbar
+//  ---------------------------------------------------
+
+//  -----------------------------
+//  File and zoom action menus
+//  -----------------------------
+
+    addToolBarBreak();
+    mpMainTools= addToolBar("");
+    mpMainTools->setMovable(false);
+    mpFileButton = new MpToolButton(mpMainTools, getAction("file-menu"));
+    mpMainTools->addWidget(mpFileButton);
+    mpMagButton = new MpToolButton(mpMainTools, getAction("zoom-menu"));
+    mpMainTools->addWidget(mpMagButton);
+
+//  ----------------------------------------------------
+//  Playback actions (Transport tools)
+//  ----------------------------------------------------
+
+    mpPlayTools = addToolBar ("");
+    mpPlayTools->setAllowedAreas(Qt::BottomToolBarArea);
+    mpPlayTools->setObjectName("transport-tools");
+    mpPlayTools->addAction(getAction("rewind"));
+    mpPlayTools->addAction(getAction("play"));
+    // mpPlayTools->addAction(getAction("loop"));
+    QAction* repeatAction = getAction("repeat");
+    repeatAction->setChecked(true);
+    mpPlayTools->addAction(repeatAction);
+    QAction* panAction = getAction("pan");
+    panAction->setChecked(true);
+    mpPlayTools->addAction(panAction);
+    metronomeAction = getAction("metronome");
+    metronomeAction->setChecked(false);
+    mpPlayTools->addAction(metronomeAction);
+    mpPlayTools->addAction(getAction("toggle-mixer"));
+    mpPlayTools->addAction (getAction("open-entry-tools"));
+
+//    connect(mpMainTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
+
+    mpEntryTools=addToolBar("");
+    mpEntryTools->setMovable(false);
+    mpEntryTools->addAction(getAction("close-entry-tools"));
+
+    mpEntryTools->addAction(getAction("undo"));
+    mpEntryTools->addAction(getAction("redo"));
+    mpEntryTools->addAction(getAction("cut"));
+    mpEntryTools->addAction(getAction("copy"));
+    mpEntryTools->addAction(getAction("paste"));
+    mpEntryTools->addAction(getAction("toggle-palette-tools"));
+//    mpVoiceAction = mpGetAction("open-voices");
+    mpEntryTools->addAction(getAction("open-score-settings"));
+    mpEntryTools->setVisible(true);
+//    connect(mpEntryTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
+
+//  -----------------------------------------------------
+//  Palette toolbars
+//  -----------------------------------------------------
+
+    addToolBarBreak();
+
+    paletteOneTools = addToolBar("");
+    paletteOneTools->addAction(getAction("clefs"));
+    paletteOneTools->addAction(getAction("keysignatures"));
+    paletteOneTools->addAction(getAction("timesignatures"));
+    paletteOneTools->addAction(getAction("accidentals"));
+    paletteOneTools->addAction(getAction("articulations"));
+    paletteOneTools->addAction(getAction("gracenotes"));
+    paletteOneTools->addAction(getAction("lines"));
+    paletteOneTools->setVisible(true);
+    paletteOneTools->setMovable(false);
+
+//    connect(paletteOneTools,SIGNAL(actionTriggered(QAction*)), SLOT(mpCmd(QAction*)));
+
+
+    paletteTwoTools = addToolBar("");
+    paletteTwoTools->addAction(getAction("barlines"));
+    paletteTwoTools->addAction(getAction("texts"));
+    paletteTwoTools->addAction(getAction("tempi"));
+    paletteTwoTools->addAction(getAction("dynamics"));
+    paletteTwoTools->addAction(getAction("endings"));
+    paletteTwoTools->addAction(getAction("jumps"));
+    paletteTwoTools->addAction(getAction("beams"));
+    paletteTwoTools->setVisible(true);
+    paletteTwoTools->setMovable(false);
+
+//    connect(paletteTwoTools,SIGNAL(actionTriggered(QAction*)), SLOT(mpCmd(QAction*)));
+
+//  ---------------------------------------------
+//  Pop-up menus
+//  ---------------------------------------------
+
+    mpFileMenu = new QMenu;
+    mpFileButton->setMenu(mpFileMenu);
+    mpFileMenu->addAction (getAction("file-open"));
+    mpFileMenu->addAction (getAction("file-save"));
+    mpFileMenu->addAction (getAction("file-save-as"));
+    mpFileMenu->addAction (getAction("file-close"));
+    mpFileMenu->addSeparator();
+    mpFileMenu->addAction (getAction("file-new"));
+//    connect(mpFileMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
+
+    mpMagMenu = new QMenu;
+    mpMagButton->setMenu(mpMagMenu);
+    mpMagMenu->addAction(getAction("zoomin"));
+    mpMagMenu->addAction(getAction("zoomout"));
+    mpMagMenu->addAction(getAction("zoom100"));
+//    connect(mpMagMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
+
+    mpMenuTuplets = new QMenu();
+    mpMenuTuplets->addAction(getAction("duplet"));
+    mpMenuTuplets->addAction(getAction("triplet"));
+    mpMenuTuplets->addAction(getAction("quadruplet"));
+    mpMenuTuplets->addAction(getAction("quintuplet"));
+    mpMenuTuplets->addAction(getAction("sextuplet"));
+    mpMenuTuplets->addAction(getAction("septuplet"));
+    mpMenuTuplets->addAction(getAction("octuplet"));
+    mpMenuTuplets->addAction(getAction("nonuplet"));
+
+//    connect(mpMenuTuplets,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
+
+    mpMenuAddText = new QMenu();
+    mpMenuAddText->addAction(getAction("title-text"));
+    mpMenuAddText->addAction(getAction("subtitle-text"));
+    mpMenuAddText->addAction(getAction("composer-text"));
+    mpMenuAddText->addAction(getAction("poet-text"));
+    mpMenuAddText->addAction(getAction("part-text"));
+
+//    connect(mpMenuAddText,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
+    }
+
 }
 
 using namespace Ms;

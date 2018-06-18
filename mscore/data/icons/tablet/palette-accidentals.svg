@@ -11,7 +11,7 @@
    version="1.1"
    width="24"
    id="svg12"
-   sodipodi:docname="accidentals.svg"
+   sodipodi:docname="palette-accidentals.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
      id="metadata18">
@@ -49,35 +49,37 @@
      inkscape:current-layer="svg12" />
   <g
      transform="matrix(0.89830508,0,0,0.82485875,-590.71207,-201.28814)"
-     id="g10">
+     id="g10"
+     style="fill:#241f1c">
     <path
        d="m 660.50023,258.24998 v 2.50001 l 8.99984,-2.50001 1.6e-4,-2.49997 z"
-       style="fill:#3b3f45"
+       style="fill:#241f1c"
        id="path2"
        inkscape:connector-curvature="0" />
     <path
        d="m 662.00012,247 v 16.99999 h 1.49981 V 247 Z"
-       style="fill:#3b3f45"
+       style="fill:#241f1c"
        id="path4"
        inkscape:connector-curvature="0" />
     <path
        d="m 666.50099,245.99999 v 17 h 1.49981 v -17 z"
-       style="fill:#3b3f45"
+       style="fill:#241f1c"
        id="path6"
        inkscape:connector-curvature="0" />
     <path
        d="m 660.50023,251.74999 v 2.5 l 8.99984,-2.5 1.6e-4,-2.49998 z"
-       style="fill:#3b3f45"
+       style="fill:#241f1c"
        id="path8"
        inkscape:connector-curvature="0" />
   </g>
   <g
      transform="matrix(1.1449402,0,0,0.8401937,-827.29002,-199.49818)"
-     id="g4">
+     id="g4"
+     style="fill:#241f1c">
     <path
        inkscape:connector-curvature="0"
        d="m 736,247 c -1.00025,-3e-5 -2,1 -2,1 v 16.5 c 0,0 6.62358,-3.49633 7.25,-6.28125 0.62641,-2.78493 -1.39032,-3.95356 -2.9375,-3.65625 -1.54717,0.2973 -2.3125,0.78125 -2.3125,0.78125 0,0 2e-5,-5.5625 0,-8.34375 z m 1.625,9.71875 c 0.7676,-0.0828 1.31108,0.32807 1.28125,1.125 -0.0299,0.79692 -0.7315,1.40489 -1.34375,1.96875 C 736.94606,260.32206 736,261.125 736,261.125 v -3.46875 c 0,0 0.85741,-0.85465 1.625,-0.9375 z"
-       style="fill:#3b3f45"
+       style="fill:#241f1c"
        id="path2-4" />
   </g>
 </svg>
