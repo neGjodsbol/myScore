@@ -162,25 +162,25 @@
         <file>data/icons/clef-bass.svg</file>
         <file>data/solid_note_head.dat</file>
         <file>data/icons/edit-swap.svg</file>
-		<file>data/mySplash.png</file>
-		<file alias="data/icons/palette.png">data/icons/tablet/palette.png</file>
-		<file alias="data/icons/palette-clefs.svg">data/icons/tablet/palette-clefs.svg</file>
- 		<file alias="data/icons/palette-keysignatures.svg">data/icons/tablet/palette-keysignatures.svg</file>
-  		<file alias="data/icons/palette-timesignatures.svg">data/icons/tablet/palette-timesignatures.svg</file>
- 		<file alias="data/icons/palette-accidentals.svg">data/icons/tablet/palette-accidentals.svg</file>
- 		<file alias="data/icons/palette-articulations.svg">data/icons/tablet/palette-articulations.svg</file>
- 		<file alias="data/icons/palette-lines.svg">data/icons/tablet/palette-lines.svg</file>
- 		<file alias="data/icons/palette-barlines.svg">data/icons/tablet/palette-barlines.svg</file>
- 		<file alias="data/icons/palette-texts.svg">data/icons/tablet/palette-texts.svg</file>
- 		<file alias="data/icons/palette-tempi.svg">data/icons/tablet/palette-tempi.svg</file>
- 		<file alias="data/icons/palette-dynamics.svg">data/icons/tablet/palette-dynamics.svg</file>
- 		<file alias="data/icons/palette-endings.svg">data/icons/tablet/palette-endings.svg</file>
- 		<file alias="data/icons/palette-jumps.svg">data/icons/tablet/palette-jumps.svg</file>
- 		<file alias="data/icons/menu-3-lines.svg">data/icons/tablet/menu-3-lines.svg</file>
- 		<file alias="data/icons/menu-3-dots.svg">data/icons/tablet/menu-3-dots.svg</file>
- 		<file alias="data/icons/ballpoint-pen.png">data/icons/tablet/ballpoint-pen.png</file>
- 		<file alias="data/icons/magnifying-glass.png">data/icons/tablet/magnifying-glass.png</file>
- 		<file alias="data/icons/settings-dial.png">data/icons/tablet/settings-dial.png</file>	
-	
+        <file>data/mySplash.png</file>
+        <file alias="data/icons/palette.png">data/icons/tablet/palette.png</file>
+        <file alias="data/icons/palette-clefs.svg">data/icons/tablet/palette-clefs.svg</file>
+        <file alias="data/icons/palette-keysignatures.svg">data/icons/tablet/palette-keysignatures.svg</file>
+        <file alias="data/icons/palette-timesignatures.svg">data/icons/tablet/palette-timesignatures.svg</file>
+        <file alias="data/icons/palette-accidentals.svg">data/icons/tablet/palette-accidentals.svg</file>
+        <file alias="data/icons/palette-articulations.svg">data/icons/tablet/palette-articulations.svg</file>
+        <file alias="data/icons/palette-lines.svg">data/icons/tablet/palette-lines.svg</file>
+        <file alias="data/icons/palette-barlines.svg">data/icons/tablet/palette-barlines.svg</file>
+        <file alias="data/icons/palette-texts.svg">data/icons/tablet/palette-texts.svg</file>
+        <file alias="data/icons/palette-tempi.svg">data/icons/tablet/palette-tempi.svg</file>
+        <file alias="data/icons/palette-dynamics.svg">data/icons/tablet/palette-dynamics.svg</file>
+        <file alias="data/icons/palette-endings.svg">data/icons/tablet/palette-endings.svg</file>
+        <file alias="data/icons/palette-jumps.svg">data/icons/tablet/palette-jumps.svg</file>
+        <file alias="data/icons/menu-3-lines.svg">data/icons/tablet/menu-3-lines.svg</file>
+        <file alias="data/icons/menu-3-dots.svg">data/icons/tablet/menu-3-dots.svg</file>
+        <file alias="data/icons/ballpoint-pen.png">data/icons/tablet/ballpoint-pen.png</file>
+        <file alias="data/icons/magnifying-glass.png">data/icons/tablet/magnifying-glass.png</file>
+        <file alias="data/icons/settings-dial.png">data/icons/tablet/settings-dial.png</file>
+        <file alias="data/icons/mixer.png">data/icons/tablet/mixer.png</file>
     </qresource>
 </RCC>

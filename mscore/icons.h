@@ -67,7 +67,7 @@ enum class Icons : signed char
 #ifdef TABLET
       palette_ICON, clefs_ICON, keysignatures_ICON, timesignatures_ICON, accidentals_ICON,
       articulations_ICON, lines_ICON, barlines_ICON, texts_ICON, tempi_ICON, dynamics_ICON, endings_ICON, jumps_ICON,
-      menu_lines_ICON, menu_dots_ICON, edit_tools_ICON, zoom_ICON, settings_ICON,
+      menu_lines_ICON, menu_dots_ICON, edit_tools_ICON, zoom_ICON, settings_ICON, mixer_ICON,
 #endif
       voice1_ICON, voice2_ICON, voice3_ICON, voice4_ICON,
       ICONS

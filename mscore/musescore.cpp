@@ -106,6 +106,7 @@
 #include "fluid/fluid.h"
 #include "qmlplugin.h"
 #include "accessibletoolbutton.h"
+#include "mptoolbutton.h"
 #include "toolbuttonmenu.h"
 #include "searchComboBox.h"
 #include "startcenter.h"
@@ -5964,9 +5965,9 @@ void MuseScore::mpPrepareToolbars ()
     addToolBarBreak();
     mpMainTools= addToolBar("");
     mpMainTools->setMovable(false);
-    mpFileButton = new AccessibleToolButton(mpMainTools, getAction("file-menu"));
+    mpFileButton = new MpToolButton(mpMainTools, getAction("file-menu"));
     mpMainTools->addWidget(mpFileButton);
-    mpMagButton = new AccessibleToolButton(mpMainTools, getAction("zoom-menu"));
+    mpMagButton = new MpToolButton(mpMainTools, getAction("zoom-menu"));
     mpMainTools->addWidget(mpMagButton);
 
 //  ----------------------------------------------------
@@ -5976,7 +5977,6 @@ void MuseScore::mpPrepareToolbars ()
     mpPlayTools = addToolBar ("");
     mpPlayTools->setAllowedAreas(Qt::BottomToolBarArea);
     mpPlayTools->setObjectName("transport-tools");
-    mpPlayTools->addAction(getAction(""));
     mpPlayTools->addAction(getAction("rewind"));
     mpPlayTools->addAction(getAction("play"));
     // mpPlayTools->addAction(getAction("loop"));
@@ -5989,27 +5989,22 @@ void MuseScore::mpPrepareToolbars ()
     metronomeAction = getAction("metronome");
     metronomeAction->setChecked(false);
     mpPlayTools->addAction(metronomeAction);
-    mpPlayTools->addAction(getAction("toogle-mixer"));
-    mpPlayTools->addAction(getAction(""));
-
-    mpPlayTools->addAction (getAction("open-edit-tools"));
+    mpPlayTools->addAction(getAction("toggle-mixer"));
+    mpPlayTools->addAction (getAction("open-entry-tools"));
 
 //    connect(mpMainTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
 
     mpEntryTools=addToolBar("");
     mpEntryTools->setMovable(false);
-    mpEntryTools->addAction(getAction("close-entrytools"));
+    mpEntryTools->addAction(getAction("close-entry-tools"));
 
-    mpEntryTools->addAction(getAction(""));
     mpEntryTools->addAction(getAction("undo"));
     mpEntryTools->addAction(getAction("redo"));
     mpEntryTools->addAction(getAction("cut"));
     mpEntryTools->addAction(getAction("copy"));
     mpEntryTools->addAction(getAction("paste"));
-    mpEntryTools->addAction(getAction(""));
     mpEntryTools->addAction(getAction("toggle-palette-tools"));
 //    mpVoiceAction = mpGetAction("open-voices");
-//    mpEntryTools->addAction(mpVoiceAction);
     mpEntryTools->addAction(getAction("open-score-settings"));
     mpEntryTools->setVisible(true);
 //    connect(mpEntryTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));

@@ -1841,7 +1841,11 @@ Shortcut Shortcut::_sc[] = {
          QT_TRANSLATE_NOOP("action","Mixer"),
          QT_TRANSLATE_NOOP("action","Toggle 'Mixer'"),
          0,
+#ifdef TABLET
+         Icons::mixer_ICON,
+#else
          Icons::Invalid_ICON,
+#endif
          Qt::ApplicationShortcut
          },
       {
@@ -3674,7 +3678,7 @@ Shortcut Shortcut::_sc[] = {
         Qt::WindowShortcut,
         ShortcutFlags::A_CHECKABLE
         },
-     {
+    {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "jumps",
@@ -3706,7 +3710,7 @@ Shortcut Shortcut::_sc[] = {
         Icons::zoom_ICON,
         Qt::WindowShortcut
         },
-     {
+    {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "toggle-playback",
@@ -3717,7 +3721,7 @@ Shortcut Shortcut::_sc[] = {
         Qt::WindowShortcut,
         ShortcutFlags::A_CHECKABLE
         },
-     {
+    {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "file-menu",
@@ -3727,12 +3731,32 @@ Shortcut Shortcut::_sc[] = {
         Icons::fileOpen_ICON,
         Qt::WindowShortcut
         },
-     {
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "close-entry-tools",
+        QT_TRANSLATE_NOOP("action","Note entry"),
+        QT_TRANSLATE_NOOP("action","Close entry toolbar"),
+        0,
+        Icons::goPrevious_ICON,
+        Qt::WindowShortcut
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "open-entry-tools",
+        QT_TRANSLATE_NOOP("action","Note entry"),
+        QT_TRANSLATE_NOOP("action","Open entry toolbar"),
+        0,
+        Icons::edit_tools_ICON,
+        Qt::WindowShortcut
+        },
+    {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "open-edit-tools",
         QT_TRANSLATE_NOOP("action","Edit"),
-        QT_TRANSLATE_NOOP("action","Show  edit tools"),
+        QT_TRANSLATE_NOOP("action","Show edit tools"),
         0,
         Icons::edit_tools_ICON,
         Qt::WindowShortcut
@@ -3748,88 +3772,88 @@ Shortcut Shortcut::_sc[] = {
         Qt::WindowShortcut},
 
 #ifndef NDEBUG
-      {
-         MsWidget::MAIN_WINDOW,
-         STATE_ALL,
-         "no-horizontal-stretch",
-         "No Horizontal Stretch",
-         "No horizontal stretch",
-         0,
-         Icons::Invalid_ICON,
-         Qt::ApplicationShortcut
-         },
-      {
-         MsWidget::MAIN_WINDOW,
-         STATE_ALL,
-         "no-vertical-stretch",
-         "No Vertical Stretch",
-         "No vertical stretch",
-         0,
-         Icons::Invalid_ICON,
-         Qt::ApplicationShortcut
-         },
-      {
-         MsWidget::MAIN_WINDOW,
-         STATE_ALL,
-         "show-segment-shapes",
-         "Show Segment Shapes",
-         "Show segment shapes",
-         0,
-         Icons::Invalid_ICON,
-         Qt::ApplicationShortcut
-         },
-      {
-         MsWidget::MAIN_WINDOW,
-         STATE_ALL,
-         "show-measure-shapes",
-         "Show Measure Shapes",
-         "Show measure shapes",
-         0,
-         Icons::Invalid_ICON,
-         Qt::ApplicationShortcut
-         },
-      {
-         MsWidget::MAIN_WINDOW,
-         STATE_ALL,
-         "show-bounding-rect",
-         "Show Bounding Rectangles",
-         "Show bounding rectangles for selected elements",
-         0,
-         Icons::Invalid_ICON,
-         Qt::ApplicationShortcut
-         },
-      {
-         MsWidget::MAIN_WINDOW,
-         STATE_ALL,
-         "show-corrupted-measures",
-         "Show Corrupted Measures",
-         "Show corrupted measures",
-         0,
-         Icons::Invalid_ICON,
-         Qt::ApplicationShortcut
-         },
-      {
-         MsWidget::MAIN_WINDOW,
-         STATE_ALL,
-         "relayout",
-         "Re-Layout",
-         "Re-layout",
-         0,
-         Icons::Invalid_ICON,
-         Qt::ApplicationShortcut
-         },
-      {
-         MsWidget::MAIN_WINDOW,
-         STATE_ALL,
-         "autoplace-slurs",
-         "autoplace slurs",
-         "autoplace slurs",
-         0,
-         Icons::Invalid_ICON,
-         Qt::ApplicationShortcut
-         }
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_ALL,
+        "no-horizontal-stretch",
+        "No Horizontal Stretch",
+        "No horizontal stretch",
+        0,
+        Icons::Invalid_ICON,
+        Qt::ApplicationShortcut
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_ALL,
+        "no-vertical-stretch",
+        "No Vertical Stretch",
+        "No vertical stretch",
+        0,
+        Icons::Invalid_ICON,
+        Qt::ApplicationShortcut
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_ALL,
+        "show-segment-shapes",
+        "Show Segment Shapes",
+        "Show segment shapes",
+        0,
+        Icons::Invalid_ICON,
+        Qt::ApplicationShortcut
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_ALL,
+        "show-measure-shapes",
+        "Show Measure Shapes",
+        "Show measure shapes",
+        0,
+        Icons::Invalid_ICON,
+        Qt::ApplicationShortcut
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_ALL,
+        "show-bounding-rect",
+        "Show Bounding Rectangles",
+        "Show bounding rectangles for selected elements",
+        0,
+        Icons::Invalid_ICON,
+        Qt::ApplicationShortcut
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_ALL,
+        "show-corrupted-measures",
+        "Show Corrupted Measures",
+        "Show corrupted measures",
+        0,
+        Icons::Invalid_ICON,
+        Qt::ApplicationShortcut
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_ALL,
+        "relayout",
+        "Re-Layout",
+        "Re-layout",
+        0,
+        Icons::Invalid_ICON,
+        Qt::ApplicationShortcut
+        },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_ALL,
+        "autoplace-slurs",
+        "autoplace slurs",
+        "autoplace slurs",
+        0,
+        Icons::Invalid_ICON,
+        Qt::ApplicationShortcut
+        }
 #endif
-      };
+    };
 
 
 //---------------------------------------------------------

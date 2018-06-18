@@ -2,6 +2,7 @@
 #ifndef __ACCESSIBLETOOLBUTTON_H__
 #define __ACCESSIBLETOOLBUTTON_H__
 
+
 namespace Ms {
 
 /*
@@ -15,7 +16,6 @@ public:
       void focusOutEvent(QFocusEvent* e);
       void keyPressEvent(QKeyEvent *e);
       };
-
 }
 
 #endif // __ACCESSIBLETOOLBUTTON_H__
