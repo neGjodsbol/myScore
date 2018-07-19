@@ -10,6 +10,7 @@
 //=============================================================================
 
 #include "toolbuttonmenu.h"
+#include "globals.h"
 
 namespace Ms {
 
@@ -25,6 +26,7 @@ ToolButtonMenu::ToolButtonMenu(QString str,
       _type = type;
       _alternativeActions = alternativeActions;
 
+#ifndef TABLET
       setMenu(new QMenu(str, this));
       menu()->setToolTipsVisible(true);
 
@@ -42,21 +44,24 @@ ToolButtonMenu::ToolButtonMenu(QString str,
 
       _alternativeActions->setExclusive(true);
       addActions(_alternativeActions->actions());
-
+#endif
       connect(_alternativeActions, SIGNAL(triggered(QAction*)), this, SLOT(handleAlternativeAction(QAction*)));
-
+#ifndef TABLET
       if (_type != TYPES::ACTION_SWAPPED) {
             QAction* a = _alternativeActions->actions().first();
             a->setChecked(true);
             if (_type == TYPES::ICON_CHANGED)
                   changeIcon(a);
             }
+#endif
       }
 
 void ToolButtonMenu::handleAlternativeAction(QAction* a)
       {
       Q_ASSERT(_alternativeActions->actions().contains(a));
-
+#ifdef TABLET
+    changeIcon (a);
+#else
       switch (_type) {
             case TYPES::FIXED:
                   break;
@@ -67,11 +72,9 @@ void ToolButtonMenu::handleAlternativeAction(QAction* a)
                   setDefaultAction(a);
                   break;
             }
-
-      QAction* def = defaultAction();
-
-      if (!def->isChecked())
-            def->trigger();
+#endif
+      if (!defaultAction()->isChecked())
+            defaultAction()->trigger();
       }
 
 } // namespace Ms

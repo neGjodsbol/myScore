@@ -139,7 +139,8 @@ Shortcut Shortcut::_sc[] = {
          "file-close",
          QT_TRANSLATE_NOOP("action","Close"),
          QT_TRANSLATE_NOOP("action","File: Close"),
-         QT_TRANSLATE_NOOP("action","Close current score")
+         QT_TRANSLATE_NOOP("action","Close current score"),
+         Icons::close_ICON
          },
       {
          MsWidget::MAIN_WINDOW,
@@ -246,7 +247,11 @@ Shortcut Shortcut::_sc[] = {
          MsWidget::MAIN_WINDOW,
          STATE_NORMAL | STATE_NOTE_ENTRY,
          "note-input-steptime",
+#ifdef TABLET
+         QT_TRANSLATE_NOOP("action","Step-Time"),
+#else
          QT_TRANSLATE_NOOP("action","Step-Time (Default)"),
+#endif
          QT_TRANSLATE_NOOP("action","Enter notes with a mouse or keyboard"),
          0,
          Icons::noteEntry_ICON, // Icons::noteEntrySteptime_ICON (using normal icon for the time being.)
@@ -3543,8 +3548,7 @@ Shortcut Shortcut::_sc[] = {
         QT_TRANSLATE_NOOP("action","Toggle palette toolbars"),
         0,
         Icons::palette_ICON,
-        Qt::WindowShortcut,
-        ShortcutFlags::A_CHECKABLE
+        Qt::ApplicationShortcut
         },
       {
         MsWidget::MAIN_WINDOW,
@@ -3678,7 +3682,7 @@ Shortcut Shortcut::_sc[] = {
         Qt::WindowShortcut,
         ShortcutFlags::A_CHECKABLE
         },
-    {
+     {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "jumps",
@@ -3710,7 +3714,7 @@ Shortcut Shortcut::_sc[] = {
         Icons::zoom_ICON,
         Qt::WindowShortcut
         },
-    {
+     {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "toggle-playback",
@@ -3721,7 +3725,7 @@ Shortcut Shortcut::_sc[] = {
         Qt::WindowShortcut,
         ShortcutFlags::A_CHECKABLE
         },
-    {
+     {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "file-menu",
@@ -3751,10 +3755,10 @@ Shortcut Shortcut::_sc[] = {
         Icons::edit_tools_ICON,
         Qt::WindowShortcut
         },
-    {
+     {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "open-edit-tools",
+        "edit-menu",
         QT_TRANSLATE_NOOP("action","Edit"),
         QT_TRANSLATE_NOOP("action","Show edit tools"),
         0,
@@ -3764,11 +3768,100 @@ Shortcut Shortcut::_sc[] = {
     {
         MsWidget::MAIN_WINDOW,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "open-score-settings",
+        "score-menu",
         QT_TRANSLATE_NOOP("action","Score settings"),
-        QT_TRANSLATE_NOOP("action","Show score settings "),
+        QT_TRANSLATE_NOOP("action","Show score menu"),
         0,
         Icons::menu_dots_ICON,
+        Qt::WindowShortcut},
+    {
+       MsWidget::MAIN_WINDOW,
+       STATE_NORMAL,
+       "viewmode-page",
+       QT_TRANSLATE_NOOP("action","Page view"),
+       QT_TRANSLATE_NOOP("action","View Mode Page"),
+       0,
+       Icons::Invalid_ICON,
+       Qt::WindowShortcut,
+       ShortcutFlags::A_SCORE
+       },
+    {
+       MsWidget::MAIN_WINDOW,
+       STATE_NORMAL,
+       "viewmode-horizontal",
+       QT_TRANSLATE_NOOP("action","Horizontal"),
+       QT_TRANSLATE_NOOP("action","View Mode Horizontal"),
+       0,
+       Icons::Invalid_ICON,
+       Qt::WindowShortcut,
+       ShortcutFlags::A_SCORE
+       },
+    {
+       MsWidget::MAIN_WINDOW,
+       STATE_NORMAL,
+       "viewmode-vertical",
+       QT_TRANSLATE_NOOP("action","Vertical"),
+       QT_TRANSLATE_NOOP("action","View Mode Vertical"),
+       0,
+       Icons::Invalid_ICON,
+       Qt::WindowShortcut,
+       ShortcutFlags::A_SCORE
+       },
+    {
+         MsWidget::MAIN_WINDOW,
+         STATE_NORMAL,
+         "info-menu",
+         QT_TRANSLATE_NOOP("action","Score Info"),
+         QT_TRANSLATE_NOOP("action","Show score info menu"),
+         0,
+         Icons::Invalid_ICON,
+         Qt::WindowShortcut,
+         ShortcutFlags::A_SCORE
+         },
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "settings-menu",
+        QT_TRANSLATE_NOOP("action","Settings"),
+        QT_TRANSLATE_NOOP("action","Show settings menu"),
+        0,
+        Icons::menu_lines_ICON,
+        Qt::WindowShortcut},
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "settings-dialog",
+        QT_TRANSLATE_NOOP("action","Settings"),
+        QT_TRANSLATE_NOOP("action","Show settings dialog"),
+        0,
+        Icons::settings_ICON,
+        Qt::WindowShortcut},
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "help-menu",
+        QT_TRANSLATE_NOOP("action","Help"),
+        QT_TRANSLATE_NOOP("action","Show help menu"),
+        0,
+        Icons::helpContents_ICON,
+        Qt::WindowShortcut},
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "exit",
+        QT_TRANSLATE_NOOP("action","Exit"),
+        QT_TRANSLATE_NOOP("action","Exit MuseScore"),
+        0,
+        Icons::exit_ICON,
+        Qt::WindowShortcut},
+    {
+        MsWidget::MAIN_WINDOW,
+        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+        "logo",
+        QT_TRANSLATE_NOOP("action","MyScore logo"),
+        QT_TRANSLATE_NOOP("action","Show MyScore logo"),
+        0,
+        Icons::myscore_ICON,
         Qt::WindowShortcut},
 
 #ifndef NDEBUG
@@ -3976,7 +4069,9 @@ QAction* Shortcut::action() const
 
       _action = new QAction(0);
       _action->setData(_key);
+#ifndef TABLET
       _action->setIconVisibleInMenu (false);
+#endif
       if (isCheckable()) {
             _action->setCheckable(isCheckable());
             _action->setChecked(isChecked());

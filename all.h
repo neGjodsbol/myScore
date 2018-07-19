@@ -28,6 +28,7 @@
 #endif
 
 #if defined __cplusplus
+#include "mptablet.h"
 
 #include <stdio.h>
 #include <limits.h>

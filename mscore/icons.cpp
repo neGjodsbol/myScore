@@ -30,6 +30,7 @@
 namespace Ms {
 
 extern QString iconPath;
+
 QIcon* icons[int(Icons::ICONS)];
 
 //---------------------------------------------------------
@@ -158,6 +159,7 @@ static const char* iconNames[] = {
       "arrow_down.svg"
     #ifdef TABLET      //Icons for myScore Tablet version
       ,
+      "myscore-logo.svg",
       "palette.png",
       "palette-clefs.svg",
       "palette-keysignatures.svg",
@@ -174,9 +176,10 @@ static const char* iconNames[] = {
       "menu-3-lines.svg",
       "menu-3-dots.svg",
       "ballpoint-pen.png",
-      "magnifying-glass.png",
+      "magnifying-glass.svg",
       "settings-dial.png",
-      "mixer.png"
+      "mixer.png",
+      "application-exit.svg"
     #endif
       };
 

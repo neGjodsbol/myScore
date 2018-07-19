@@ -13,6 +13,7 @@
 #define TOOLBUTTONMENU_H
 
 #include "accessibletoolbutton.h"
+#include "globals.h"
 
 namespace Ms {
 

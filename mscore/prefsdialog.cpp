@@ -627,7 +627,7 @@ void PreferenceDialog::resetShortcutClicked()
       }
 
 void PreferenceDialog::saveShortcutListClicked()
-      {
+      {    
       QString saveFileName = QFileDialog::getSaveFileName(this, tr("Save Shortcuts"), preferences.getString(PREF_APP_PATHS_MYSHORTCUTS) + "/shortcuts.xml", tr("MuseScore Shortcuts File") + " (*.xml)", 0, preferences.getBool(PREF_UI_APP_USENATIVEDIALOGS) ? QFileDialog::Options() : QFileDialog::DontUseNativeDialog);
       preferences.setPreference(PREF_APP_PATHS_MYSHORTCUTS, saveFileName);
       Shortcut::saveToNewFile(saveFileName);
@@ -648,7 +648,7 @@ void PreferenceDialog::loadShortcutListClicked()
 
 void PreferenceDialog::clearShortcutClicked()
       {
-      QTreeWidgetItem* active = shortcutList->currentItem();
+    QTreeWidgetItem* active = shortcutList->currentItem();
       if (!active)
             return;
       QString str = active->data(0, Qt::UserRole).toString();
@@ -676,7 +676,6 @@ void  PreferenceDialog::filterShortcutsTextChanged(const QString &query )
               item->setHidden(true);  
           }
       }
-
 //--------------------------------------------------------
 //   filterAdvancedPreferences
 //--------------------------------------------------------
@@ -1112,7 +1111,7 @@ void PreferenceDialog::apply()
 
 void PreferenceDialog::resetAllValues()
       {
-      updateValues(true);
+    updateValues(true);
 
       shortcutsChanged = true;
       qDeleteAll(localShortcuts);
@@ -1316,7 +1315,8 @@ void PreferenceDialog::updateTranslationClicked()
 
 void PreferenceDialog::defineShortcutClicked()
       {
-      QTreeWidgetItem* active = shortcutList->currentItem();
+
+    QTreeWidgetItem* active = shortcutList->currentItem();
       if (!active)
             return;
       QString str = active->data(0, Qt::UserRole).toString();

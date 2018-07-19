@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="16"
-     inkscape:cx="12.200272"
+     inkscape:cx="1.794022"
      inkscape:cy="12.895148"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -64,25 +64,25 @@
      id="layer1"
      transform="translate(0,-290.65001)">
     <ellipse
-       style="fill:#000000;fill-opacity:1;stroke-width:0.63637155;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#000000;fill-opacity:1;stroke-width:0.56275374;stroke-miterlimit:4;stroke-dasharray:none"
        id="path814"
-       cx="3.1807795"
-       cy="291.71024"
-       rx="0.68489575"
-       ry="0.67678869" />
+       cx="3.2469254"
+       cy="291.86731"
+       rx="0.61874992"
+       ry="0.58583814" />
     <ellipse
-       style="fill:#000000;fill-opacity:1;stroke-width:0.63637155;stroke-miterlimit:4;stroke-dasharray:none"
-       id="path814-4"
-       cx="3.2188292"
-       cy="295.8075"
-       rx="0.68489575"
-       ry="0.67678869" />
+       style="fill:#000000;fill-opacity:1;stroke-width:0.56275368;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path814-2"
+       cx="3.2080729"
+       cy="293.72577"
+       rx="0.61874992"
+       ry="0.58583814" />
     <ellipse
-       style="fill:#000000;fill-opacity:1;stroke-width:0.63637155;stroke-miterlimit:4;stroke-dasharray:none"
-       id="path814-0"
-       cx="3.1807795"
-       cy="293.74054"
-       rx="0.68489575"
-       ry="0.67678869" />
+       style="fill:#000000;fill-opacity:1;stroke-width:0.56275368;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path814-3"
+       cx="3.2411461"
+       cy="295.46213"
+       rx="0.61874992"
+       ry="0.58583814" />
   </g>
 </svg>

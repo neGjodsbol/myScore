@@ -21,7 +21,7 @@
 #ifndef __ICONS_H__
 #define __ICONS_H__
 
-#include "tablet.h"
+#include "globals.h"
 
 namespace Ms {
 
@@ -65,9 +65,9 @@ enum class Icons : signed char
       timesig_prolatio08_ICON, timesig_prolatio10_ICON, timesig_prolatio11_ICON, edit_ICON, reset_ICON, close_ICON,
       arrowUp_ICON, arrowDown_ICON,
 #ifdef TABLET
-      palette_ICON, clefs_ICON, keysignatures_ICON, timesignatures_ICON, accidentals_ICON,
+      myscore_ICON, palette_ICON, clefs_ICON, keysignatures_ICON, timesignatures_ICON, accidentals_ICON,
       articulations_ICON, lines_ICON, barlines_ICON, texts_ICON, tempi_ICON, dynamics_ICON, endings_ICON, jumps_ICON,
-      menu_lines_ICON, menu_dots_ICON, edit_tools_ICON, zoom_ICON, settings_ICON, mixer_ICON,
+      menu_lines_ICON, menu_dots_ICON, edit_tools_ICON, zoom_ICON, settings_ICON, mixer_ICON, exit_ICON,
 #endif
       voice1_ICON, voice2_ICON, voice3_ICON, voice4_ICON,
       ICONS

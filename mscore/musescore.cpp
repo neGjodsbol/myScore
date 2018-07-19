@@ -581,7 +581,7 @@ void MuseScore::populateNoteInputMenu()
                         noteEntryMethods->addAction(getAction("note-input-realtime-auto"));
                         noteEntryMethods->addAction(getAction("note-input-realtime-manual"));
 
-                        connect(noteEntryMethods, SIGNAL(triggered(QAction*)), this, SLOT(cmd(QAction*)));
+//                        connect(noteEntryMethods, SIGNAL(triggered(QAction*)), this, SLOT(cmd(QAction*)));
 
                         w = new ToolButtonMenu(tr("Note Entry Methods"),
                            ToolButtonMenu::TYPES::ICON_CHANGED,
@@ -5949,6 +5949,7 @@ void MuseScore::updateUiStyleAndTheme()
       genIcons();
       Shortcut::refreshIcons();
       }
+
 // ----------------------------------------------------
 // TABLET functions
 // ----------------------------------------------------
