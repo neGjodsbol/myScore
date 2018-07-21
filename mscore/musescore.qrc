@@ -179,10 +179,10 @@
         <file alias="data/icons/menu-3-lines.svg">data/icons/tablet/menu-3-lines.svg</file>
         <file alias="data/icons/menu-3-dots.svg">data/icons/tablet/menu-3-dots.svg</file>
         <file alias="data/icons/ballpoint-pen.png">data/icons/tablet/ballpoint-pen.png</file>
-        <file alias="data/icons/settings.svg">data/icons/tablet/settings-dial.png</file>
+        <file alias="data/icons/settings-dial.png">data/icons/tablet/settings-dial.png</file>
         <file alias="data/icons/mixer.png">data/icons/tablet/mixer.png</file>
-        <file alias="data/icons/magnifying-glass.svg">data/icons/tablet/magnifying-glass.svg</file>
         <file alias="data/icons/application-exit.svg">data/icons/tablet/application-exit.svg</file>
-        <file alias="data/icons/mycore-logo.svg">data/icons/tablet/myscore-logo.svg</file>
+        <file alias="data/icons/myscore-logo.svg">data/icons/tablet/myscore-logo.svg</file>
+        <file alias="data/icons/magnifying-glass.svg">data/icons/tablet/magnifying-glass.svg</file>
     </qresource>
 </RCC>

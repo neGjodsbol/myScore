@@ -35,6 +35,7 @@
 #include "libmscore/musescoreCore.h"
 #include "libmscore/score.h"
 #include "newwizard.h"
+#include "toolbuttonmenu.h"
 
 namespace Ms {
 
@@ -255,6 +256,7 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       QAction* aboutAction;
       QAction* aboutQtAction;
       QAction* aboutMusicXMLAction;
+      QAction *tutorialAction;
       QAction* checkForUpdateAction        { 0 };
       QAction* askForHelpAction;
       QAction* reportBugAction;
@@ -275,11 +277,19 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       QToolBar *paletteTwoTools;
       QToolBar *entryTools;
       QToolButton *mpFileButton;
-      QToolButton  *mpMagButton;
+      QToolButton *mpMagButton;
+      QToolButton *mpSettingsButton;
+      QToolButton *mpEditButton;
+      QToolButton *mpScoreButton;
+      ToolButtonMenu *mpNoteInputButton;
+      QMenu *mpScoreMenu;
+      QMenu *mpEditMenu;
       QMenu *mpFileMenu;
       QMenu *mpMagMenu;
-      QMenu *mpMenuTuplets;
-      QMenu *mpMenuAddText;
+      QMenu *mpSettingsMenu;
+      QMenu *mpTupletsMenu;
+      QMenu *mpAddTextMenu;
+      QMenu *mpHelpMenu;
       void mpPrepareToolbars ();
 #endif
 	  
@@ -479,9 +489,13 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       void setPlayRepeats(bool repeat);
 
    private slots:
+ #ifdef TABLET
+      void mpCmd (QAction *);
+ #endif
       void cmd(QAction* a, const QString& cmd);
       void autoSaveTimerTimeout();
       void helpBrowser1() const;
+      void tutorial ();
       void resetAndRestart();
       void about();
       void aboutQt();
