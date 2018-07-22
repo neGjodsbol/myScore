@@ -14,6 +14,7 @@
 
 #include "accessibletoolbutton.h"
 #include "globals.h"
+#include "mptablet.h"
 
 namespace Ms {
 

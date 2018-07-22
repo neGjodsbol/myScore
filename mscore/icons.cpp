@@ -156,9 +156,10 @@ static const char* iconNames[] = {
       "edit-reset.svg",
       "window-close.svg",
       "arrow_up.svg",
-      "arrow_down.svg"
-    #ifdef TABLET      //Icons for myScore Tablet version
-      ,
+      "arrow_down.svg",
+
+// TABLET icons
+
       "myscore-logo.svg",
       "palette.png",
       "palette-clefs.svg",
@@ -180,7 +181,6 @@ static const char* iconNames[] = {
       "settings-dial.png",
       "mixer.png",
       "application-exit.svg"
-    #endif
       };
 
 //---------------------------------------------------------

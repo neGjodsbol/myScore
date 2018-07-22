@@ -21,7 +21,7 @@
 #ifndef __MUSESCORE_H__
 #define __MUSESCORE_H__
 
-#include "tablet.h"
+#include "mptablet.h"
 #include "config.h"
 #include "globals.h"
 #include "ui_measuresdialog.h"
@@ -268,6 +268,7 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       QToolBar* fotoTools;
       QToolBar* fileTools;
       QToolBar* transportTools;
+      QToolBar *entryTools;
 
 #ifdef TABLET
       QToolBar *mpMainTools;
@@ -275,7 +276,7 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       QToolBar *mpPlayTools;
       QToolBar *paletteOneTools;
       QToolBar *paletteTwoTools;
-      QToolBar *entryTools;
+
       QToolButton *mpFileButton;
       QToolButton *mpMagButton;
       QToolButton *mpSettingsButton;
@@ -491,11 +492,12 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
    private slots:
  #ifdef TABLET
       void mpCmd (QAction *);
+      void tutorial ();
  #endif
       void cmd(QAction* a, const QString& cmd);
       void autoSaveTimerTimeout();
       void helpBrowser1() const;
-      void tutorial ();
+
       void resetAndRestart();
       void about();
       void aboutQt();

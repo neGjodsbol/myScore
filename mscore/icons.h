@@ -27,11 +27,11 @@ namespace Ms {
 
 extern void genIcons();
 
-#ifdef TABLET
 enum class Icons : int
-#else
-enum class Icons : signed char
-#endif
+
+// Additional TABLET icons requires more than 128 elements
+// enum class Icons : signed char
+
       { Invalid_ICON = -1,
       longaUp_ICON, brevis_ICON, note_ICON, note2_ICON, note4_ICON, note8_ICON, note16_ICON,
       note32_ICON, note64_ICON, note128_ICON,
@@ -64,11 +64,11 @@ enum class Icons : signed char
       timesig_prolatio03_ICON, timesig_prolatio04_ICON, timesig_prolatio05_ICON, timesig_prolatio07_ICON,
       timesig_prolatio08_ICON, timesig_prolatio10_ICON, timesig_prolatio11_ICON, edit_ICON, reset_ICON, close_ICON,
       arrowUp_ICON, arrowDown_ICON,
-#ifdef TABLET
+// TABLET icons
       myscore_ICON, palette_ICON, clefs_ICON, keysignatures_ICON, timesignatures_ICON, accidentals_ICON,
       articulations_ICON, lines_ICON, barlines_ICON, texts_ICON, tempi_ICON, dynamics_ICON, endings_ICON, jumps_ICON,
       menu_lines_ICON, menu_dots_ICON, edit_tools_ICON, zoom_ICON, settings_ICON, mixer_ICON, exit_ICON,
-#endif
+
       voice1_ICON, voice2_ICON, voice3_ICON, voice4_ICON,
       ICONS
       };
