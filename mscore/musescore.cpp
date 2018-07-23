@@ -824,6 +824,7 @@ MuseScore::MuseScore()
 
       fileTools = addToolBar("");
       fileTools->setObjectName("file-operations");
+#ifndef TABLET
       if (qApp->layoutDirection() == Qt::LayoutDirection::LeftToRight) {
             for (auto i : { "file-new", "file-open", "file-save", "print", "undo", "redo"})
                   fileTools->addWidget(new AccessibleToolButton(fileTools, getAction(i)));
@@ -832,7 +833,7 @@ MuseScore::MuseScore()
             for (auto i : { "undo", "redo", "print", "file-save", "file-open", "file-new"})
                   fileTools->addWidget(new AccessibleToolButton(fileTools, getAction(i)));
             }
-
+#endif
       fileTools->addSeparator();
       mag = new MagBox;
       connect(mag, SIGNAL(magChanged(MagIdx)), SLOT(magChanged(MagIdx)));
@@ -849,7 +850,6 @@ MuseScore::MuseScore()
       viewModeCombo->addItem("", int(LayoutMode::SYSTEM));
       connect(viewModeCombo, SIGNAL(activated(int)), SLOT(switchLayoutMode(int)));
       fileTools->addWidget(viewModeCombo);
-
       //---------------------
       //    Transport Tool Bar
       //---------------------
@@ -921,10 +921,10 @@ MuseScore::MuseScore()
       a = getAction("startcenter");
       a->setCheckable(true);
       menuFile->addAction(a);
-
+#ifndef TABLET
       menuFile->addAction(getAction("file-new"));
       menuFile->addAction(getAction("file-open"));
-
+#endif
       openRecent = menuFile->addMenu("");
 
       connect(openRecent, SIGNAL(aboutToShow()), SLOT(openRecentMenu()));
@@ -932,17 +932,23 @@ MuseScore::MuseScore()
 
       for (auto i : {
             "",
+     #ifndef TABLET
             "file-save",
             "file-save-as",
+     #endif
             "file-save-a-copy",
             "file-save-selection",
             "file-save-online",
+     #ifndef TABLET
             "file-export",
+     #endif
             "file-part-export",
             "file-import-pdf",
             "",
+     #ifndef TABLET
             "file-close",
             "",
+     #endif
             "parts",
             "album" }) {
             if (!*i)
@@ -959,8 +965,10 @@ MuseScore::MuseScore()
       menuFile->addSeparator();
       menuFile->addAction(getAction("print"));
 #ifndef Q_OS_MAC
+#ifndef TABLET
       menuFile->addSeparator();
       menuFile->addAction(getAction("quit"));
+#endif
 #endif
 
       //---------------------
@@ -3632,16 +3640,16 @@ void MuseScore::play(Element* e, int pitch) const
             seq->startNote(channel->channel, pitch, 80, MScore::defaultPlayDuration, note->tuning());
             }
       }
-#ifdef TABLET
+
 //---------------------------------------------------------
-//  tutorial
+//  TABLET - Hnadle tutorial
 //---------------------------------------------------------
 
-void MuseScore::tutorial()
+void MuseScore::mpTutorial()
       {
          askForHelp();
       }
-#endif
+
 //---------------------------------------------------------
 //   reportBug
 //---------------------------------------------------------
@@ -4716,15 +4724,15 @@ void MuseScore::transpose()
       if (noSelection)
             cs->deselectAll();
       }
-#ifdef TABLET
+
 //---------------------------------------------------------
-//   mpCmd
+//   TABLET mpCmd -- Command handling
 //---------------------------------------------------------
 void MuseScore::mpCmd(QAction* a)
       {
          emit cmd (a);
       }
-#endif
+
 //---------------------------------------------------------
 //   cmd
 //---------------------------------------------------------
@@ -6165,7 +6173,7 @@ void MuseScore::mpPrepareToolbars ()
         mpHelpMenu->addAction(aboutMusicXMLAction);
 
         mpHelpMenu->addSeparator();
-        tutorialAction = mpHelpMenu->addAction(tr("Tutorial"), this, SLOT(tutorial()));
+        tutorialAction = mpHelpMenu->addAction(tr("Tutorial"), this, SLOT(mpTutorial()));
         reportBugAction = mpHelpMenu->addAction(tr("Report a bug"), this, SLOT(reportBug()));
         connect(mpHelpMenu,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
 
@@ -6179,7 +6187,7 @@ void MuseScore::mpPrepareToolbars ()
         helpMenu->setMenu(mpHelpMenu);
         mpSettingsMenu->addAction(helpMenu);
         mpSettingsMenu->addSeparator();
-        mpSettingsMenu->addAction(getAction("exit"));
+        mpSettingsMenu->addAction(getAction("quit"));
         connect(mpSettingsMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
 
         mpScoreMenu = new QMenu;

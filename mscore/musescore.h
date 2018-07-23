@@ -490,10 +490,14 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       void setPlayRepeats(bool repeat);
 
    private slots:
- #ifdef TABLET
+
+//-----------------------------
+//  Additional slots for TABLET
+//-----------------------------
       void mpCmd (QAction *);
-      void tutorial ();
- #endif
+      void mpTutorial ();
+//-----------------------------
+
       void cmd(QAction* a, const QString& cmd);
       void autoSaveTimerTimeout();
       void helpBrowser1() const;

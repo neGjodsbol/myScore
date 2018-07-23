@@ -15,6 +15,7 @@
 #include "shortcut.h"
 #include "icons.h"
 #include "libmscore/xml.h"
+#include "mptablet.h"
 
 
 namespace Ms {
@@ -1899,7 +1900,10 @@ Shortcut Shortcut::_sc[] = {
          MsWidget::MAIN_WINDOW,
          STATE_DISABLED | STATE_NORMAL | STATE_NOTE_ENTRY | STATE_EDIT | STATE_TEXT_EDIT | STATE_PLAY | STATE_FOTO,
          "quit",
-         QT_TRANSLATE_NOOP("action","Quit")
+         QT_TRANSLATE_NOOP("action","Quit"),
+         0,
+         0,
+         Icons::exit_ICON,
          },
       {
          MsWidget::MAIN_WINDOW,
