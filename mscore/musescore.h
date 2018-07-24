@@ -291,6 +291,8 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       QMenu *mpTupletsMenu;
       QMenu *mpAddTextMenu;
       QMenu *mpHelpMenu;
+
+      void mpInit();
       void mpPrepareToolbars ();
 #endif
 	  

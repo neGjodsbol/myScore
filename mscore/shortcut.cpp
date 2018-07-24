@@ -3545,7 +3545,7 @@ Shortcut Shortcut::_sc[] = {
     // TABLET specific shortcuts (myScore)
     // --------------------------------------------
      {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "toggle-palette-tools",
         QT_TRANSLATE_NOOP("action","Palette"),
@@ -3555,7 +3555,7 @@ Shortcut Shortcut::_sc[] = {
         Qt::ApplicationShortcut
         },
       {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "clefs",
         QT_TRANSLATE_NOOP("action","Clefs"),
@@ -3566,7 +3566,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
      {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "keysignatures",
         QT_TRANSLATE_NOOP("action","Keysignatures"),
@@ -3577,7 +3577,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "timesignatures",
         QT_TRANSLATE_NOOP("action","Timesignatures"),
@@ -3588,7 +3588,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "accidentals",
         QT_TRANSLATE_NOOP("action","Accidentals"),
@@ -3599,7 +3599,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
      {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "articulations",
         QT_TRANSLATE_NOOP("action","Articulations"),
@@ -3610,7 +3610,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
     {
-       MsWidget::MAIN_WINDOW,
+       MsWidget::TABLET_GUI,
        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
        "gracenotes",
        QT_TRANSLATE_NOOP("action","Gracenotes"),
@@ -3621,7 +3621,7 @@ Shortcut Shortcut::_sc[] = {
        ShortcutFlags::A_CHECKABLE
        },
      {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "lines",
         QT_TRANSLATE_NOOP("action","Lines"),
@@ -3632,7 +3632,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "barlines",
         QT_TRANSLATE_NOOP("action","Barlines"),
@@ -3643,7 +3643,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "texts",
         QT_TRANSLATE_NOOP("action","Texts"),
@@ -3654,7 +3654,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL  | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "tempi",
         QT_TRANSLATE_NOOP("action","Tempi"),
@@ -3665,7 +3665,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL  | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "dynamics",
         QT_TRANSLATE_NOOP("action","Dynamics"),
@@ -3676,7 +3676,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "endings",
         QT_TRANSLATE_NOOP("action","Endings"),
@@ -3687,7 +3687,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
      {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "jumps",
         QT_TRANSLATE_NOOP("action","Jumps"),
@@ -3698,7 +3698,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "beams",
         QT_TRANSLATE_NOOP("action","Beams"),
@@ -3709,7 +3709,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "zoom-menu",
         QT_TRANSLATE_NOOP("action","Zoom"),
@@ -3719,7 +3719,7 @@ Shortcut Shortcut::_sc[] = {
         Qt::WindowShortcut
         },
      {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "toggle-playback",
         QT_TRANSLATE_NOOP("action","Playback"),
@@ -3730,7 +3730,7 @@ Shortcut Shortcut::_sc[] = {
         ShortcutFlags::A_CHECKABLE
         },
      {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "file-menu",
         QT_TRANSLATE_NOOP("action","File menu"),
@@ -3740,7 +3740,7 @@ Shortcut Shortcut::_sc[] = {
         Qt::WindowShortcut
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "close-entry-tools",
         QT_TRANSLATE_NOOP("action","Note entry"),
@@ -3750,7 +3750,7 @@ Shortcut Shortcut::_sc[] = {
         Qt::WindowShortcut
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "open-entry-tools",
         QT_TRANSLATE_NOOP("action","Note entry"),
@@ -3760,7 +3760,7 @@ Shortcut Shortcut::_sc[] = {
         Qt::WindowShortcut
         },
      {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "edit-menu",
         QT_TRANSLATE_NOOP("action","Edit"),
@@ -3770,7 +3770,7 @@ Shortcut Shortcut::_sc[] = {
         Qt::WindowShortcut
         },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "score-menu",
         QT_TRANSLATE_NOOP("action","Score settings"),
@@ -3779,7 +3779,7 @@ Shortcut Shortcut::_sc[] = {
         Icons::menu_dots_ICON,
         Qt::WindowShortcut},
     {
-       MsWidget::MAIN_WINDOW,
+       MsWidget::TABLET_GUI,
        STATE_NORMAL,
        "viewmode-page",
        QT_TRANSLATE_NOOP("action","Page view"),
@@ -3790,7 +3790,7 @@ Shortcut Shortcut::_sc[] = {
        ShortcutFlags::A_SCORE
        },
     {
-       MsWidget::MAIN_WINDOW,
+       MsWidget::TABLET_GUI,
        STATE_NORMAL,
        "viewmode-horizontal",
        QT_TRANSLATE_NOOP("action","Horizontal"),
@@ -3801,7 +3801,7 @@ Shortcut Shortcut::_sc[] = {
        ShortcutFlags::A_SCORE
        },
     {
-       MsWidget::MAIN_WINDOW,
+       MsWidget::TABLET_GUI,
        STATE_NORMAL,
        "viewmode-vertical",
        QT_TRANSLATE_NOOP("action","Vertical"),
@@ -3812,7 +3812,7 @@ Shortcut Shortcut::_sc[] = {
        ShortcutFlags::A_SCORE
        },
     {
-         MsWidget::MAIN_WINDOW,
+         MsWidget::TABLET_GUI,
          STATE_NORMAL,
          "info-menu",
          QT_TRANSLATE_NOOP("action","Score Info"),
@@ -3823,7 +3823,7 @@ Shortcut Shortcut::_sc[] = {
          ShortcutFlags::A_SCORE
          },
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "settings-menu",
         QT_TRANSLATE_NOOP("action","Settings"),
@@ -3832,7 +3832,7 @@ Shortcut Shortcut::_sc[] = {
         Icons::menu_lines_ICON,
         Qt::WindowShortcut},
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "settings-dialog",
         QT_TRANSLATE_NOOP("action","Settings"),
@@ -3841,7 +3841,7 @@ Shortcut Shortcut::_sc[] = {
         Icons::settings_ICON,
         Qt::WindowShortcut},
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "help-menu",
         QT_TRANSLATE_NOOP("action","Help"),
@@ -3859,7 +3859,7 @@ Shortcut Shortcut::_sc[] = {
         Icons::exit_ICON,
         Qt::WindowShortcut},
     {
-        MsWidget::MAIN_WINDOW,
+        MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
         "logo",
         QT_TRANSLATE_NOOP("action","MyScore logo"),

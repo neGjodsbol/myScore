@@ -43,7 +43,8 @@ extern bool ignoreWarnings;
 
 enum MsWidget {
       MAIN_WINDOW = 0,
-      SCORE_TAB   = 1 << 0
+      SCORE_TAB   = 1 << 0,
+      TABLET_GUI  = 1 << 1
       };
 
 //---------------------------------------------------------

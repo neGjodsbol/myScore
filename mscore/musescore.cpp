@@ -816,7 +816,15 @@ MuseScore::MuseScore()
       getAction("swap")->setEnabled(false);
       selectionChanged(SelState::NONE);
 
+#ifdef TABLET
+      //---------------------------------------------------
+      //    TABLET Main Tool Bar
+      //---------------------------------------------------
+      mpInit();
+      //mpPrepareToolbars();
 
+
+#endif
 
       //---------------------------------------------------
       //    File Tool Bar
@@ -860,7 +868,7 @@ MuseScore::MuseScore()
       transportTools->addWidget(new AccessibleToolButton(transportTools, getAction("midi-on")));
       transportTools->addSeparator();
 #endif
-
+#ifndef TABLET
       transportTools->addWidget(new AccessibleToolButton(transportTools, getAction("rewind")));
       _playButton = new AccessibleToolButton(transportTools, getAction("play"));
       transportTools->addWidget(_playButton);
@@ -871,7 +879,7 @@ MuseScore::MuseScore()
       transportTools->addWidget(new AccessibleToolButton(transportTools, repeatAction));
       transportTools->addWidget(new AccessibleToolButton(transportTools, getAction("pan")));
       transportTools->addWidget(new AccessibleToolButton(transportTools, metronomeAction));
-
+#endif
       //-------------------------------
       //    Concert Pitch Tool Bar
       //-------------------------------
@@ -900,10 +908,6 @@ MuseScore::MuseScore()
       entryTools->setObjectName("entry-tools");
 
       populateNoteInputMenu();
-
-#ifdef TABLET
-      mpPrepareToolbars();      // TABLET toolbars
-#endif
 
       //---------------------
       //    Menus
@@ -1206,12 +1210,14 @@ MuseScore::MuseScore()
       menuAdd->addMenu(menuAddFrames);
 
       menuAddText = new QMenu();
+#ifndef TABLET
       menuAddText->addAction(getAction("title-text"));
       menuAddText->addAction(getAction("subtitle-text"));
       menuAddText->addAction(getAction("composer-text"));
       menuAddText->addAction(getAction("poet-text"));
       menuAddText->addAction(getAction("part-text"));
       menuAddText->addSeparator();
+#endif
       menuAddText->addAction(getAction("system-text"));
       menuAddText->addAction(getAction("staff-text"));
       menuAddText->addAction(getAction("expression-text"));
@@ -4728,10 +4734,35 @@ void MuseScore::transpose()
 //---------------------------------------------------------
 //   TABLET mpCmd -- Command handling
 //---------------------------------------------------------
-void MuseScore::mpCmd(QAction* a)
-      {
-         emit cmd (a);
+void MuseScore::mpCmd(QAction* a){
+      QString cmdn = (a->data().toString());
+
+      if (cmdn == "toggle-playback"){
+/*          if (keyboardPanel->isVisible()){
+              keyboardPanel->setVisible(false);*/
+          if (!mpPlayTools->isVisible()){
+              mpPlayTools->setVisible(true);
+          }
+          else {
+//              keyboardPanel->setVisible(true);
+              mpPlayTools->setVisible(false);
+          }
       }
+      else if (cmdn == "toggle-palette-tools") {
+         if (paletteOneTools->isVisible()) {
+            paletteOneTools->setVisible(false);
+            paletteTwoTools->setVisible(true);
+//           palettePanel->setVisible(false);
+         }
+         else if (paletteTwoTools->isVisible()){
+            paletteTwoTools->setVisible(false);
+//        palettePanel->setVisible(false);
+         }
+         else {
+            paletteOneTools->setVisible(true);
+         }
+      }
+}
 
 //---------------------------------------------------------
 //   cmd
@@ -5975,11 +6006,77 @@ void MuseScore::updateUiStyleAndTheme()
       genIcons();
       Shortcut::refreshIcons();
       }
-
 // ----------------------------------------------------
 // TABLET functions
 // ----------------------------------------------------
 #ifdef TABLET
+void MuseScore::mpInit ()
+{
+/*
+ *     env = new Ui::MpSizing (this);
+    this->setIconSize(QSize(19,19));
+*/
+
+   mpPrepareToolbars();
+   addToolBarBreak();
+
+//    connect (this, SIGNAL (mpAction (QAction *)), SLOT (cmd (QAction *)));
+
+    mpPlayTools->setVisible(true);
+    paletteOneTools->setVisible(false);
+    paletteTwoTools->setVisible(false);
+    getAction("toggle-playback")->setChecked(true);
+/*
+    palettePanel = new QDockWidget ("Palttes",this);
+    palettePanel->setAllowedAreas(Qt::LeftDockWidgetArea);
+    paletteBox = new MpPaletteBox (palettePanel);
+    palettePanel->setWidget(paletteBox);
+    addDockWidget(Qt::LeftDockWidgetArea, palettePanel);
+    palettePanel->setVisible(false);
+    currentPalette = "";
+    connect (this, SIGNAL (mpSetPalette (QAction *)),paletteBox, SLOT (mpSetPalette (QAction *)));
+
+    voicePanel = new QDockWidget ("Voices",this);
+    voicePanel->setAllowedAreas(Qt::RightDockWidgetArea);
+    voices = new MpVoices (voicePanel);
+    voicePanel->setWidget(voices);
+    addDockWidget(Qt::RightDockWidgetArea, voicePanel);
+    voicePanel->setVisible(false);
+    m_voiceSet = 1;
+    mpSetVoiceIcon(m_voiceSet);
+    connect(voices, SIGNAL (voiceChanged (int)), SLOT (mpSetVoiceIcon(int)));
+
+    scorePanel = new QDockWidget ("Score",this);
+    scorePanel->setAllowedAreas(Qt::RightDockWidgetArea);
+    score = new MpScoreSettings (scorePanel);
+    scorePanel->setWidget(score);
+    addDockWidget(Qt::RightDockWidgetArea, scorePanel);
+    scorePanel->setVisible(false);
+
+    settingsPanel = new QDockWidget ("Settings",this);
+    settingsPanel->setAllowedAreas(Qt::LeftDockWidgetArea);
+    settings= new MpSettings (settingsPanel);
+    settingsPanel->setWidget(settings);
+    addDockWidget(Qt::LeftDockWidgetArea, settingsPanel);
+    settingsPanel->setVisible(false);
+
+    connect (settings, SIGNAL (mpGuiAction(QString, QString)), SLOT (mpCmd(QString, QString)));
+    connect (settings, SIGNAL (mpAction(const char *)), SLOT (mpCmd(const char *)));
+    connect (settings, SIGNAL (mpLayoutMode(int)), SLOT (switchLayoutMode(int)));
+
+    keyboardPanel = new QDockWidget (this);
+    keyboardPanel->setAllowedAreas(Qt::BottomDockWidgetArea);
+    key = new MpKeyboard (keyboardPanel);
+    keyboardPanel->setWidget(key);
+    addDockWidget(Qt::BottomDockWidgetArea, keyboardPanel);
+    keyboardPanel->setVisible(true);
+    connect (key, SIGNAL (keyAction(QAction *)), SLOT(cmd(QAction *)));
+    connect (key, SIGNAL (keyAction(const char *)), SLOT (mpCmd(const char *)));
+    connect (key, SIGNAL (keyAction(QString, QString)), SLOT (mpCmd(QString, QString)));
+*/
+}
+
+
 void MuseScore::mpPrepareToolbars ()
 {
 
@@ -6012,10 +6109,9 @@ void MuseScore::mpPrepareToolbars ()
     //  Main toolbar - Setings, File, and Zoom actions
     //  ---------------------------------------------------
 
-        addToolBarBreak();
+//        addToolBarBreak();
         mpMainTools= addToolBar("");
         mpMainTools->setMovable(false);
-
         mpSettingsButton = new MpToolButton(mpMainTools, getAction("settings-menu"));
         mpMainTools->addWidget(mpSettingsButton);
 
@@ -6118,14 +6214,14 @@ void MuseScore::mpPrepareToolbars ()
         mpFileMenu->addAction (getAction("file-close"));
         mpFileMenu->addSeparator();
         mpFileMenu->addAction (getAction("file-new"));
-        connect(mpFileMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
+//        connect(mpFileMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
 
         mpMagMenu = new QMenu();
         mpMagButton->setMenu(mpMagMenu);
         mpMagMenu->addAction(getAction("zoomin"));
         mpMagMenu->addAction(getAction("zoomout"));
         mpMagMenu->addAction(getAction("zoom100"));
-        connect(mpMagMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
+//        connect(mpMagMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
 
         mpEditMenu = new QMenu;
         mpEditButton->setMenu(mpEditMenu);
@@ -6134,7 +6230,7 @@ void MuseScore::mpPrepareToolbars ()
         mpEditMenu->addAction(getAction("cut"));
         mpEditMenu->addAction(getAction("copy"));
         mpEditMenu->addAction(getAction("paste"));
-        connect(mpEditMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
+//        connect(mpEditMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
 
         mpTupletsMenu = new QMenu();
         mpTupletsMenu->addAction(getAction("duplet"));
@@ -6145,7 +6241,7 @@ void MuseScore::mpPrepareToolbars ()
         mpTupletsMenu->addAction(getAction("septuplet"));
         mpTupletsMenu->addAction(getAction("octuplet"));
         mpTupletsMenu->addAction(getAction("nonuplet"));
-        connect(mpTupletsMenu,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
+//        connect(mpTupletsMenu,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
 
         mpAddTextMenu = new QMenu();
         mpAddTextMenu->addAction(getAction("title-text"));
@@ -6153,7 +6249,7 @@ void MuseScore::mpPrepareToolbars ()
         mpAddTextMenu->addAction(getAction("composer-text"));
         mpAddTextMenu->addAction(getAction("poet-text"));
         mpAddTextMenu->addAction(getAction("part-text"));
-        connect(mpAddTextMenu,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
+//        connect(mpAddTextMenu,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
 
         mpHelpMenu = new QMenu();
         aboutAction = new QAction(tr("About..."), 0);
@@ -6188,7 +6284,7 @@ void MuseScore::mpPrepareToolbars ()
         mpSettingsMenu->addAction(helpMenu);
         mpSettingsMenu->addSeparator();
         mpSettingsMenu->addAction(getAction("quit"));
-        connect(mpSettingsMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
+//        connect(mpSettingsMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
 
         mpScoreMenu = new QMenu;
         mpScoreButton->setMenu(mpScoreMenu);
@@ -6205,7 +6301,7 @@ void MuseScore::mpPrepareToolbars ()
         QAction* scoreInfo = getAction("info-menu");
         scoreInfo->setMenu(mpAddTextMenu);
         mpScoreMenu->addAction(scoreInfo);
-        connect(mpScoreMenu,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
+//        connect(mpScoreMenu,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
     }
 #endif
 }
