@@ -4762,6 +4762,17 @@ void MuseScore::mpCmd(QAction* a){
             paletteOneTools->setVisible(true);
          }
       }
+      else if (cmdn == "viewmode-page"){
+         emit (switchLayoutMode(LayoutMode::PAGE));
+      }
+      else if (cmdn == "viewmode-horizontal"){
+         emit (switchLayoutMode(LayoutMode::LINE));
+      }
+      else if (cmdn == "viewmode-vertical"){
+         emit (switchLayoutMode(LayoutMode::SYSTEM));
+      }
+      else
+         return;
 }
 
 //---------------------------------------------------------
@@ -6092,7 +6103,6 @@ void MuseScore::mpPrepareToolbars ()
              a->setIconVisibleInMenu(true);
              }
         getAction("note-input-steptime")->setChecked(true);
-    //(Not used!)    connect(noteEntryMethods, SIGNAL(triggered(QAction*)), this, SLOT(cmd(QAction*)));
 
         QActionGroup* viewModes = new QActionGroup(this);
         viewModes->addAction(getAction("viewmode-page"));
@@ -6124,14 +6134,10 @@ void MuseScore::mpPrepareToolbars ()
            mpMainTools);
         mpMainTools->addWidget(mpNoteInputButton);
 
- //       mpMainTools->addWidget(new MpToolButton(mpMainTools,mpGetAction("")));
-
         mpMagButton = new MpToolButton(mpMainTools, getAction("zoom-menu"));
         mpMainTools->addWidget(mpMagButton);
 
         mpMainTools->addAction (getAction("toggle-playback"));
-
-//        mpMainTools->addWidget(new MpToolButton(mpMainTools,mpGetAction("")));
 
         mpFileButton = new MpToolButton(mpMainTools, getAction("file-menu"));
         mpMainTools->addWidget(mpFileButton);
@@ -6214,14 +6220,12 @@ void MuseScore::mpPrepareToolbars ()
         mpFileMenu->addAction (getAction("file-close"));
         mpFileMenu->addSeparator();
         mpFileMenu->addAction (getAction("file-new"));
-//        connect(mpFileMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
 
         mpMagMenu = new QMenu();
         mpMagButton->setMenu(mpMagMenu);
         mpMagMenu->addAction(getAction("zoomin"));
         mpMagMenu->addAction(getAction("zoomout"));
         mpMagMenu->addAction(getAction("zoom100"));
-//        connect(mpMagMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
 
         mpEditMenu = new QMenu;
         mpEditButton->setMenu(mpEditMenu);
@@ -6230,7 +6234,6 @@ void MuseScore::mpPrepareToolbars ()
         mpEditMenu->addAction(getAction("cut"));
         mpEditMenu->addAction(getAction("copy"));
         mpEditMenu->addAction(getAction("paste"));
-//        connect(mpEditMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
 
         mpTupletsMenu = new QMenu();
         mpTupletsMenu->addAction(getAction("duplet"));
@@ -6241,7 +6244,6 @@ void MuseScore::mpPrepareToolbars ()
         mpTupletsMenu->addAction(getAction("septuplet"));
         mpTupletsMenu->addAction(getAction("octuplet"));
         mpTupletsMenu->addAction(getAction("nonuplet"));
-//        connect(mpTupletsMenu,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
 
         mpAddTextMenu = new QMenu();
         mpAddTextMenu->addAction(getAction("title-text"));
@@ -6249,7 +6251,6 @@ void MuseScore::mpPrepareToolbars ()
         mpAddTextMenu->addAction(getAction("composer-text"));
         mpAddTextMenu->addAction(getAction("poet-text"));
         mpAddTextMenu->addAction(getAction("part-text"));
-//        connect(mpAddTextMenu,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
 
         mpHelpMenu = new QMenu();
         aboutAction = new QAction(tr("About..."), 0);
@@ -6284,7 +6285,6 @@ void MuseScore::mpPrepareToolbars ()
         mpSettingsMenu->addAction(helpMenu);
         mpSettingsMenu->addSeparator();
         mpSettingsMenu->addAction(getAction("quit"));
-//        connect(mpSettingsMenu, SIGNAL(triggered(QAction*)),SLOT (mpCmd(QAction*)));
 
         mpScoreMenu = new QMenu;
         mpScoreButton->setMenu(mpScoreMenu);
@@ -6301,7 +6301,6 @@ void MuseScore::mpPrepareToolbars ()
         QAction* scoreInfo = getAction("info-menu");
         scoreInfo->setMenu(mpAddTextMenu);
         mpScoreMenu->addAction(scoreInfo);
-//        connect(mpScoreMenu,SIGNAL(triggered (QAction*)),SLOT (mpCmd(QAction*)));
     }
 #endif
 }
