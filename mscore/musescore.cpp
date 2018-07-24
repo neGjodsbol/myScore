@@ -4736,7 +4736,7 @@ void MuseScore::transpose()
 //---------------------------------------------------------
 void MuseScore::mpCmd(QAction* a){
       QString cmdn = (a->data().toString());
-
+#ifdef TABLET
       if (cmdn == "toggle-playback"){
 /*          if (keyboardPanel->isVisible()){
               keyboardPanel->setVisible(false);*/
@@ -4772,6 +4772,7 @@ void MuseScore::mpCmd(QAction* a){
          emit (switchLayoutMode(LayoutMode::SYSTEM));
       }
       else
+#endif
          return;
 }
 
