@@ -3727,7 +3727,7 @@ Shortcut Shortcut::_sc[] = {
         0,
         Icons::speaker_ICON,
         Qt::WindowShortcut,
-        ShortcutFlags::A_CHECKABLE
+        ShortcutFlags::A_CHECKABLE|ShortcutFlags::A_CHECKED
         },
      {
         MsWidget::TABLET_GUI,

@@ -810,25 +810,25 @@ MuseScore::MuseScore()
       a->setChecked(_midiinEnabled);
 #endif
 
-      getAction("undo")->setEnabled(false);
-      getAction("redo")->setEnabled(false);
-      getAction("paste")->setEnabled(false);
-      getAction("swap")->setEnabled(false);
-      selectionChanged(SelState::NONE);
+    getAction("undo")->setEnabled(false);
+    getAction("redo")->setEnabled(false);
+    getAction("paste")->setEnabled(false);
+    getAction("swap")->setEnabled(false);
+    selectionChanged(SelState::NONE);
 
 #ifdef TABLET
-      //---------------------------------------------------
-      //    TABLET Main Tool Bar
-      //---------------------------------------------------
-      mpInit();
-      //mpPrepareToolbars();
 
+//---------------------------------------------------
+//    TABLET - Set up GUI elements
+//---------------------------------------------------
+
+    mpInit();
 
 #endif
 
-      //---------------------------------------------------
-      //    File Tool Bar
-      //---------------------------------------------------
+//---------------------------------------------------
+//    File Tool Bar
+//---------------------------------------------------
 
       fileTools = addToolBar("");
       fileTools->setObjectName("file-operations");
@@ -846,6 +846,7 @@ MuseScore::MuseScore()
       mag = new MagBox;
       connect(mag, SIGNAL(magChanged(MagIdx)), SLOT(magChanged(MagIdx)));
       fileTools->addWidget(mag);
+
       viewModeCombo = new QComboBox(this);
 #if defined(Q_OS_MAC)
       viewModeCombo->setFocusPolicy(Qt::StrongFocus);
@@ -858,6 +859,7 @@ MuseScore::MuseScore()
       viewModeCombo->addItem("", int(LayoutMode::SYSTEM));
       connect(viewModeCombo, SIGNAL(activated(int)), SLOT(switchLayoutMode(int)));
       fileTools->addWidget(viewModeCombo);
+
       //---------------------
       //    Transport Tool Bar
       //---------------------
@@ -6030,14 +6032,14 @@ void MuseScore::mpInit ()
 */
 
    mpPrepareToolbars();
+
    addToolBarBreak();
 
 //    connect (this, SIGNAL (mpAction (QAction *)), SLOT (cmd (QAction *)));
 
-    mpPlayTools->setVisible(true);
     paletteOneTools->setVisible(false);
     paletteTwoTools->setVisible(false);
-    getAction("toggle-playback")->setChecked(true);
+    mpPlayTools->setVisible(true);
 /*
     palettePanel = new QDockWidget ("Palttes",this);
     palettePanel->setAllowedAreas(Qt::LeftDockWidgetArea);
@@ -6095,6 +6097,7 @@ void MuseScore::mpPrepareToolbars ()
     // -----------------------------------------
     // Action Groups - Note Entry and View mode
     //------------------------------------------
+
         QActionGroup* noteEntryMethods = new QActionGroup(this);
         noteEntryMethods->addAction(getAction("note-input-steptime"));
         noteEntryMethods->addAction(getAction("note-input-repitch"));
@@ -6116,11 +6119,20 @@ void MuseScore::mpPrepareToolbars ()
         getAction("viewmode-page")->setChecked(true);
         connect(viewModes, SIGNAL(triggered(QAction*)), this, SLOT(mpCmd(QAction*)));
 
-    //  ---------------------------------------------------
-    //  Main toolbar - Setings, File, and Zoom actions
-    //  ---------------------------------------------------
+// ---------------------------------------------------
+// Action Group - Tablet GUI actions
+// ---------------------------------------------------
 
-//        addToolBarBreak();
+        QActionGroup* tabletGui = Shortcut::getActionGroupForWidget(MsWidget::TABLET_GUI);
+        tabletGui->setParent(this);
+        addActions(tabletGui->actions());
+        connect(tabletGui, SIGNAL(triggered(QAction*)), SLOT(mppCmd(QAction*)));
+
+
+//  ---------------------------------------------------
+//  Main toolbar - Setings, File, and Zoom actions
+//  ---------------------------------------------------
+
         mpMainTools= addToolBar("");
         mpMainTools->setMovable(false);
         mpSettingsButton = new MpToolButton(mpMainTools, getAction("settings-menu"));
@@ -6171,8 +6183,8 @@ void MuseScore::mpPrepareToolbars ()
         getAction("repeat")->setChecked(true);
         getAction("pan")->setChecked(true);
 
-        connect(mpMainTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
-        connect(mpPlayTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
+       connect(mpMainTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
+       connect(mpPlayTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
 
     //  -----------------------------------------------------
     //  Palette toolbars
