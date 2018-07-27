@@ -3787,7 +3787,7 @@ Shortcut Shortcut::_sc[] = {
        0,
        Icons::Invalid_ICON,
        Qt::WindowShortcut,
-       ShortcutFlags::A_SCORE
+       ShortcutFlags::A_SCORE|ShortcutFlags::A_CHECKABLE
        },
     {
        MsWidget::TABLET_GUI,
@@ -3798,7 +3798,7 @@ Shortcut Shortcut::_sc[] = {
        0,
        Icons::Invalid_ICON,
        Qt::WindowShortcut,
-       ShortcutFlags::A_SCORE
+       ShortcutFlags::A_SCORE|ShortcutFlags::A_CHECKABLE
        },
     {
        MsWidget::TABLET_GUI,
@@ -3809,7 +3809,7 @@ Shortcut Shortcut::_sc[] = {
        0,
        Icons::Invalid_ICON,
        Qt::WindowShortcut,
-       ShortcutFlags::A_SCORE
+       ShortcutFlags::A_SCORE|ShortcutFlags::A_CHECKABLE
        },
     {
          MsWidget::TABLET_GUI,

@@ -6035,22 +6035,9 @@ void MuseScore::updateUiStyleAndTheme()
 // TABLET functions
 // ----------------------------------------------------
 #ifdef TABLET
-void MuseScore::mpInit ()
-{
-/*
- *     env = new Ui::MpSizing (this);
-    this->setIconSize(QSize(19,19));
-*/
+void MuseScore::mpInit (){
 
-   mpPrepareToolbars();
-
-   addToolBarBreak();
-
-//    connect (this, SIGNAL (mpAction (QAction *)), SLOT (cmd (QAction *)));
-
-    paletteOneTools->setVisible(false);
-    paletteTwoTools->setVisible(false);
-    mpPlayTools->setVisible(true);
+      mpPrepareToolbars();
 /*
     palettePanel = new QDockWidget ("Palttes",this);
     palettePanel->setAllowedAreas(Qt::LeftDockWidgetArea);
@@ -6094,16 +6081,20 @@ void MuseScore::mpInit ()
     key = new MpKeyboard (keyboardPanel);
     keyboardPanel->setWidget(key);
     addDockWidget(Qt::BottomDockWidgetArea, keyboardPanel);
-    keyboardPanel->setVisible(true);
+
 //    connect (key, SIGNAL (keyAction(QAction *)), SLOT(cmd(QAction *)));
     connect (key, SIGNAL (keyAction(const char *)), SLOT (mpCmd(const char *)));
-//    connect (key, SIGNAL (keyAction(QString, QString)), SLOT (mpCmd(QString, QString)));
+//    connect (key, SIGNAL (keyAction(QString, QString)), SLOT (mpCmd(QString, QString
 
-}
+// Initiate defaults
 
+      keyboardPanel->setVisible(true);
+      mpPlayTools->setVisible(false);
+      paletteOneTools->setVisible(false);
+      paletteTwoTools->setVisible(false);
+      }
 
-void MuseScore::mpPrepareToolbars ()
-{
+void MuseScore::mpPrepareToolbars () {
 
     // -----------------------------------------
     // Action Groups - Note Entry and View mode
@@ -6122,11 +6113,7 @@ void MuseScore::mpPrepareToolbars ()
         QActionGroup* viewModes = new QActionGroup(this);
         viewModes->addAction(getAction("viewmode-page"));
         viewModes->addAction(getAction("viewmode-horizontal"));
-        viewModes->addAction(getAction("viewmode-vertical"));
-        for (QAction* a : viewModes->actions()) {
-             a->setCheckable(true);
-             a->setIconVisibleInMenu(true);
-             }
+//        viewModes->addAction(getAction("viewmode-vertical"));
         getAction("viewmode-page")->setChecked(true);
         connect(viewModes, SIGNAL(triggered(QAction*)), this, SLOT(mpCmd(QAction*)));
 
@@ -6194,8 +6181,8 @@ void MuseScore::mpPrepareToolbars ()
 //        getAction("pan")->setChecked(true);
       mpPlayTools->setVisible(true);
 
-      connect(mpMainTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
-      connect(mpPlayTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
+//      connect(mpMainTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
+//      connect(mpPlayTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
 
     //  -----------------------------------------------------
     //  Palette toolbars
