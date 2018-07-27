@@ -22,6 +22,7 @@
 #define __MUSESCORE_H__
 
 #include "mptablet.h"
+#include "mpkeyboard.h"
 #include "config.h"
 #include "globals.h"
 #include "ui_measuresdialog.h"
@@ -36,6 +37,7 @@
 #include "libmscore/score.h"
 #include "newwizard.h"
 #include "toolbuttonmenu.h"
+#include <QDockWidget>
 
 namespace Ms {
 
@@ -291,6 +293,8 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       QMenu *mpTupletsMenu;
       QMenu *mpAddTextMenu;
       QMenu *mpHelpMenu;
+      MpKeyboard *key;
+      QDockWidget *keyboardPanel;
 
       void mpInit();
       void mpPrepareToolbars ();
@@ -496,6 +500,8 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
 //-----------------------------
 //  Additional slots for TABLET
 //-----------------------------
+//      void mpCmd (const char *);
+//      void mpCmd (QString, QString);
       void mpCmd (QAction *);
       void mpTutorial ();
 //-----------------------------

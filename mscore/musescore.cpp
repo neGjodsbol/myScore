@@ -4740,16 +4740,23 @@ void MuseScore::mpCmd(QAction* a){
       QString cmdn = (a->data().toString());
 #ifdef TABLET
       if (cmdn == "toggle-playback"){
-/*          if (keyboardPanel->isVisible()){
-              keyboardPanel->setVisible(false);*/
-          if (!mpPlayTools->isVisible()){
-              mpPlayTools->setVisible(true);
-          }
-          else {
-//              keyboardPanel->setVisible(true);
-              mpPlayTools->setVisible(false);
-          }
-      }
+            if (mpPlayTools->isVisible())
+                  mpPlayTools->setVisible(false);
+            else
+                  mpPlayTools->setVisible(true);
+/*
+             if (keyboardPanel->isVisible()){
+                  keyboardPanel->setVisible(false);
+                  if (!mpPlayTools->isVisible()){
+                        mpPlayTools->setVisible(true);
+                        }
+                  }
+            else {
+                  keyboardPanel->setVisible(true);
+                  mpPlayTools->setVisible(false);
+                  }
+*/
+            }
       else if (cmdn == "toggle-palette-tools") {
          if (paletteOneTools->isVisible()) {
             paletteOneTools->setVisible(false);
@@ -6077,17 +6084,17 @@ void MuseScore::mpInit ()
     connect (settings, SIGNAL (mpGuiAction(QString, QString)), SLOT (mpCmd(QString, QString)));
     connect (settings, SIGNAL (mpAction(const char *)), SLOT (mpCmd(const char *)));
     connect (settings, SIGNAL (mpLayoutMode(int)), SLOT (switchLayoutMode(int)));
-
+*/
     keyboardPanel = new QDockWidget (this);
     keyboardPanel->setAllowedAreas(Qt::BottomDockWidgetArea);
     key = new MpKeyboard (keyboardPanel);
     keyboardPanel->setWidget(key);
     addDockWidget(Qt::BottomDockWidgetArea, keyboardPanel);
     keyboardPanel->setVisible(true);
-    connect (key, SIGNAL (keyAction(QAction *)), SLOT(cmd(QAction *)));
-    connect (key, SIGNAL (keyAction(const char *)), SLOT (mpCmd(const char *)));
-    connect (key, SIGNAL (keyAction(QString, QString)), SLOT (mpCmd(QString, QString)));
-*/
+//    connect (key, SIGNAL (keyAction(QAction *)), SLOT(cmd(QAction *)));
+//    connect (key, SIGNAL (keyAction(const char *)), SLOT (mpCmd(const char *)));
+//    connect (key, SIGNAL (keyAction(QString, QString)), SLOT (mpCmd(QString, QString)));
+
 }
 
 
@@ -6126,8 +6133,7 @@ void MuseScore::mpPrepareToolbars ()
         QActionGroup* tabletGui = Shortcut::getActionGroupForWidget(MsWidget::TABLET_GUI);
         tabletGui->setParent(this);
         addActions(tabletGui->actions());
-        connect(tabletGui, SIGNAL(triggered(QAction*)), SLOT(mppCmd(QAction*)));
-
+        connect(tabletGui, SIGNAL(triggered(QAction*)), SLOT(mpCmd(QAction*)));
 
 //  ---------------------------------------------------
 //  Main toolbar - Setings, File, and Zoom actions
@@ -6167,24 +6173,25 @@ void MuseScore::mpPrepareToolbars ()
     //  Playback tools
     //  ----------------------------------------------------
 
-        mpPlayTools = new QToolBar();
-        mpPlayTools->setAllowedAreas(Qt::BottomToolBarArea);
-        mpPlayTools->setMovable(false);
-        addToolBar(Qt::BottomToolBarArea, mpPlayTools);
-        mpPlayTools->setObjectName("playback-tools");
+      mpPlayTools = new QToolBar();
+      mpPlayTools->setAllowedAreas(Qt::BottomToolBarArea);
+      mpPlayTools->setMovable(false);
+      addToolBar(Qt::BottomToolBarArea, mpPlayTools);
+      mpPlayTools->setObjectName("playback-tools");
 
-        mpPlayTools->addAction(getAction("rewind"));
-        mpPlayTools->addAction(getAction("play"));
-        mpPlayTools->addAction(getAction("repeat"));
-        mpPlayTools->addAction(getAction("pan"));
-        mpPlayTools->addAction(getAction("metronome"));
-        mpPlayTools->addAction(getAction("toggle-mixer"));
+      mpPlayTools->addAction(getAction("rewind"));
+      mpPlayTools->addAction(getAction("play"));
+      mpPlayTools->addAction(getAction("repeat"));
+      mpPlayTools->addAction(getAction("pan"));
+      mpPlayTools->addAction(getAction("metronome"));
+      mpPlayTools->addAction(getAction("toggle-mixer"));
 
-        getAction("repeat")->setChecked(true);
-        getAction("pan")->setChecked(true);
+//        getAction("repeat")->setChecked(true);
+//        getAction("pan")->setChecked(true);
+      mpPlayTools->setVisible(true);
 
-       connect(mpMainTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
-       connect(mpPlayTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
+      connect(mpMainTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
+      connect(mpPlayTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
 
     //  -----------------------------------------------------
     //  Palette toolbars
