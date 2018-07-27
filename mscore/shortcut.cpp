@@ -3779,7 +3779,7 @@ Shortcut Shortcut::_sc[] = {
         Icons::menu_dots_ICON,
         Qt::WindowShortcut},
     {
-       MsWidget::TABLET_GUI,
+       MsWidget::MAIN_WINDOW,
        STATE_NORMAL,
        "viewmode-page",
        QT_TRANSLATE_NOOP("action","Page view"),
@@ -3790,7 +3790,7 @@ Shortcut Shortcut::_sc[] = {
        ShortcutFlags::A_SCORE|ShortcutFlags::A_CHECKABLE
        },
     {
-       MsWidget::TABLET_GUI,
+       MsWidget::MAIN_WINDOW,
        STATE_NORMAL,
        "viewmode-horizontal",
        QT_TRANSLATE_NOOP("action","Horizontal"),
@@ -3801,7 +3801,7 @@ Shortcut Shortcut::_sc[] = {
        ShortcutFlags::A_SCORE|ShortcutFlags::A_CHECKABLE
        },
     {
-       MsWidget::TABLET_GUI,
+       MsWidget::MAIN_WINDOW,
        STATE_NORMAL,
        "viewmode-vertical",
        QT_TRANSLATE_NOOP("action","Vertical"),

@@ -6115,7 +6115,7 @@ void MuseScore::mpPrepareToolbars () {
         QActionGroup* viewModes = new QActionGroup(this);
         viewModes->addAction(getAction("viewmode-page"));
         viewModes->addAction(getAction("viewmode-horizontal"));
-//        viewModes->addAction(getAction("viewmode-vertical"));
+        viewModes->addAction(getAction("viewmode-vertical"));
         getAction("viewmode-page")->setChecked(true);
         connect(viewModes, SIGNAL(triggered(QAction*)), this, SLOT(mpCmd(QAction*)));
 
@@ -6304,13 +6304,19 @@ void MuseScore::mpPrepareToolbars () {
         mpScoreMenu->addAction(new QAction(tr("Note Input"), mpScoreMenu));
         mpScoreMenu->addActions(noteEntryMethods->actions());
         mpScoreMenu->addSeparator();
+
         mpScoreMenu->addAction(new QAction(tr("Scroll mode"), mpScoreMenu));
+        mpScoreMenu->addAction(getAction("viewmode-page"));
+        mpScoreMenu->addAction(getAction("viewmode-horizontal"));
+        mpScoreMenu->addAction(getAction("viewmode-vertical"));
         mpScoreMenu->addActions(viewModes->actions());
         mpScoreMenu->addSeparator();
+
         mpScoreMenu->addAction(getAction("concert-pitch"));
-            getAction("concert-pitch")->setCheckable(true);
-            getAction("concert-pitch")->setChecked(false);
+        getAction("concert-pitch")->setChecked(false);
+
         mpScoreMenu->addAction(getAction("instruments"));
+
         QAction* scoreInfo = getAction("info-menu");
         scoreInfo->setMenu(mpAddTextMenu);
         mpScoreMenu->addAction(scoreInfo);
