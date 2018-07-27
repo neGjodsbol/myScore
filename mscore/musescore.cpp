@@ -4736,6 +4736,10 @@ void MuseScore::transpose()
 //---------------------------------------------------------
 //   TABLET mpCmd -- Command handling
 //---------------------------------------------------------
+void MuseScore::mpCmd (const char* cmdn) {
+      getAction(cmdn)->trigger();
+      }
+
 void MuseScore::mpCmd(QAction* a){
       QString cmdn = (a->data().toString());
 #ifdef TABLET
@@ -6092,7 +6096,7 @@ void MuseScore::mpInit ()
     addDockWidget(Qt::BottomDockWidgetArea, keyboardPanel);
     keyboardPanel->setVisible(true);
 //    connect (key, SIGNAL (keyAction(QAction *)), SLOT(cmd(QAction *)));
-//    connect (key, SIGNAL (keyAction(const char *)), SLOT (mpCmd(const char *)));
+    connect (key, SIGNAL (keyAction(const char *)), SLOT (mpCmd(const char *)));
 //    connect (key, SIGNAL (keyAction(QString, QString)), SLOT (mpCmd(QString, QString)));
 
 }

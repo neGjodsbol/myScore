@@ -500,7 +500,7 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
 //-----------------------------
 //  Additional slots for TABLET
 //-----------------------------
-//      void mpCmd (const char *);
+      void mpCmd (const char *);
 //      void mpCmd (QString, QString);
       void mpCmd (QAction *);
       void mpTutorial ();

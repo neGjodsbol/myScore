@@ -71,7 +71,7 @@ void MpKeyboard::pitchKey(int key)
             break;
         case KEY_G: emit keyAction("note-g");
             break;
-        case KEY_REST: emit keyAction("pad-rest");
+        case KEY_REST: emit keyAction("rest");
             break;
         case KEY_SHARP: emit keyAction("sharp");
             break;
@@ -230,16 +230,16 @@ void MpKeyboard::specialKey (int key)
         if (shiftOn)
             switch (key) {
             case KEY_UP:
-                emit keyAction ("shift", "key-up");
+                emit keyAction ("select-staff-above");
                 break;
             case KEY_DOWN:
-                emit keyAction ("shift", "key-down");
+                emit keyAction ("select-staff-below");
                 break;
             case KEY_LEFT:
-                emit keyAction ("shift", "key-left");
+                emit keyAction ("select-prev-chord");
                 break;
             case KEY_RIGHT:
-                emit keyAction ("shift", "key-right");
+                emit keyAction ("select-next-chord");
                 break;
             default:
                 break;
@@ -247,16 +247,16 @@ void MpKeyboard::specialKey (int key)
         else if (cmdOn)
             switch (key) {
             case KEY_UP:
-                emit keyAction ("ctrl", "key-up");
+                  emit keyAction ("pitch-up-octave");
                 break;
             case KEY_DOWN:
-                emit keyAction ("ctrl", "key-down");
+                  emit keyAction ("pitch-down-octave");
                 break;
             case KEY_LEFT:
-                emit keyAction ("ctrl", "key-left");
+                emit keyAction ("prev-segment-element");
                 break;
             case KEY_RIGHT:
-                emit keyAction ("ctrl", "key-right");
+                emit keyAction ("next-segment-element");
                 break;
             default:
                 break;
@@ -264,16 +264,16 @@ void MpKeyboard::specialKey (int key)
         else
             switch (key) {
             case KEY_UP:
-                emit keyAction ("", "key-up");
+                  emit keyAction ("pitch-up");
                 break;
             case KEY_DOWN:
-                emit keyAction ("", "key-down");
+                  emit keyAction ("pitch-down");
                 break;
             case KEY_LEFT:
-                emit keyAction ("", "key-left");
+                   emit keyAction ("prev-element");
                 break;
             case KEY_RIGHT:
-                emit keyAction ("", "key-right");
+                   emit keyAction ("next-element");
                 break;
             default:
                 break;

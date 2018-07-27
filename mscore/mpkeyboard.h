@@ -1,12 +1,12 @@
 #ifndef MPKEYBOARD_H
 #define MPKEYBOARD_H
 
-#include <QWidget>
+//#include <QWidget>
 #include "ui_mpkeyboard.h"
 
 namespace Ms {
 
-class MpKeyboard : public QWidget, Ui::MpKeyboard {
+class MpKeyboard : public QWidget, Ui::MpKeyboardBase {
       Q_OBJECT
 
       void pitchKey (int);
@@ -16,9 +16,6 @@ class MpKeyboard : public QWidget, Ui::MpKeyboard {
       void setFlat (int, bool);
       void resetModifiers ();
       void sendKey (int, int);
-
-//      QAction* getAction(const char* id);
-      QWidget *_mpad;
 
       bool shiftOn;
       bool cmdOn;
