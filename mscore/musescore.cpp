@@ -3652,7 +3652,7 @@ void MuseScore::play(Element* e, int pitch) const
       }
 
 //---------------------------------------------------------
-//  TABLET - Hnadle tutorial
+//  TABLET - Handle tutorial
 //---------------------------------------------------------
 
 void MuseScore::mpTutorial()
@@ -4738,7 +4738,7 @@ void MuseScore::transpose()
 //---------------------------------------------------------
 //   TABLET mpCmd -- Command handling
 //---------------------------------------------------------
-#ifdef TABLET
+
 void MuseScore::mpCmd(const char* cmdn)
       {
       getAction(cmdn)->trigger();
@@ -4746,6 +4746,7 @@ void MuseScore::mpCmd(const char* cmdn)
 
 void MuseScore::mpCmd(QAction* a)
       {
+#ifdef TABLET
       QString cmdn = (a->data().toString());
 
       if (cmdn == "toggle-playback")
@@ -4786,9 +4787,10 @@ void MuseScore::mpCmd(QAction* a)
          emit (switchLayoutMode(LayoutMode::SYSTEM));
       }
       else
+#endif
          return;
 }
-#endif
+
 //---------------------------------------------------------
 //   cmd
 //---------------------------------------------------------

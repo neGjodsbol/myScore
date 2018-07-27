@@ -504,7 +504,6 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
 //      void mpCmd (QString, QString);
       void mpCmd (QAction *);
       void mpTutorial ();
-//-----------------------------
 
       void cmd(QAction* a, const QString& cmd);
       void autoSaveTimerTimeout();
