@@ -1193,10 +1193,12 @@ MuseScore::MuseScore()
 
       menuAddMeasures = new QMenu("");
       menuAddMeasures->addAction(getAction("insert-measure"));
+#ifndef TABLET
       menuAddMeasures->addAction(getAction("insert-measures"));
       menuAddMeasures->addSeparator();
       menuAddMeasures->addAction(getAction("append-measure"));
       menuAddMeasures->addAction(getAction("append-measures"));
+#endif
       menuAdd->addMenu(menuAddMeasures);
 
       menuAddFrames = new QMenu();
@@ -4736,37 +4738,44 @@ void MuseScore::transpose()
 //---------------------------------------------------------
 //   TABLET mpCmd -- Command handling
 //---------------------------------------------------------
-void MuseScore::mpCmd (const char* cmdn) {
+#ifdef TABLET
+void MuseScore::mpCmd(const char* cmdn)
+      {
       getAction(cmdn)->trigger();
       }
 
-void MuseScore::mpCmd(QAction* a){
+void MuseScore::mpCmd(QAction* a)
+      {
       QString cmdn = (a->data().toString());
-#ifdef TABLET
-      if (cmdn == "toggle-playback"){
-            if (mpPlayTools->isVisible())
-                  mpPlayTools->setVisible(false);
-            else
+
+      if (cmdn == "toggle-playback")
+            {
+            if (getAction("toggle-playback")->isChecked())
                   mpPlayTools->setVisible(true);
+            else
+                  mpPlayTools->setVisible(false);
+
             if (mpPlayTools->isVisible())
                   keyboardPanel->setVisible(false);
             else
                   keyboardPanel->setVisible(true);
             }
-      else if (cmdn == "toggle-palette-tools") {
-         if (paletteOneTools->isVisible()) {
-            paletteOneTools->setVisible(false);
-            paletteTwoTools->setVisible(true);
-//           palettePanel->setVisible(false);
-         }
-         else if (paletteTwoTools->isVisible()){
-            paletteTwoTools->setVisible(false);
-//        palettePanel->setVisible(false);
-         }
-         else {
-            paletteOneTools->setVisible(true);
-         }
-      }
+      else if (cmdn == "toggle-palette-tools")
+            {
+            if (paletteOneTools->isVisible())
+                  {
+                  paletteOneTools->setVisible(false);
+                  paletteTwoTools->setVisible(true);
+                  }
+            else if (paletteTwoTools->isVisible())
+                  {
+                  paletteTwoTools->setVisible(false);
+                  }
+            else
+                  {
+                  paletteOneTools->setVisible(true);
+                  }
+            }
       else if (cmdn == "viewmode-page"){
          emit (switchLayoutMode(LayoutMode::PAGE));
       }
@@ -4777,10 +4786,9 @@ void MuseScore::mpCmd(QAction* a){
          emit (switchLayoutMode(LayoutMode::SYSTEM));
       }
       else
-#endif
          return;
 }
-
+#endif
 //---------------------------------------------------------
 //   cmd
 //---------------------------------------------------------
