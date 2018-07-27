@@ -4748,18 +4748,10 @@ void MuseScore::mpCmd(QAction* a){
                   mpPlayTools->setVisible(false);
             else
                   mpPlayTools->setVisible(true);
-/*
-             if (keyboardPanel->isVisible()){
+            if (mpPlayTools->isVisible())
                   keyboardPanel->setVisible(false);
-                  if (!mpPlayTools->isVisible()){
-                        mpPlayTools->setVisible(true);
-                        }
-                  }
-            else {
+            else
                   keyboardPanel->setVisible(true);
-                  mpPlayTools->setVisible(false);
-                  }
-*/
             }
       else if (cmdn == "toggle-palette-tools") {
          if (paletteOneTools->isVisible()) {
