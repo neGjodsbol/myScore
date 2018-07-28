@@ -3778,7 +3778,16 @@ Shortcut Shortcut::_sc[] = {
         0,
         Icons::menu_dots_ICON,
         Qt::WindowShortcut},
-    {
+      {
+          MsWidget::TABLET_GUI,
+          STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
+          "tuplets-menu",
+          QT_TRANSLATE_NOOP("action","Select tuplet"),
+          QT_TRANSLATE_NOOP("action","Show tuplet menu"),
+          0,
+          Icons::menu_dots_ICON,
+          Qt::WindowShortcut},
+      {
        MsWidget::MAIN_WINDOW,
        STATE_NORMAL,
        "viewmode-page",

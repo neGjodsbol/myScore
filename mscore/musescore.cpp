@@ -4741,7 +4741,7 @@ void MuseScore::transpose()
 
 void MuseScore::mpCmd(const char* cmdn)
       {
-      getAction(cmdn)->trigger();
+            getAction(cmdn)->trigger();
       }
 
 void MuseScore::mpCmd(QAction* a)
@@ -4749,7 +4749,14 @@ void MuseScore::mpCmd(QAction* a)
 #ifdef TABLET
       QString cmdn = (a->data().toString());
 
-      if (cmdn == "toggle-playback")
+      if (cmdn == "tuplets-menu")
+            {
+            QPoint p = this->pos();
+            p.setX(p.x()+50);
+            p.setY(p.y()+75);
+            mpTupletsMenu->popup(QPoint (p));
+            }
+      else if (cmdn == "toggle-playback")
             {
             if (getAction("toggle-playback")->isChecked())
                   mpPlayTools->setVisible(true);
@@ -6246,7 +6253,13 @@ void MuseScore::mpPrepareToolbars () {
         mpEditMenu->addAction(getAction("redo"));
         mpEditMenu->addAction(getAction("cut"));
         mpEditMenu->addAction(getAction("copy"));
+        mpEditMenu->addAction(getAction("swap"));
         mpEditMenu->addAction(getAction("paste"));
+        mpEditMenu->addSeparator();
+        mpEditMenu->addAction(getAction("select-all"));
+        mpEditMenu->addSeparator();
+        mpEditMenu->addAction(getAction("insert-measures"));
+        mpEditMenu->addAction(getAction("append-measures"));
 
         mpTupletsMenu = new QMenu();
         mpTupletsMenu->addAction(getAction("duplet"));

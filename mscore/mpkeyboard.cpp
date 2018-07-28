@@ -1,5 +1,6 @@
 #include "mpkeyboard.h"
 #include "ui_mpkeyboard.h"
+#include "musescore.h"
 
 namespace Ms {
 
@@ -236,10 +237,10 @@ void MpKeyboard::specialKey (int key)
                 emit keyAction ("select-staff-below");
                 break;
             case KEY_LEFT:
-                emit keyAction ("select-prev-chord");
+                emit keyAction ("select-prev-measure");
                 break;
             case KEY_RIGHT:
-                emit keyAction ("select-next-chord");
+                emit keyAction ("select-next-measure");
                 break;
             default:
                 break;
@@ -253,10 +254,10 @@ void MpKeyboard::specialKey (int key)
                   emit keyAction ("pitch-down-octave");
                 break;
             case KEY_LEFT:
-                emit keyAction ("prev-segment-element");
+                emit keyAction ("prev-measure");
                 break;
             case KEY_RIGHT:
-                emit keyAction ("next-segment-element");
+                emit keyAction ("next-measure");
                 break;
             default:
                 break;
@@ -270,10 +271,10 @@ void MpKeyboard::specialKey (int key)
                   emit keyAction ("pitch-down");
                 break;
             case KEY_LEFT:
-                   emit keyAction ("prev-element");
+                   emit keyAction ("prev-chord");
                 break;
             case KEY_RIGHT:
-                   emit keyAction ("next-element");
+                   emit keyAction ("next-chord");
                 break;
             default:
                 break;
@@ -288,18 +289,20 @@ void MpKeyboard::functionKey(int key)
 {
     if (cmdOn)
         switch (key) {
-        case KEY_INS: emit keyAction("append-measures");
+        case KEY_INS: emit keyAction("append-measure");
             break;
         case KEY_DEL: emit keyAction("delete-measures");
             break;
-        case KEY_TUPLET: emit keyAction("gui", "tuplet-menu");
+        case KEY_TUPLET:
+//                    emit keyAction("tuplets-menu");
+            getAction("tuplets-menu")->trigger();
             break;
         default:
             break;
         }
     else
         switch (key) {
-        case KEY_INS: emit keyAction("insert-measures");
+        case KEY_INS: emit keyAction("insert-measure");
             break;
         case KEY_DEL: emit keyAction("delete");
             break;
