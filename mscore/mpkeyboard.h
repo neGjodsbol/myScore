@@ -1,7 +1,6 @@
 #ifndef MPKEYBOARD_H
 #define MPKEYBOARD_H
 
-//#include <QWidget>
 #include "ui_mpkeyboard.h"
 
 namespace Ms {
@@ -62,7 +61,6 @@ class MpKeyboard : public QWidget, Ui::MpKeyboardBase {
 
    private slots:
 
-      void on_noteEntry_clicked();
       void on_keyA_clicked();
       void on_keyB_clicked();
       void on_keyC_clicked();
@@ -95,8 +93,9 @@ class MpKeyboard : public QWidget, Ui::MpKeyboardBase {
       void on_keyDown_clicked();
       void on_keyUp_clicked();
       void on_keyRight_clicked();
+      void on_voice_clicked();
 
-   signals:
+signals:
       keyAction (QAction *);
       keyAction (const char *);
       keyAction (int, int);

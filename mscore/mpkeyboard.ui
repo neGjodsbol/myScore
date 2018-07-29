@@ -30,7 +30,7 @@
     <rect>
      <x>10</x>
      <y>0</y>
-     <width>481</width>
+     <width>887</width>
      <height>91</height>
     </rect>
    </property>
@@ -175,9 +175,9 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QPushButton" name="noteEntry">
+     <widget class="QPushButton" name="voice">
       <property name="text">
-       <string>N</string>
+       <string>Voice</string>
       </property>
       <property name="checkable">
        <bool>true</bool>

@@ -1,6 +1,7 @@
 #include "mpkeyboard.h"
 #include "ui_mpkeyboard.h"
 #include "musescore.h"
+#include "shortcut.h"
 
 namespace Ms {
 
@@ -23,7 +24,6 @@ MpKeyboard::MpKeyboard(QWidget *parent) :
 
 MpKeyboard::~MpKeyboard()
 {
-//    delete ui;
 }
 
 // -----------------------------
@@ -323,7 +323,6 @@ void MpKeyboard::functionKey(int key)
 void MpKeyboard::setFlat(int key, bool on){
 
       switch (key) {
-            case KEY_NOTE: noteEntry->setChecked(on); break;
             case KEY_SHIFT: keyShift->setChecked(on);break;
             case KEY_CMD:   keyCmd->setChecked(on); break;
             case KEY_128:   key128->setFlat(on); break;
@@ -350,11 +349,6 @@ void MpKeyboard::setFlat(int key, bool on){
 // -----------------------------
 // Keyboard events
 // -----------------------------
-
-      void MpKeyboard::on_noteEntry_clicked()
-      {
-              specialKey(KEY_NOTE);
-      }
 
       void MpKeyboard::on_keyA_clicked()
       {
@@ -516,4 +510,12 @@ void MpKeyboard::setFlat(int key, bool on){
       {
           specialKey(KEY_RIGHT);
       }
+
+      void Ms::MpKeyboard::on_voice_clicked()
+            {
+            getAction("toggle-voices")->trigger();
+            }
 }
+
+
+

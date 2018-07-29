@@ -4756,6 +4756,17 @@ void MuseScore::mpCmd(QAction* a)
             p.setY(p.y()+75);
             mpTupletsMenu->popup(QPoint (p));
             }
+      else if (cmdn == "toggle-voices")
+            {
+            if (voiceBox->isVisible()) {
+//                  voicePanel->setVisible(false);
+                  voiceBox->setVisible(false);
+                  }
+            else {
+//                  voicePanel->setVisible(true);
+                  voiceBox->setVisible(true);
+                  }
+            }
       else if (cmdn == "toggle-playback")
             {
             if (getAction("toggle-playback")->isChecked())
@@ -6062,7 +6073,8 @@ void MuseScore::mpInit (){
     voices = new MpVoices (voicePanel);
     voicePanel->setWidget(voices);
     addDockWidget(Qt::RightDockWidgetArea, voicePanel);
-    voicePanel->setVisible(false);
+    voicePanel->setVisible(true);
+
     m_voiceSet = 1;
     mpSetVoiceIcon(m_voiceSet);
     connect(voices, SIGNAL (voiceChanged (int)), SLOT (mpSetVoiceIcon(int)));
@@ -6090,6 +6102,9 @@ void MuseScore::mpInit (){
     key = new MpKeyboard (keyboardPanel);
     keyboardPanel->setWidget(key);
     addDockWidget(Qt::BottomDockWidgetArea, keyboardPanel);
+
+    voiceBox = new MpVoices (this);
+
 
 //    connect (key, SIGNAL (keyAction(QAction *)), SLOT(cmd(QAction *)));
     connect (key, SIGNAL (keyAction(const char *)), SLOT (mpCmd(const char *)));
