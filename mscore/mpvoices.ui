@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>131</width>
-    <height>35</height>
+    <width>135</width>
+    <height>45</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -21,8 +21,8 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>500</width>
-    <height>35</height>
+    <width>135</width>
+    <height>45</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -31,43 +31,54 @@
   <property name="windowOpacity">
    <double>2.000000000000000</double>
   </property>
-  <widget class="QWidget" name="horizontalLayoutWidget">
+  <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>320</width>
-     <height>31</height>
+     <width>131</width>
+     <height>41</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QPushButton" name="voice1Button">
+     <widget class="QLabel" name="label">
       <property name="text">
-       <string>1</string>
+       <string>Choose voice</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="voice2Button">
-      <property name="text">
-       <string>2</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="voice3Button">
-      <property name="text">
-       <string>3</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="voice4Button">
-      <property name="text">
-       <string>4</string>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="voice1Button">
+        <property name="text">
+         <string>1</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="voice2Button">
+        <property name="text">
+         <string>2</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="voice3Button">
+        <property name="text">
+         <string>3</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="voice4Button">
+        <property name="text">
+         <string>4</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

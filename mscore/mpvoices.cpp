@@ -7,7 +7,8 @@ namespace Ms {
 MpVoices::MpVoices(QWidget *parent) :
                    QDialog(parent)
       {
-      this->setWindowFlag(Qt::Tool);
+      this->setWindowFlag(Qt::FramelessWindowHint);
+      this->setModal(false);
 
       setupUi(this);
       resetButtons();
