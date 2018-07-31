@@ -4758,13 +4758,13 @@ void MuseScore::mpCmd(QAction* a)
             }
       else if (cmdn == "toggle-voices")
             {
-            if (voiceBox->isVisible()) {
+            if (mpVoiceBox->isVisible()) {
 //                  voicePanel->setVisible(false);
-                  voiceBox->setVisible(false);
+                  mpVoiceBox->setVisible(false);
                   }
             else {
 //                  voicePanel->setVisible(true);
-                  voiceBox->setVisible(true);
+                  mpVoiceBox->setVisible(true);
                   }
             }
       else if (cmdn == "toggle-playback")
@@ -6059,58 +6059,27 @@ void MuseScore::mpInit (){
 
       mpPrepareToolbars();
 /*
-    palettePanel = new QDockWidget ("Palttes",this);
-    palettePanel->setAllowedAreas(Qt::LeftDockWidgetArea);
-    paletteBox = new MpPaletteBox (palettePanel);
-    palettePanel->setWidget(paletteBox);
-    addDockWidget(Qt::LeftDockWidgetArea, palettePanel);
-    palettePanel->setVisible(false);
-    currentPalette = "";
-    connect (this, SIGNAL (mpSetPalette (QAction *)),paletteBox, SLOT (mpSetPalette (QAction *)));
-
-    voicePanel = new QDockWidget ("Voices",this);
-    voicePanel->setAllowedAreas(Qt::RightDockWidgetArea);
-    voices = new MpVoices (voicePanel);
-    voicePanel->setWidget(voices);
-    addDockWidget(Qt::RightDockWidgetArea, voicePanel);
-    voicePanel->setVisible(true);
-
-    m_voiceSet = 1;
-    mpSetVoiceIcon(m_voiceSet);
-    connect(voices, SIGNAL (voiceChanged (int)), SLOT (mpSetVoiceIcon(int)));
-
-    scorePanel = new QDockWidget ("Score",this);
-    scorePanel->setAllowedAreas(Qt::RightDockWidgetArea);
-    score = new MpScoreSettings (scorePanel);
-    scorePanel->setWidget(score);
-    addDockWidget(Qt::RightDockWidgetArea, scorePanel);
-    scorePanel->setVisible(false);
-
-    settingsPanel = new QDockWidget ("Settings",this);
-    settingsPanel->setAllowedAreas(Qt::LeftDockWidgetArea);
-    settings= new MpSettings (settingsPanel);
-    settingsPanel->setWidget(settings);
-    addDockWidget(Qt::LeftDockWidgetArea, settingsPanel);
-    settingsPanel->setVisible(false);
-
-    connect (settings, SIGNAL (mpGuiAction(QString, QString)), SLOT (mpCmd(QString, QString)));
-    connect (settings, SIGNAL (mpAction(const char *)), SLOT (mpCmd(const char *)));
-    connect (settings, SIGNAL (mpLayoutMode(int)), SLOT (switchLayoutMode(int)));
+      palettePanel = new QDockWidget ("Palttes",this);
+      palettePanel->setAllowedAreas(Qt::LeftDockWidgetArea);
+      paletteBox = new MpPaletteBox (palettePanel);
+      palettePanel->setWidget(paletteBox);
+      addDockWidget(Qt::LeftDockWidgetArea, palettePanel);
+      palettePanel->setVisible(false);
+      currentPalette = "";
+      connect (this, SIGNAL (mpSetPalette (QAction *)),paletteBox, SLOT (mpSetPalette (QAction *)));
 */
-    keyboardPanel = new QDockWidget (this);
-    keyboardPanel->setAllowedAreas(Qt::BottomDockWidgetArea);
-    key = new MpKeyboard (keyboardPanel);
-    keyboardPanel->setWidget(key);
-    addDockWidget(Qt::BottomDockWidgetArea, keyboardPanel);
+      keyboardPanel = new QDockWidget (this);
+      keyboardPanel->setAllowedAreas(Qt::BottomDockWidgetArea);
+      mpKeyboard = new MpKeyboard (keyboardPanel);
+      keyboardPanel->setWidget(mpKeyboard);
+      addDockWidget(Qt::BottomDockWidgetArea, keyboardPanel);
 
-    voiceBox = new MpVoices (this);
+      mpVoiceBox = new MpVoices (this);
+      connect (mpVoiceBox, SIGNAL(voiceChanged(int)),mpKeyboard,SLOT(setVoice(int)));
 
+      connect (mpKeyboard, SIGNAL (keyAction(const char *)), SLOT (mpCmd(const char *)));
 
-//    connect (key, SIGNAL (keyAction(QAction *)), SLOT(cmd(QAction *)));
-    connect (key, SIGNAL (keyAction(const char *)), SLOT (mpCmd(const char *)));
-//    connect (key, SIGNAL (keyAction(QString, QString)), SLOT (mpCmd(QString, QString
-
-// Initiate defaults
+// Set Tablet defaults
 
       keyboardPanel->setVisible(true);
       mpPlayTools->setVisible(false);
@@ -6205,9 +6174,6 @@ void MuseScore::mpPrepareToolbars () {
 //        getAction("pan")->setChecked(true);
       mpPlayTools->setVisible(true);
 
-//      connect(mpMainTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
-//      connect(mpPlayTools,SIGNAL(actionTriggered (QAction*)),SLOT (mpCmd(QAction*)));
-
     //  -----------------------------------------------------
     //  Palette toolbars
     //  -----------------------------------------------------
@@ -6227,7 +6193,6 @@ void MuseScore::mpPrepareToolbars () {
         paletteOneTools->setMovable(false);
 
         connect(paletteOneTools,SIGNAL(actionTriggered(QAction*)), SLOT(mpCmd(QAction*)));
-
 
         paletteTwoTools = addToolBar("");
         paletteTwoTools->addAction(getAction("barlines"));

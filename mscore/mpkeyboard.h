@@ -59,6 +59,9 @@ class MpKeyboard : public QWidget, Ui::MpKeyboardBase {
             KEY_NONE
             };
 
+      public slots:
+         void setVoice(int);
+
    private slots:
 
       void on_keyA_clicked();
@@ -93,7 +96,7 @@ class MpKeyboard : public QWidget, Ui::MpKeyboardBase {
       void on_keyDown_clicked();
       void on_keyUp_clicked();
       void on_keyRight_clicked();
-      void on_voice_clicked();
+      void on_voiceButton_clicked();
 
 signals:
       keyAction (QAction *);

@@ -5,30 +5,40 @@
 
 namespace Ms {
 
-class MpVoices : public QDialog, Ui::MpVoicesBase
-{
+class MpVoices : public QDialog, Ui::MpVoicesBase {
     Q_OBJECT
 
-public:
-    explicit MpVoices(QWidget *parent = 0);
-    ~MpVoices();
+      public:
+            explicit MpVoices(QWidget *parent = 0);
+            ~MpVoices();
 
-private slots:
-    void on_voice1Button_clicked();
+      public slots:
+         void voice1setChecked(bool);
+         void voice2setChecked(bool);
+         void voice3setChecked(bool);
+         void voice4setChecked(bool);
 
-    void on_voice2Button_clicked();
+      private slots:
+         void on_voice1Button_clicked();
+         void on_voice2Button_clicked();
+         void on_voice3Button_clicked();
+         void on_voice4Button_clicked();
 
-    void on_voice3Button_clicked();
+         void on_voice1Button_toggled(bool checked);
 
-    void on_voice4Button_clicked();
+         void on_voice2Button_toggled(bool checked);
+
+         void on_voice3Button_toggled(bool checked);
+
+         void on_voice4Button_toggled(bool checked);
 
 signals:
-    voiceChanged (int);
+         void voiceChanged(int);
 
-private:
-    void setButtons(int);
-    void resetButtons();
-    int m_voiceSet;
-};
+      private:
+         void setButtons(int);
+         void resetButtons();
+         int m_voiceSet;
+      };
 }
 #endif // MPVOICES_H

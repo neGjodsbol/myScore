@@ -294,10 +294,10 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       QMenu *mpTupletsMenu;
       QMenu *mpAddTextMenu;
       QMenu *mpHelpMenu;
-      MpKeyboard *key;
+      MpKeyboard *mpKeyboard;
       QDockWidget *keyboardPanel;
       MpVoices *voices;
-      MpVoices *voiceBox;
+      MpVoices *mpVoiceBox;
       QDockWidget *voicePanel;
 
       void mpInit();

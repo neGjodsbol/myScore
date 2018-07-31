@@ -320,7 +320,8 @@ void MpKeyboard::functionKey(int key)
         resetModifiers ();
 }
 
-void MpKeyboard::setFlat(int key, bool on){
+void MpKeyboard::setFlat(int key, bool on)
+      {
 
       switch (key) {
             case KEY_SHIFT: keyShift->setChecked(on);break;
@@ -339,38 +340,32 @@ void MpKeyboard::setFlat(int key, bool on){
             }
       }
 
-/*
- * void MpKeyboard::sendKey(int modifier, int key)
-{
-
-}
-*/
 
 // -----------------------------
 // Keyboard events
 // -----------------------------
 
-      void MpKeyboard::on_keyA_clicked()
+void MpKeyboard::on_keyA_clicked()
       {
           pitchKey(KEY_A);
       }
 
-      void MpKeyboard::on_keyB_clicked()
+void MpKeyboard::on_keyB_clicked()
       {
           pitchKey(KEY_B);
       }
 
-      void MpKeyboard::on_keyC_clicked()
+void MpKeyboard::on_keyC_clicked()
       {
           pitchKey(KEY_C);
       }
 
-      void MpKeyboard::on_keyD_clicked()
+void MpKeyboard::on_keyD_clicked()
       {
           pitchKey(KEY_D);
       }
 
-      void MpKeyboard::on_keyE_clicked()
+void MpKeyboard::on_keyE_clicked()
       {
           pitchKey(KEY_E);
       }
@@ -511,11 +506,20 @@ void MpKeyboard::setFlat(int key, bool on){
           specialKey(KEY_RIGHT);
       }
 
-      void Ms::MpKeyboard::on_voice_clicked()
+      void MpKeyboard::on_voiceButton_clicked()
             {
             getAction("toggle-voices")->trigger();
             }
+
+void MpKeyboard::setVoice (int voice)
+      {
+      if (voice == 1)
+           voiceButton->setText("1");
+      else if (voice == 2)
+            voiceButton->setText("2");
+      else if (voice == 3)
+            voiceButton->setText("3");
+      else if (voice == 4)
+            voiceButton->setText("4");
+      }
 }
-
-
-
