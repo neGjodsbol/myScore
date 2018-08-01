@@ -602,6 +602,16 @@ void MuseScore::populateNoteInputMenu()
                         a->setCheckable(true);
                         // tb->setDefaultAction(a);
                         w = tb;
+#ifdef TABLET
+                        if (i == 0)
+                            connect (tb, SIGNAL(toggled(bool)),mpVoiceBox,SLOT(voice1setChecked(bool)));
+                        else if (i == 1)
+                            connect (tb, SIGNAL(toggled(bool)),mpVoiceBox,SLOT(voice2setChecked(bool)));
+                        else if (i == 2)
+                            connect (tb, SIGNAL(toggled(bool)),mpVoiceBox,SLOT(voice3setChecked(bool)));
+                        else if (i == 3)
+                            connect (tb, SIGNAL(toggled(bool)),mpVoiceBox,SLOT(voice4setChecked(bool)));
+#endif
                         }
                   else
                         w = new AccessibleToolButton(entryTools, a);

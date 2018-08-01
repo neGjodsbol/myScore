@@ -52,7 +52,6 @@ void MpVoices::on_voice1Button_clicked()
       {
       resetButtons();
       setButtons(1);
-      m_voiceSet = 1;
       getAction("voice-1")->triggered();
       }
 
@@ -60,7 +59,6 @@ void MpVoices::on_voice2Button_clicked()
       {
       resetButtons();
       setButtons(2);
-      m_voiceSet = 2;
       getAction("voice-2")->triggered();
       }
 
@@ -68,7 +66,6 @@ void MpVoices::on_voice3Button_clicked()
       {
       resetButtons();
       setButtons(3);
-      m_voiceSet = 3;
       getAction("voice-3")->triggered();
       }
 
@@ -76,24 +73,27 @@ void MpVoices::on_voice4Button_clicked()
       {
       resetButtons();
       setButtons(4);
-      m_voiceSet = 4;
       getAction("voice-4")->triggered();
       }
 
 void MpVoices::voice1setChecked(bool state)
       {
+      resetButtons();
       voice1Button->setChecked(state);
       }
 void MpVoices::voice2setChecked(bool state)
       {
+      resetButtons();
       voice2Button->setChecked(state);
       }
 void MpVoices::voice3setChecked(bool state)
       {
+      resetButtons();
       voice3Button->setChecked(state);
       }
 void MpVoices::voice4setChecked(bool state)
       {
+      resetButtons();
       voice4Button->setChecked(state);
       }
 
