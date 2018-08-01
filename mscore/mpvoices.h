@@ -25,20 +25,12 @@ class MpVoices : public QDialog, Ui::MpVoicesBase {
          void on_voice4Button_clicked();
 
          void on_voice1Button_toggled(bool checked);
-
          void on_voice2Button_toggled(bool checked);
-
          void on_voice3Button_toggled(bool checked);
-
          void on_voice4Button_toggled(bool checked);
 
 signals:
          void voiceChanged(int);
-
-      private:
-         void setButtons(int);
-         void resetButtons();
-         int m_voiceSet;
       };
 }
 #endif // MPVOICES_H
