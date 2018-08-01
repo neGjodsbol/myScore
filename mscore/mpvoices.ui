@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>148</width>
-    <height>58</height>
+    <width>132</width>
+    <height>40</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -34,8 +34,8 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
+     <x>0</x>
+     <y>0</y>
      <width>131</width>
      <height>39</height>
     </rect>
@@ -46,12 +46,18 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
      </widget>
     </item>
     <item>
      <widget class="QPushButton" name="voice2Button">
       <property name="text">
        <string>2</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -60,12 +66,18 @@
       <property name="text">
        <string>3</string>
       </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
      </widget>
     </item>
     <item>
      <widget class="QPushButton" name="voice4Button">
       <property name="text">
        <string>4</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
