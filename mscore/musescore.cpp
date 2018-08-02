@@ -10,11 +10,11 @@
 //  the file LICENCE.GPL
 //=============================================================================
 
+#include "mppalettebox.h"
 #include <fenv.h>
 #include "loginmanager.h"
 #include "uploadscoredialog.h"
 #include <QStyleFactory>
-#include "palettebox.h"
 #include "config.h"
 #include "musescore.h"
 #include "scoreview.h"
@@ -4805,15 +4805,22 @@ void MuseScore::mpCmd(QAction* a)
                   paletteOneTools->setVisible(true);
                   }
             }
-      else if (cmdn == "viewmode-page"){
-         emit (switchLayoutMode(LayoutMode::PAGE));
-      }
-      else if (cmdn == "viewmode-horizontal"){
-         emit (switchLayoutMode(LayoutMode::LINE));
-      }
-      else if (cmdn == "viewmode-vertical"){
-         emit (switchLayoutMode(LayoutMode::SYSTEM));
-      }
+      else if (cmdn.startsWith("palette-"))
+            {
+            mpShowPalette(a);
+            }
+      else if (cmdn == "viewmode-page")
+            {
+            emit (switchLayoutMode(LayoutMode::PAGE));
+            }
+      else if (cmdn == "viewmode-horizontal")
+            {
+            emit (switchLayoutMode(LayoutMode::LINE));
+            }
+      else if (cmdn == "viewmode-vertical")
+            {
+            emit (switchLayoutMode(LayoutMode::SYSTEM));
+            }
       else
 #endif
          return;
@@ -6065,19 +6072,25 @@ void MuseScore::updateUiStyleAndTheme()
 // TABLET functions
 // ----------------------------------------------------
 #ifdef TABLET
-void MuseScore::mpInit (){
+void MuseScore::mpInit ()
+      {
 
       mpPrepareToolbars();
-/*
-      palettePanel = new QDockWidget ("Palttes",this);
+
+      palettePanel = new QDockWidget ("Palettes",this);
       palettePanel->setAllowedAreas(Qt::LeftDockWidgetArea);
-      paletteBox = new MpPaletteBox (palettePanel);
-      palettePanel->setWidget(paletteBox);
+//      MpPaletteBox *mpBox = new MpPaletteBox (palettePanel);
+//      palettePanel->setWidget(mpBox);
       addDockWidget(Qt::LeftDockWidgetArea, palettePanel);
       palettePanel->setVisible(false);
-      currentPalette = "";
-      connect (this, SIGNAL (mpSetPalette (QAction *)),paletteBox, SLOT (mpSetPalette (QAction *)));
-*/
+
+//      connect(paletteOneTools,SIGNAL(actionTriggered(QAction*)),mpBox, SLOT(mpSetPalette(QAction*)));
+//      connect(paletteTwoTools,SIGNAL(actionTriggered(QAction*)),mpBox, SLOT(mpSetPalette(QAction*)));
+
+      mpCurrentPalette = "";
+
+//      connect (this, SIGNAL (mpSetPalette (QAction *)),mpPaletteBox, SLOT (mpSetPalette (QAction *)));
+
       keyboardPanel = new QDockWidget (this);
       keyboardPanel->setAllowedAreas(Qt::BottomDockWidgetArea);
       mpKeyboard = new MpKeyboard (keyboardPanel);
@@ -6097,71 +6110,72 @@ void MuseScore::mpInit (){
       paletteTwoTools->setVisible(false);
       }
 
-void MuseScore::mpPrepareToolbars () {
+void MuseScore::mpPrepareToolbars ()
+      {
 
     // -----------------------------------------
     // Action Groups - Note Entry and View mode
     //------------------------------------------
 
-        QActionGroup* noteEntryMethods = new QActionGroup(this);
-        noteEntryMethods->addAction(getAction("note-input-steptime"));
-        noteEntryMethods->addAction(getAction("note-input-repitch"));
-        noteEntryMethods->addAction(getAction("note-input-rhythm"));
-        for (QAction* a : noteEntryMethods->actions()) {
-             a->setCheckable(true);
-             a->setIconVisibleInMenu(true);
-             }
-        getAction("note-input-steptime")->setChecked(true);
+      QActionGroup* noteEntryMethods = new QActionGroup(this);
+      noteEntryMethods->addAction(getAction("note-input-steptime"));
+      noteEntryMethods->addAction(getAction("note-input-repitch"));
+      noteEntryMethods->addAction(getAction("note-input-rhythm"));
+      for (QAction* a : noteEntryMethods->actions()) {
+       a->setCheckable(true);
+       a->setIconVisibleInMenu(true);
+       }
+      getAction("note-input-steptime")->setChecked(true);
 
-        QActionGroup* viewModes = new QActionGroup(this);
-        viewModes->addAction(getAction("viewmode-page"));
-        viewModes->addAction(getAction("viewmode-horizontal"));
-        viewModes->addAction(getAction("viewmode-vertical"));
-        getAction("viewmode-page")->setChecked(true);
-        connect(viewModes, SIGNAL(triggered(QAction*)), this, SLOT(mpCmd(QAction*)));
+      QActionGroup* viewModes = new QActionGroup(this);
+      viewModes->addAction(getAction("viewmode-page"));
+      viewModes->addAction(getAction("viewmode-horizontal"));
+      viewModes->addAction(getAction("viewmode-vertical"));
+      getAction("viewmode-page")->setChecked(true);
+      connect(viewModes, SIGNAL(triggered(QAction*)), this, SLOT(mpCmd(QAction*)));
 
 // ---------------------------------------------------
 // Action Group - Tablet GUI actions
 // ---------------------------------------------------
 
-        QActionGroup* tabletGui = Shortcut::getActionGroupForWidget(MsWidget::TABLET_GUI);
-        tabletGui->setParent(this);
-        addActions(tabletGui->actions());
-        connect(tabletGui, SIGNAL(triggered(QAction*)), SLOT(mpCmd(QAction*)));
+      QActionGroup* tabletGui = Shortcut::getActionGroupForWidget(MsWidget::TABLET_GUI);
+      tabletGui->setParent(this);
+      addActions(tabletGui->actions());
+      connect(tabletGui, SIGNAL(triggered(QAction*)), SLOT(mpCmd(QAction*)));
 
 //  ---------------------------------------------------
 //  Main toolbar - Setings, File, and Zoom actions
 //  ---------------------------------------------------
 
-        mpMainTools= addToolBar("");
-        mpMainTools->setMovable(false);
-        mpSettingsButton = new MpToolButton(mpMainTools, getAction("settings-menu"));
-        mpMainTools->addWidget(mpSettingsButton);
+      mpMainTools= addToolBar("");
+      mpMainTools->setMovable(false);
+      mpSettingsButton = new MpToolButton(mpMainTools, getAction("settings-menu"));
+      mpMainTools->addWidget(mpSettingsButton);
 
-        mpMainTools->addAction(getAction("logo"));
+      mpMainTools->addAction(getAction("logo"));
 
-        mpNoteInputButton = new Ms::ToolButtonMenu(tr("Note Entry Methods"),
+      mpNoteInputButton = new Ms::ToolButtonMenu(tr("Note Entry Methods"),
            Ms::ToolButtonMenu::TYPES::ICON_CHANGED,
            getAction("note-input"),
            noteEntryMethods,
            mpMainTools);
-        mpMainTools->addWidget(mpNoteInputButton);
+      mpMainTools->addWidget(mpNoteInputButton);
 
-        mpMagButton = new MpToolButton(mpMainTools, getAction("zoom-menu"));
-        mpMainTools->addWidget(mpMagButton);
+      mpMagButton = new MpToolButton(mpMainTools, getAction("zoom-menu"));
+      mpMainTools->addWidget(mpMagButton);
 
-        mpMainTools->addAction (getAction("toggle-playback"));
+      mpMainTools->addAction (getAction("toggle-playback"));
 
-        mpFileButton = new MpToolButton(mpMainTools, getAction("file-menu"));
-        mpMainTools->addWidget(mpFileButton);
+      mpFileButton = new MpToolButton(mpMainTools, getAction("file-menu"));
+      mpMainTools->addWidget(mpFileButton);
 
-        mpEditButton =new MpToolButton(mpMainTools, getAction("edit-menu"));
-        mpMainTools->addWidget(mpEditButton);
+      mpEditButton =new MpToolButton(mpMainTools, getAction("edit-menu"));
+      mpMainTools->addWidget(mpEditButton);
 
-        mpMainTools->addAction (getAction("toggle-palette-tools"));
+      mpMainTools->addAction (getAction("toggle-palette-tools"));
 
-        mpScoreButton =new MpToolButton(mpMainTools, getAction("score-menu"));
-        mpMainTools->addWidget(mpScoreButton);
+      mpScoreButton =new MpToolButton(mpMainTools, getAction("score-menu"));
+      mpMainTools->addWidget(mpScoreButton);
 
     //  ----------------------------------------------------
     //  Playback tools
@@ -6188,35 +6202,31 @@ void MuseScore::mpPrepareToolbars () {
     //  Palette toolbars
     //  -----------------------------------------------------
 
-        addToolBarBreak();
+      addToolBarBreak();
 
-        paletteOneTools = addToolBar("");
-        paletteOneTools->addAction(getAction("clefs"));
-        paletteOneTools->addAction(getAction("keysignatures"));
-        paletteOneTools->addAction(getAction("timesignatures"));
-        paletteOneTools->addAction(getAction("accidentals"));
-        paletteOneTools->addAction(getAction("articulations"));
-        paletteOneTools->addAction(getAction("gracenotes"));
-        paletteOneTools->addAction(getAction("lines"));
+      paletteOneTools = addToolBar("");
+      paletteOneTools->addAction(getAction("palette-clefs"));
+      paletteOneTools->addAction(getAction("palette-keysignatures"));
+      paletteOneTools->addAction(getAction("palette-timesignatures"));
+      paletteOneTools->addAction(getAction("palette-accidentals"));
+      paletteOneTools->addAction(getAction("palette-articulations"));
+      paletteOneTools->addAction(getAction("palette-gracenotes"));
+      paletteOneTools->addAction(getAction("palette-lines"));
 
-        paletteOneTools->setVisible(false);
-        paletteOneTools->setMovable(false);
+      paletteOneTools->setVisible(false);
+      paletteOneTools->setMovable(false);
 
-        connect(paletteOneTools,SIGNAL(actionTriggered(QAction*)), SLOT(mpCmd(QAction*)));
+      paletteTwoTools = addToolBar("");
+      paletteTwoTools->addAction(getAction("palette-barlines"));
+      paletteTwoTools->addAction(getAction("palette-texts"));
+      paletteTwoTools->addAction(getAction("palette-tempi"));
+      paletteTwoTools->addAction(getAction("palette-dynamics"));
+      paletteTwoTools->addAction(getAction("palette-endings"));
+      paletteTwoTools->addAction(getAction("palette-jumps"));
+      paletteTwoTools->addAction(getAction("palette-beams"));
 
-        paletteTwoTools = addToolBar("");
-        paletteTwoTools->addAction(getAction("barlines"));
-        paletteTwoTools->addAction(getAction("texts"));
-        paletteTwoTools->addAction(getAction("tempi"));
-        paletteTwoTools->addAction(getAction("dynamics"));
-        paletteTwoTools->addAction(getAction("endings"));
-        paletteTwoTools->addAction(getAction("jumps"));
-        paletteTwoTools->addAction(getAction("beams"));
-
-        paletteTwoTools->setVisible(false);
-        paletteTwoTools->setMovable(false);
-
-        connect(paletteTwoTools,SIGNAL(actionTriggered(QAction*)), SLOT(mpCmd(QAction*)));
+      paletteTwoTools->setVisible(false);
+      paletteTwoTools->setMovable(false);
 
     //  ---------------------------------------------
     //  Pop-up menus
@@ -6324,6 +6334,24 @@ void MuseScore::mpPrepareToolbars () {
         scoreInfo->setMenu(mpAddTextMenu);
         mpScoreMenu->addAction(scoreInfo);
     }
+
+void MuseScore::mpShowPalette(QAction* a)
+      {
+      QString s = a->data().toString();
+      if (s == mpCurrentPalette)
+            {
+            mpCurrentPalette = "";
+            palettePanel->setVisible(false);
+            }
+      else
+            {
+            mpCurrentPalette = s;
+            palettePanel->setVisible(true);
+ //           emit mpSetPalette (a);
+            }
+}
+
+
 #endif
 }
 using namespace Ms;

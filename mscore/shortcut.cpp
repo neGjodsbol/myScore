@@ -3557,7 +3557,7 @@ Shortcut Shortcut::_sc[] = {
       {
         MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "clefs",
+        "palette-clefs",
         QT_TRANSLATE_NOOP("action","Clefs"),
         QT_TRANSLATE_NOOP("action","Show clefs palette"),
         0,
@@ -3568,7 +3568,7 @@ Shortcut Shortcut::_sc[] = {
      {
         MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "keysignatures",
+        "palette-keysignatures",
         QT_TRANSLATE_NOOP("action","Keysignatures"),
         QT_TRANSLATE_NOOP("action","Show keysignatures palette"),
         0,
@@ -3579,7 +3579,7 @@ Shortcut Shortcut::_sc[] = {
     {
         MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "timesignatures",
+        "palette-timesignatures",
         QT_TRANSLATE_NOOP("action","Timesignatures"),
         QT_TRANSLATE_NOOP("action","Show timesignatures palette"),
         0,
@@ -3590,7 +3590,7 @@ Shortcut Shortcut::_sc[] = {
     {
         MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "accidentals",
+        "palette-accidentals",
         QT_TRANSLATE_NOOP("action","Accidentals"),
         QT_TRANSLATE_NOOP("action","Show accidentals palette"),
         0,
@@ -3601,7 +3601,7 @@ Shortcut Shortcut::_sc[] = {
      {
         MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "articulations",
+        "palette-articulations",
         QT_TRANSLATE_NOOP("action","Articulations"),
         QT_TRANSLATE_NOOP("action","Show articulations palette"),
         0,
@@ -3612,7 +3612,7 @@ Shortcut Shortcut::_sc[] = {
     {
        MsWidget::TABLET_GUI,
        STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-       "gracenotes",
+       "palette-gracenotes",
        QT_TRANSLATE_NOOP("action","Gracenotes"),
        QT_TRANSLATE_NOOP("action","Show gracenotes palette"),
        0,
@@ -3623,7 +3623,7 @@ Shortcut Shortcut::_sc[] = {
      {
         MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "lines",
+        "palette-lines",
         QT_TRANSLATE_NOOP("action","Lines"),
         QT_TRANSLATE_NOOP("action","Show lines palette"),
         0,
@@ -3634,7 +3634,7 @@ Shortcut Shortcut::_sc[] = {
     {
         MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "barlines",
+        "palette-barlines",
         QT_TRANSLATE_NOOP("action","Barlines"),
         QT_TRANSLATE_NOOP("action","Show barlines palette"),
         0,
@@ -3645,7 +3645,7 @@ Shortcut Shortcut::_sc[] = {
     {
         MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "texts",
+        "palette-texts",
         QT_TRANSLATE_NOOP("action","Texts"),
         QT_TRANSLATE_NOOP("action","Show texts palette"),
         0,
@@ -3656,7 +3656,7 @@ Shortcut Shortcut::_sc[] = {
     {
         MsWidget::TABLET_GUI,
         STATE_NORMAL  | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "tempi",
+        "palette-tempi",
         QT_TRANSLATE_NOOP("action","Tempi"),
         QT_TRANSLATE_NOOP("action","Show tempi palette"),
         0,
@@ -3667,7 +3667,7 @@ Shortcut Shortcut::_sc[] = {
     {
         MsWidget::TABLET_GUI,
         STATE_NORMAL  | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "dynamics",
+        "palette-dynamics",
         QT_TRANSLATE_NOOP("action","Dynamics"),
         QT_TRANSLATE_NOOP("action","Show dynamics palette"),
         0,
@@ -3678,7 +3678,7 @@ Shortcut Shortcut::_sc[] = {
     {
         MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "endings",
+        "palette-endings",
         QT_TRANSLATE_NOOP("action","Endings"),
         QT_TRANSLATE_NOOP("action","Show endings palette"),
         0,
@@ -3689,7 +3689,7 @@ Shortcut Shortcut::_sc[] = {
      {
         MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "jumps",
+        "palette-jumps",
         QT_TRANSLATE_NOOP("action","Jumps"),
         QT_TRANSLATE_NOOP("action","Show jumps palette"),
         0,
@@ -3700,7 +3700,7 @@ Shortcut Shortcut::_sc[] = {
     {
         MsWidget::TABLET_GUI,
         STATE_NORMAL | STATE_NOTE_ENTRY | STATE_PLAY | STATE_EDIT,
-        "beams",
+        "palette-beams",
         QT_TRANSLATE_NOOP("action","Beams"),
         QT_TRANSLATE_NOOP("action","Show beams palette"),
         0,

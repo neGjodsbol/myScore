@@ -24,6 +24,7 @@
 #include "mptablet.h"
 #include "mpkeyboard.h"
 #include "mpvoices.h"
+#include "mppalettebox.h"
 #include "config.h"
 #include "globals.h"
 #include "ui_measuresdialog.h"
@@ -296,12 +297,14 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       QMenu *mpHelpMenu;
       MpKeyboard *mpKeyboard;
       QDockWidget *keyboardPanel;
-      MpVoices *voices;
       MpVoices *mpVoiceBox;
-      QDockWidget *voicePanel;
+      MpPaletteBox *mpPaletteBox;
+      QDockWidget *palettePanel;
+      QString mpCurrentPalette;
 
       void mpInit();
       void mpPrepareToolbars ();
+      void mpShowPalette(QAction* a);
 #endif
 	  
       TextTools* _textTools                { 0 };
