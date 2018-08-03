@@ -24,6 +24,7 @@
 #include "libmscore/score.h"
 #include "palette.h"
 #include "palettebox.h"
+#include "mppalettebox.h"
 #include "libmscore/note.h"
 #include "libmscore/chordrest.h"
 #include "libmscore/dynamic.h"
@@ -1602,6 +1603,28 @@ void MuseScore::setBasicPalette()
       paletteBox->addPalette(newBeamPalette(PaletteType::BASIC));
       }
 
+//---------------------------------------------------------
+//   setTabletPalette
+//---------------------------------------------------------
+#ifdef TABLET
+void MuseScore::setTabletPalette()
+      {
+      mpPaletteBox->addPalette(newClefsPalette(PaletteType::BASIC),"palette-clefs");
+      mpPaletteBox->addPalette(newKeySigPalette(PaletteType::BASIC),"palette-keysig");
+/*      mpPaletteBox->addPalette(newTimePalette());
+      mpPaletteBox->addPalette(newAccidentalsPalette(PaletteType::BASIC));
+      mpPaletteBox->addPalette(newArticulationsPalette(PaletteType::BASIC));
+      mpPaletteBox->addPalette(newGraceNotePalette(PaletteType::BASIC));
+      mpPaletteBox->addPalette(newLinesPalette(PaletteType::BASIC));
+      mpPaletteBox->addPalette(newBarLinePalette(PaletteType::BASIC));
+      mpPaletteBox->addPalette(newTextPalette());
+      mpPaletteBox->addPalette(newTempoPalette(PaletteType::BASIC));
+      mpPaletteBox->addPalette(newDynamicsPalette(PaletteType::BASIC));
+      mpPaletteBox->addPalette(newRepeatsPalette());
+      mpPaletteBox->addPalette(newBreaksPalette());
+      mpPaletteBox->addPalette(newBeamPalette(PaletteType::BASIC));*/
+      }
+#endif
 //---------------------------------------------------------
 //   addTempo
 //---------------------------------------------------------
