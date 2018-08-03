@@ -19,13 +19,12 @@ class MpPaletteBox : public QWidget, Ui::MpPaletteBoxBase {
 
       QList<PaletteItem*> paletteList;
 
-      void addPalette(Palette* p, QString label);
-
       public slots:
          void mpSetPalette (QAction*);
 
       public:
-            MpPaletteBox(QWidget *parent = 0);
+            void addPalette(Palette* p, QString label);
+         MpPaletteBox(QWidget *parent = 0);
             ~MpPaletteBox();
       };
 }

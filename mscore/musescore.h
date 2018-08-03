@@ -665,6 +665,9 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       int midiRecordId() const { return _midiRecordId; }
       void setAdvancedPalette();
       void setBasicPalette();
+#ifdef TABLET
+      void setTabletPalette();
+#endif
       void scorePageLayoutChanged();
       bool processMidiRemote(MidiRemoteType type, int data, int value);
       ScoreTab* getTab1() const { return tab1; }
