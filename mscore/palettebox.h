@@ -15,6 +15,7 @@
 #define __PALETTE_BOX_H__
 
 #include "paletteBoxButton.h"
+#include "mptablet.h"
 
 namespace Ms {
 

@@ -27,20 +27,26 @@ namespace Ms {
 PaletteBox::PaletteBox(QWidget* parent)
    : QDockWidget(tr("Palettes"), parent)
       {
+#ifndef TABLET
       setContextMenuPolicy(Qt::ActionsContextMenu);
       setObjectName("palette-box");
       setAllowedAreas(Qt::DockWidgetAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea));
-
+#else
+      setObjectName("palette-box");
+      setAllowedAreas(Qt::LeftDockWidgetArea);
+#endif
+#ifndef TABLET
       singlePaletteAction = new QAction(this);
       singlePaletteAction->setCheckable(true);
       singlePaletteAction->setChecked(preferences.getBool(PREF_APP_USESINGLEPALETTE));
       addAction(singlePaletteAction);
       connect(singlePaletteAction, SIGNAL(toggled(bool)), SLOT(setSinglePalette(bool)));
-
+#endif
       QWidget* w = new QWidget(this);
       w->setContextMenuPolicy(Qt::NoContextMenu);
       QVBoxLayout* vl = new QVBoxLayout(w);
       vl->setMargin(0);
+#ifndef TABLET
       QHBoxLayout* hl = new QHBoxLayout;
       hl->setContentsMargins(5,0,5,0);
 
@@ -50,9 +56,9 @@ PaletteBox::PaletteBox(QWidget* parent)
 
       addWorkspaceButton->setMinimumHeight(24);
       hl->addWidget(addWorkspaceButton);
-
+#endif
       setWidget(w);
-
+#ifndef TABLET
       _searchBox = new QLineEdit(this);
       _searchBox->setFocusPolicy(Qt::StrongFocus);
       _searchBox->installEventFilter(this);
@@ -62,7 +68,7 @@ PaletteBox::PaletteBox(QWidget* parent)
       QHBoxLayout* hlSearch = new QHBoxLayout;
       hlSearch->setContentsMargins(5,0,5,0);
       hlSearch->addWidget(_searchBox);
-
+#endif
       PaletteBoxScrollArea* sa = new PaletteBoxScrollArea;
       sa->setFocusPolicy(Qt::NoFocus);
       sa->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -72,9 +78,10 @@ PaletteBox::PaletteBox(QWidget* parent)
       sa->setWidgetResizable(true);
       sa->setFrameShape(QFrame::NoFrame);
       vl->addWidget(sa);
+#ifndef TABLET
       vl->addLayout(hlSearch);
       vl->addLayout(hl);
-
+#endif
       QWidget* paletteList = new QWidget;
       sa->setWidget(paletteList);
       vbox = new QVBoxLayout;
@@ -83,9 +90,10 @@ PaletteBox::PaletteBox(QWidget* parent)
       vbox->setSpacing(1);
       vbox->addStretch();
       paletteList->show();
-
+#ifndef TABLET
       connect(addWorkspaceButton, SIGNAL(clicked()), SLOT(newWorkspaceClicked()));
       connect(workspaceList, SIGNAL(activated(int)), SLOT(workspaceSelected(int)));
+#endif
       retranslate();
       }
 
@@ -96,11 +104,13 @@ PaletteBox::PaletteBox(QWidget* parent)
 void PaletteBox::retranslate()
       {
       setWindowTitle(tr("Palettes"));
+#ifndef TABLET
       singlePaletteAction->setText(tr("Single Palette"));
       workspaceList->setToolTip(tr("Select workspace"));
       addWorkspaceButton->setText(tr("+"));
       addWorkspaceButton->setToolTip(tr("Add new workspace"));
       updateWorkspaces();
+#endif
       }
 
 //---------------------------------------------------------

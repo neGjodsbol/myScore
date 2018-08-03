@@ -1610,8 +1610,8 @@ void MuseScore::setBasicPalette()
 void MuseScore::setTabletPalette()
       {
       mpPaletteBox->addPalette(newClefsPalette(PaletteType::BASIC),"palette-clefs");
-      mpPaletteBox->addPalette(newKeySigPalette(PaletteType::BASIC),"palette-keysig");
-/*      mpPaletteBox->addPalette(newTimePalette());
+/*      mpPaletteBox->addPalette(newKeySigPalette(PaletteType::BASIC),"palette-keysig");
+      mpPaletteBox->addPalette(newTimePalette());
       mpPaletteBox->addPalette(newAccidentalsPalette(PaletteType::BASIC));
       mpPaletteBox->addPalette(newArticulationsPalette(PaletteType::BASIC));
       mpPaletteBox->addPalette(newGraceNotePalette(PaletteType::BASIC));

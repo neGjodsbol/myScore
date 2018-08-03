@@ -6079,8 +6079,9 @@ void MuseScore::mpInit ()
 
       palettePanel = new QDockWidget ("Palettes",this);
       palettePanel->setAllowedAreas(Qt::LeftDockWidgetArea);
-//      MpPaletteBox *mpBox = new MpPaletteBox (palettePanel);
-//      palettePanel->setWidget(mpBox);
+      mpPaletteBox = new MpPaletteBox (palettePanel);
+      palettePanel->setWidget(mpPaletteBox);
+// setTabletPalette();
       addDockWidget(Qt::LeftDockWidgetArea, palettePanel);
       palettePanel->setVisible(false);
 
