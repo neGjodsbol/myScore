@@ -356,6 +356,7 @@ void PaletteBox::paletteCmd(PaletteCommand cmd, int slot)
 
             }
       }
+#ifdef TABLET
 //--------------------------------------------------------
 //   mpSetPalette
 //--------------------------------------------------------
@@ -374,6 +375,7 @@ void PaletteBox::mpSetPalette(QAction *a, bool visible)
             }
 // Unknown label - do something?
       }
+#endif
 //---------------------------------------------------------
 //   closeAll
 //---------------------------------------------------------

@@ -3562,7 +3562,11 @@ void MuseScore::readSettings()
             QList<int> sizes;
             sizes << 500 << 100;
             mainWindow->setSizes(sizes);
+#ifdef TABLET
+            mscore->showPalette(false);
+#else
             mscore->showPalette(true);
+#endif
             mscore->showInspector(true);
             return;
             }
@@ -6081,23 +6085,6 @@ void MuseScore::mpInit ()
       {
 
       mpPrepareToolbars();
-/*
-      palettePanel = new QDockWidget ("Palettes",this);
-      palettePanel->setAllowedAreas(Qt::LeftDockWidgetArea);
-      mpPaletteBox = new MpPaletteBox (palettePanel);
-      palettePanel->setWidget(mpPaletteBox);
-// setTabletPalette();
-      addDockWidget(Qt::LeftDockWidgetArea, palettePanel);
-      palettePanel->setVisible(false);
-
-//      connect(paletteOneTools,SIGNAL(actionTriggered(QAction*)),mpBox, SLOT(mpSetPalette(QAction*)));
-//      connect(paletteTwoTools,SIGNAL(actionTriggered(QAction*)),mpBox, SLOT(mpSetPalette(QAction*)));
-
-      mpCurrentPalette = "";
-
-//      connect (this, SIGNAL (mpSetPalette (QAction *)),mpPaletteBox, SLOT (mpSetPalette (QAction *)));
-*/
-//      connect (this, SIGNAL(mpSetPalette (int)),paletteBox, SLOT(mpShowPalette(int)));
 
       mpPaletteAction = new QAction();
 
@@ -6365,20 +6352,6 @@ void MuseScore::mpShowPalette(QAction* a)
                   paletteBox->mpSetPalette(a, true);
                   paletteBox->setVisible(true);
                   }
-
- /*           if (s == mpCurrentPalette)
-            {
-            mpCurrentPalette = "";
-            paletteBox->mpSetPalette(s,false);
-            paletteBox->setVisible(false);
-            }
-      else
-            {
-            mpCurrentPalette = s;
-            paletteBox->setVisible(true);
-            paletteBox->mpSetPalette(s,true);
-
-            }*/
       }
 #endif
 }

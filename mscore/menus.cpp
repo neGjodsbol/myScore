@@ -1630,8 +1630,9 @@ void MuseScore::mpSetTabletPalette()
       paletteBox->mpAddPalette(newTempoPalette(PaletteType::BASIC),"palette-tempi");
       paletteBox->mpAddPalette(newDynamicsPalette(PaletteType::BASIC),"palette-dynamics");
       paletteBox->mpAddPalette(newRepeatsPalette(),"palette-jumps");
-//      paletteBox->mpAddPalette(newBreaksPalette());
+      paletteBox->mpAddPalette(newBreaksPalette(),"palette-endings");
       paletteBox->mpAddPalette(newBeamPalette(PaletteType::BASIC),"palette-beams");
+      showPalette(false);
       }
 #endif
 //---------------------------------------------------------

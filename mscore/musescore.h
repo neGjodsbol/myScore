@@ -297,8 +297,6 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       MpKeyboard *mpKeyboard;
       QDockWidget *mpKeyboardPanel;
       MpVoices *mpVoiceBox;
-//      QDockWidget *palettePanel;
-      QString mpCurrentPalette;
       QAction *mpPaletteAction;
 
       void mpInit();
