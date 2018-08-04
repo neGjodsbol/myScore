@@ -68,8 +68,7 @@ class PaletteBox : public QDockWidget {
       PaletteBox(QWidget* parent = 0);
 #ifdef TABLET
       void mpAddPalette(Palette*, QString);
-      void mpSetPalette(QString, bool);
-
+      void mpSetPalette(QAction*, bool);
 #else
       void addPalette(Palette*);
 #endif

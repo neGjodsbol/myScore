@@ -48,7 +48,7 @@ QT5_WRAP_UI (ui_headers
       note_groups.ui resourceManager.ui stafftypetemplates.ui
       startcenter.ui scorePreview.ui scoreBrowser.ui
       logindialog.ui uploadscoredialog.ui breaksdialog.ui
-      toolbarEditor.ui mpkeyboard.ui mpvoices.ui mppalettebox.ui
+      toolbarEditor.ui mpkeyboard.ui mpvoices.ui
 
       importmidi/importmidi_panel.ui
 
@@ -272,7 +272,7 @@ add_executable ( ${ExecutableName}
       workspace.cpp chordview.cpp
       albummanager.cpp
       stafftextproperties.cpp splitstaff.cpp
-      tupletdialog.cpp mpkeyboard.cpp mpvoices.cpp mppalettebox.cpp
+      tupletdialog.cpp mpkeyboard.cpp mpvoices.cpp
       articulationprop.cpp
       fretproperties.cpp sectionbreakprop.cpp
       bendproperties.cpp tremolobarprop.cpp file.cpp keyb.cpp osc.cpp

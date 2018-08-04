@@ -24,7 +24,6 @@
 #include "libmscore/score.h"
 #include "palette.h"
 #include "palettebox.h"
-#include "mppalettebox.h"
 #include "libmscore/note.h"
 #include "libmscore/chordrest.h"
 #include "libmscore/dynamic.h"
@@ -1623,17 +1622,16 @@ void MuseScore::mpSetTabletPalette()
       paletteBox->mpAddPalette(newClefsPalette(PaletteType::BASIC),"palette-clefs");
       paletteBox->mpAddPalette(newKeySigPalette(PaletteType::BASIC),"palette-keysignatures");
       paletteBox->mpAddPalette(newTimePalette(),"palette-timesignatures");
-
-/*      paletteBox->addPalette(newArticulationsPalette(PaletteType::BASIC));
-      paletteBox->addPalette(newGraceNotePalette(PaletteType::BASIC));
-      paletteBox->addPalette(newLinesPalette(PaletteType::BASIC));
-      paletteBox->addPalette(newBarLinePalette(PaletteType::BASIC));
-      paletteBox->addPalette(newTextPalette());
-      paletteBox->addPalette(newTempoPalette(PaletteType::BASIC));
-      paletteBox->addPalette(newDynamicsPalette(PaletteType::BASIC));
-      paletteBox->addPalette(newRepeatsPalette());
-      paletteBox->addPalette(newBreaksPalette());
-      paletteBox->addPalette(newBeamPalette(PaletteType::BASIC));*/
+      paletteBox->mpAddPalette(newArticulationsPalette(PaletteType::BASIC),"palette-articulations");
+      paletteBox->mpAddPalette(newGraceNotePalette(PaletteType::BASIC),"palette-gracenotes");
+      paletteBox->mpAddPalette(newLinesPalette(PaletteType::BASIC),"palette-lines");
+      paletteBox->mpAddPalette(newBarLinePalette(PaletteType::BASIC),"palette-barlines");
+      paletteBox->mpAddPalette(newTextPalette(),"palette-texts");
+      paletteBox->mpAddPalette(newTempoPalette(PaletteType::BASIC),"palette-tempi");
+      paletteBox->mpAddPalette(newDynamicsPalette(PaletteType::BASIC),"palette-dynamics");
+      paletteBox->mpAddPalette(newRepeatsPalette(),"palette-jumps");
+//      paletteBox->mpAddPalette(newBreaksPalette());
+      paletteBox->mpAddPalette(newBeamPalette(PaletteType::BASIC),"palette-beams");
       }
 #endif
 //---------------------------------------------------------

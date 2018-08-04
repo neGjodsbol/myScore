@@ -10,7 +10,6 @@
 //  the file LICENCE.GPL
 //=============================================================================
 
-#include "mppalettebox.h"
 #include <fenv.h>
 #include "loginmanager.h"
 #include "uploadscoredialog.h"
@@ -4789,9 +4788,9 @@ void MuseScore::mpCmd(QAction* a)
                   mpPlayTools->setVisible(false);
 
             if (mpPlayTools->isVisible())
-                  keyboardPanel->setVisible(false);
+                  mpKeyboardPanel->setVisible(false);
             else
-                  keyboardPanel->setVisible(true);
+                  mpKeyboardPanel->setVisible(true);
             }
       else if (cmdn == "toggle-palette-tools")
             {
@@ -6100,20 +6099,22 @@ void MuseScore::mpInit ()
 */
 //      connect (this, SIGNAL(mpSetPalette (int)),paletteBox, SLOT(mpShowPalette(int)));
 
-      keyboardPanel = new QDockWidget (this);
-      keyboardPanel->setAllowedAreas(Qt::BottomDockWidgetArea);
-      mpKeyboard = new MpKeyboard (keyboardPanel);
-      keyboardPanel->setWidget(mpKeyboard);
-      addDockWidget(Qt::BottomDockWidgetArea, keyboardPanel);
+      mpPaletteAction = new QAction();
+
+      mpKeyboardPanel = new QDockWidget (this);
+      mpKeyboardPanel->setAllowedAreas(Qt::BottomDockWidgetArea);
+      mpKeyboard = new MpKeyboard (mpKeyboardPanel);
+      mpKeyboardPanel->setWidget(mpKeyboard);
+      addDockWidget(Qt::BottomDockWidgetArea, mpKeyboardPanel);
 
       mpVoiceBox = new MpVoices (this);
-      connect (mpVoiceBox, SIGNAL(voiceChanged(int)),mpKeyboard,SLOT(setVoice(int)));
 
+      connect (mpVoiceBox, SIGNAL(voiceChanged(int)),mpKeyboard,SLOT(setVoice(int)));
       connect (mpKeyboard, SIGNAL (keyAction(const char *)), SLOT (mpCmd(const char *)));
 
 // Set Tablet defaults
 
-      keyboardPanel->setVisible(true);
+      mpKeyboardPanel->setVisible(true);
       mpPlayTools->setVisible(false);
       paletteOneTools->setVisible(false);
       paletteTwoTools->setVisible(false);
@@ -6347,8 +6348,25 @@ void MuseScore::mpPrepareToolbars ()
 void MuseScore::mpShowPalette(QAction* a)
       {
       QString s = a->data().toString();
+            if (!mpPaletteAction) {
+                  paletteBox->mpSetPalette(a, true);
+                  paletteBox->setVisible(true);
+                  mpPaletteAction = a;
+                  }
+            else if (mpPaletteAction == a) {
+                  paletteBox->mpSetPalette(a, false);
+                  paletteBox->setVisible(false);
+                  mpPaletteAction = 0;
+                  }
+            else  {
+                  paletteBox->mpSetPalette(mpPaletteAction, false);
+                  mpPaletteAction->setChecked(false);
+                  mpPaletteAction = a;
+                  paletteBox->mpSetPalette(a, true);
+                  paletteBox->setVisible(true);
+                  }
 
-       if (s == mpCurrentPalette)
+ /*           if (s == mpCurrentPalette)
             {
             mpCurrentPalette = "";
             paletteBox->mpSetPalette(s,false);
@@ -6360,10 +6378,8 @@ void MuseScore::mpShowPalette(QAction* a)
             paletteBox->setVisible(true);
             paletteBox->mpSetPalette(s,true);
 
-            }
-}
-
-
+            }*/
+      }
 #endif
 }
 using namespace Ms;

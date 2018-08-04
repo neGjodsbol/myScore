@@ -359,14 +359,16 @@ void PaletteBox::paletteCmd(PaletteCommand cmd, int slot)
 //--------------------------------------------------------
 //   mpSetPalette
 //--------------------------------------------------------
-void PaletteBox::mpSetPalette(QString s, bool visible)
+void PaletteBox::mpSetPalette(QAction *a, bool visible)
       {
+      QString s = a->data().toString();
 
       for (int i = 0; i < paletteList.size(); i++)
             {
             if(s == paletteList[i]->label) {
                   Palette *p = static_cast<Palette*> (vbox->itemAt(paletteList[i]->sequence)->widget() );
                   p->setVisible(visible);
+                  this->setWindowTitle(a->text());
                   return;
                   }
             }
@@ -405,8 +407,13 @@ void PaletteBox::write(XmlWriter& xml)
 QList<Palette*> PaletteBox::palettes()const
       {
       QList<Palette*> pl;
+#ifdef TABLET
+      for (int i = 0; i < paletteList.size(); i++)
+            pl.append(static_cast<Palette*>(vbox->itemAt(i)->widget()));
+#else
       for (int i = 0; i < (vbox->count() - 1); i += 2)
             pl.append(static_cast<Palette*>(vbox->itemAt(i+1)->widget()));
+#endif
       return pl;
       }
 
