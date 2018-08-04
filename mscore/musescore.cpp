@@ -3580,7 +3580,11 @@ void MuseScore::readSettings()
       if (isMaximized() && QAccessible::isActive()) {
             showNormal();
             }
+#ifdef TABLET
+      mscore->showPalette(false);
+#else
       mscore->showPalette(settings.value("showPanel", "1").toBool());
+#endif
       mscore->showInspector(settings.value("showInspector", "1").toBool());
       mscore->showPianoKeyboard(settings.value("showPianoKeyboard", "0").toBool());
       mscore->showSelectionWindow(settings.value("showSelectionWindow", "0").toBool());
@@ -4793,11 +4797,13 @@ void MuseScore::mpCmd(QAction* a)
             {
             if (paletteOneTools->isVisible())
                   {
+                  paletteBox->setVisible(false);
                   paletteOneTools->setVisible(false);
                   paletteTwoTools->setVisible(true);
                   }
             else if (paletteTwoTools->isVisible())
                   {
+                  paletteBox->setVisible(false);
                   paletteTwoTools->setVisible(false);
                   }
             else
@@ -6341,22 +6347,20 @@ void MuseScore::mpPrepareToolbars ()
 void MuseScore::mpShowPalette(QAction* a)
       {
       QString s = a->data().toString();
-/*
+
        if (s == mpCurrentPalette)
             {
             mpCurrentPalette = "";
-            palettePanel->setVisible(false);
+            paletteBox->mpSetPalette(s,false);
+            paletteBox->setVisible(false);
             }
       else
             {
             mpCurrentPalette = s;
-            palettePanel->setVisible(true);
- //           emit mpSetPalette (a);
-            }
-            */
- //     if (s == "palette-clefs")
-      paletteBox->mpSetPalette(s);
+            paletteBox->setVisible(true);
+            paletteBox->mpSetPalette(s,true);
 
+            }
 }
 
 

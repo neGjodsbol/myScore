@@ -214,6 +214,12 @@ void PaletteBox::addPalette(Palette* w)
       vbox->insertWidget(slotIdx+1, w, paletteStretch);
 #else
       vbox->insertWidget(slotIdx, w, paletteStretch);
+      w->setVisible(false);
+
+      PaletteIndex *pi = new PaletteIndex();
+      pi->label = s;
+      pi->sequence = slotIdx;
+      paletteList.append(pi);
 #endif
 
 #ifndef TABLET
@@ -353,11 +359,18 @@ void PaletteBox::paletteCmd(PaletteCommand cmd, int slot)
 //--------------------------------------------------------
 //   mpSetPalette
 //--------------------------------------------------------
-void PaletteBox::mpSetPalette(QString s)
+void PaletteBox::mpSetPalette(QString s, bool visible)
       {
 
-      Palette *p = static_cast<Palette*> (vbox->itemAt(1)->widget() );
-      p->setVisible(true);
+      for (int i = 0; i < paletteList.size(); i++)
+            {
+            if(s == paletteList[i]->label) {
+                  Palette *p = static_cast<Palette*> (vbox->itemAt(paletteList[i]->sequence)->widget() );
+                  p->setVisible(visible);
+                  return;
+                  }
+            }
+// Unknown label - do something?
       }
 //---------------------------------------------------------
 //   closeAll
@@ -418,8 +431,9 @@ bool PaletteBox::read(XmlReader& e)
             else
                   e.unknown();
             }
-      return true;
 #endif
+      return true;
+
       }
 
 //---------------------------------------------------------

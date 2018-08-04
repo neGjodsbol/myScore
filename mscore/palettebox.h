@@ -16,6 +16,7 @@
 
 #include "paletteBoxButton.h"
 #include "mptablet.h"
+#include <QList>
 
 namespace Ms {
 
@@ -45,6 +46,8 @@ class PaletteBox : public QDockWidget {
             QString label;
             int sequence;
             };
+
+      QList<PaletteIndex*> paletteList;
 #endif
    private slots:
       void paletteCmd(PaletteCommand, int);
@@ -65,7 +68,8 @@ class PaletteBox : public QDockWidget {
       PaletteBox(QWidget* parent = 0);
 #ifdef TABLET
       void mpAddPalette(Palette*, QString);
-      void mpSetPalette(QString);
+      void mpSetPalette(QString, bool);
+
 #else
       void addPalette(Palette*);
 #endif

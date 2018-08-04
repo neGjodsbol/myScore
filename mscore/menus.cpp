@@ -1619,11 +1619,12 @@ void MuseScore::mpSetTabletPalette()
       {
       mscore->getPaletteBox();
       paletteBox->clear();
+      paletteBox->mpAddPalette(newAccidentalsPalette(PaletteType::BASIC),"palette-accidentals");
       paletteBox->mpAddPalette(newClefsPalette(PaletteType::BASIC),"palette-clefs");
-      paletteBox->mpAddPalette(newKeySigPalette(PaletteType::BASIC),"palette-keysig");
-/*      paletteBox->addPalette(newTimePalette());
-      paletteBox->addPalette(newAccidentalsPalette(PaletteType::BASIC));
-      paletteBox->addPalette(newArticulationsPalette(PaletteType::BASIC));
+      paletteBox->mpAddPalette(newKeySigPalette(PaletteType::BASIC),"palette-keysignatures");
+      paletteBox->mpAddPalette(newTimePalette(),"palette-timesignatures");
+
+/*      paletteBox->addPalette(newArticulationsPalette(PaletteType::BASIC));
       paletteBox->addPalette(newGraceNotePalette(PaletteType::BASIC));
       paletteBox->addPalette(newLinesPalette(PaletteType::BASIC));
       paletteBox->addPalette(newBarLinePalette(PaletteType::BASIC));
