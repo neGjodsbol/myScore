@@ -6076,7 +6076,7 @@ void MuseScore::mpInit ()
       {
 
       mpPrepareToolbars();
-
+/*
       palettePanel = new QDockWidget ("Palettes",this);
       palettePanel->setAllowedAreas(Qt::LeftDockWidgetArea);
       mpPaletteBox = new MpPaletteBox (palettePanel);
@@ -6091,6 +6091,8 @@ void MuseScore::mpInit ()
       mpCurrentPalette = "";
 
 //      connect (this, SIGNAL (mpSetPalette (QAction *)),mpPaletteBox, SLOT (mpSetPalette (QAction *)));
+*/
+//      connect (this, SIGNAL(mpSetPalette (int)),paletteBox, SLOT(mpShowPalette(int)));
 
       keyboardPanel = new QDockWidget (this);
       keyboardPanel->setAllowedAreas(Qt::BottomDockWidgetArea);
@@ -6339,7 +6341,8 @@ void MuseScore::mpPrepareToolbars ()
 void MuseScore::mpShowPalette(QAction* a)
       {
       QString s = a->data().toString();
-      if (s == mpCurrentPalette)
+/*
+       if (s == mpCurrentPalette)
             {
             mpCurrentPalette = "";
             palettePanel->setVisible(false);
@@ -6350,6 +6353,10 @@ void MuseScore::mpShowPalette(QAction* a)
             palettePanel->setVisible(true);
  //           emit mpSetPalette (a);
             }
+            */
+ //     if (s == "palette-clefs")
+      paletteBox->mpSetPalette(s);
+
 }
 
 

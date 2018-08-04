@@ -39,6 +39,13 @@ class PaletteBox : public QDockWidget {
       QToolButton* addWorkspaceButton;
       bool keyboardNavigation = false;
 
+#ifdef TABLET
+      struct PaletteIndex {
+            ~PaletteIndex();
+            QString label;
+            int sequence;
+            };
+#endif
    private slots:
       void paletteCmd(PaletteCommand, int);
       void closeAll();
@@ -56,7 +63,12 @@ class PaletteBox : public QDockWidget {
 
    public:
       PaletteBox(QWidget* parent = 0);
+#ifdef TABLET
+      void mpAddPalette(Palette*, QString);
+      void mpSetPalette(QString);
+#else
       void addPalette(Palette*);
+#endif
       void write(XmlWriter&);
       bool read(XmlReader&);
       void clear();
@@ -69,6 +81,7 @@ class PaletteBox : public QDockWidget {
       bool eventFilter(QObject* obj, QEvent *event);
       void setKeyboardNavigation(bool val) { keyboardNavigation = val; }
       bool getKeyboardNavigation() { return keyboardNavigation; }
+
       };
 
 //---------------------------------------------------------

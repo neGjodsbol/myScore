@@ -199,19 +199,27 @@ void PaletteBox::clear()
 //---------------------------------------------------------
 //   addPalette
 //---------------------------------------------------------
-
+#ifdef TABLET
+void PaletteBox::mpAddPalette(Palette *w, QString s)
+      {
+#else
 void PaletteBox::addPalette(Palette* w)
       {
       PaletteBoxButton* b = new PaletteBoxButton(w);
-
+#endif
       int slotIdx = vbox->count() - 1;    // insert before stretch
+#ifndef TABLET
       b->setId(slotIdx);
-
       vbox->insertWidget(slotIdx, b);
       vbox->insertWidget(slotIdx+1, w, paletteStretch);
+#else
+      vbox->insertWidget(slotIdx, w, paletteStretch);
+#endif
 
+#ifndef TABLET
       connect(b, SIGNAL(paletteCmd(PaletteCommand,int)), SLOT(paletteCmd(PaletteCommand,int)));
       connect(b, SIGNAL(closeAll()), SLOT(closeAll()));
+#endif
       connect(w, SIGNAL(changed()), SIGNAL(changed()));
       }
 
@@ -342,7 +350,15 @@ void PaletteBox::paletteCmd(PaletteCommand cmd, int slot)
 
             }
       }
+//--------------------------------------------------------
+//   mpSetPalette
+//--------------------------------------------------------
+void PaletteBox::mpSetPalette(QString s)
+      {
 
+      Palette *p = static_cast<Palette*> (vbox->itemAt(1)->widget() );
+      p->setVisible(true);
+      }
 //---------------------------------------------------------
 //   closeAll
 //---------------------------------------------------------
@@ -388,6 +404,7 @@ QList<Palette*> PaletteBox::palettes()const
 
 bool PaletteBox::read(XmlReader& e)
       {
+#ifndef TABLET
       while (e.readNextStartElement()) {
             const QStringRef& tag(e.name());
             if (tag == "Palette") {
@@ -402,6 +419,7 @@ bool PaletteBox::read(XmlReader& e)
                   e.unknown();
             }
       return true;
+#endif
       }
 
 //---------------------------------------------------------

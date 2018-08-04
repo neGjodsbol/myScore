@@ -586,6 +586,9 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       void changeWorkspace(Workspace* p);
       void mixerPreferencesChanged(bool showMidiControls);
 
+   signals:
+      void mpSetPalette(int);
+
    public:
       MuseScore();
       ~MuseScore();
@@ -666,7 +669,7 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       void setAdvancedPalette();
       void setBasicPalette();
 #ifdef TABLET
-      void setTabletPalette();
+      void mpSetTabletPalette();
 #endif
       void scorePageLayoutChanged();
       bool processMidiRemote(MidiRemoteType type, int data, int value);

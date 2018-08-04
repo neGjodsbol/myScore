@@ -1550,6 +1550,9 @@ Palette* MuseScore::newFretboardDiagramPalette()
 
 void MuseScore::setAdvancedPalette()
       {
+#ifdef TABLET
+      mpSetTabletPalette();
+#else
       mscore->getPaletteBox();
       paletteBox->clear();
       paletteBox->addPalette(newClefsPalette(PaletteType::ADVANCED));
@@ -1577,6 +1580,7 @@ void MuseScore::setAdvancedPalette()
       paletteBox->addPalette(newBreaksPalette());
       paletteBox->addPalette(newFramePalette());
       paletteBox->addPalette(newBeamPalette(PaletteType::ADVANCED));
+#endif
       }
 
 //---------------------------------------------------------
@@ -1585,6 +1589,9 @@ void MuseScore::setAdvancedPalette()
 
 void MuseScore::setBasicPalette()
       {
+#ifdef TABLET
+      mpSetTabletPalette();
+#else
       mscore->getPaletteBox();
       paletteBox->clear();
       paletteBox->addPalette(newClefsPalette(PaletteType::BASIC));
@@ -1601,28 +1608,31 @@ void MuseScore::setBasicPalette()
       paletteBox->addPalette(newRepeatsPalette());
       paletteBox->addPalette(newBreaksPalette());
       paletteBox->addPalette(newBeamPalette(PaletteType::BASIC));
+#endif
       }
 
 //---------------------------------------------------------
-//   setTabletPalette
+//   mpSetTabletPalette
 //---------------------------------------------------------
 #ifdef TABLET
-void MuseScore::setTabletPalette()
+void MuseScore::mpSetTabletPalette()
       {
-      mpPaletteBox->addPalette(newClefsPalette(PaletteType::BASIC),"palette-clefs");
-/*      mpPaletteBox->addPalette(newKeySigPalette(PaletteType::BASIC),"palette-keysig");
-      mpPaletteBox->addPalette(newTimePalette());
-      mpPaletteBox->addPalette(newAccidentalsPalette(PaletteType::BASIC));
-      mpPaletteBox->addPalette(newArticulationsPalette(PaletteType::BASIC));
-      mpPaletteBox->addPalette(newGraceNotePalette(PaletteType::BASIC));
-      mpPaletteBox->addPalette(newLinesPalette(PaletteType::BASIC));
-      mpPaletteBox->addPalette(newBarLinePalette(PaletteType::BASIC));
-      mpPaletteBox->addPalette(newTextPalette());
-      mpPaletteBox->addPalette(newTempoPalette(PaletteType::BASIC));
-      mpPaletteBox->addPalette(newDynamicsPalette(PaletteType::BASIC));
-      mpPaletteBox->addPalette(newRepeatsPalette());
-      mpPaletteBox->addPalette(newBreaksPalette());
-      mpPaletteBox->addPalette(newBeamPalette(PaletteType::BASIC));*/
+      mscore->getPaletteBox();
+      paletteBox->clear();
+      paletteBox->mpAddPalette(newClefsPalette(PaletteType::BASIC),"palette-clefs");
+      paletteBox->mpAddPalette(newKeySigPalette(PaletteType::BASIC),"palette-keysig");
+/*      paletteBox->addPalette(newTimePalette());
+      paletteBox->addPalette(newAccidentalsPalette(PaletteType::BASIC));
+      paletteBox->addPalette(newArticulationsPalette(PaletteType::BASIC));
+      paletteBox->addPalette(newGraceNotePalette(PaletteType::BASIC));
+      paletteBox->addPalette(newLinesPalette(PaletteType::BASIC));
+      paletteBox->addPalette(newBarLinePalette(PaletteType::BASIC));
+      paletteBox->addPalette(newTextPalette());
+      paletteBox->addPalette(newTempoPalette(PaletteType::BASIC));
+      paletteBox->addPalette(newDynamicsPalette(PaletteType::BASIC));
+      paletteBox->addPalette(newRepeatsPalette());
+      paletteBox->addPalette(newBreaksPalette());
+      paletteBox->addPalette(newBeamPalette(PaletteType::BASIC));*/
       }
 #endif
 //---------------------------------------------------------
