@@ -24,6 +24,8 @@
 #include "mptablet.h"
 #include "mpkeyboard.h"
 #include "mpvoices.h"
+#include "ui_mpinsertmeasures.h"
+#include "ui_mpmeasures.h"
 #include "config.h"
 #include "globals.h"
 #include "ui_measuresdialog.h"
@@ -176,7 +178,11 @@ class AboutMusicXMLBoxDialog : public QDialog, Ui::AboutMusicXMLBox {
 //   Added by DK, 05.08.07
 //---------------------------------------------------------
 
+#ifdef TABLET
+class InsertMeasuresDialog : public QDialog, public Ui::MpInsertMeasuresBase {
+#else
 class InsertMeasuresDialog : public QDialog, public Ui::InsertMeasuresDialogBase {
+#endif
       Q_OBJECT
 
       virtual void hideEvent(QHideEvent*);
@@ -191,8 +197,11 @@ class InsertMeasuresDialog : public QDialog, public Ui::InsertMeasuresDialogBase
 //---------------------------------------------------------
 //   MeasuresDialog
 //---------------------------------------------------------
-
+#ifdef TABLET
+class MeasuresDialog : public QDialog, public Ui::MpMeasuresBase {
+#else
 class MeasuresDialog : public QDialog, public Ui::MeasuresDialogBase {
+#endif
       Q_OBJECT
 
    private slots:

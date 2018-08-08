@@ -303,7 +303,11 @@ void MuseScore::cmdInsertMeasures()
                         tr("No measure selected:\n" "Please select a measure and try again"));
                   }
             else {
+#ifdef TABLET
+                  insertMeasuresDialog = new InsertMeasuresDialog(this);
+#else
                   insertMeasuresDialog = new InsertMeasuresDialog;
+#endif
                   insertMeasuresDialog->show();
                   }
             }
@@ -319,6 +323,9 @@ InsertMeasuresDialog::InsertMeasuresDialog(QWidget* parent)
       setObjectName("InsertMeasuresDialog");
       setupUi(this);
       setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+#ifdef TABLET
+      setWindowFlag(Qt::FramelessWindowHint);
+#endif
       insmeasures->selectAll();
       }
 
@@ -2234,7 +2241,11 @@ void MuseScore::cmdAppendMeasures()
       {
       if (cs) {
             if (measuresDialog == 0)
+#ifdef TABLET
+                  measuresDialog = new MeasuresDialog(this);
+#else
                   measuresDialog = new MeasuresDialog;
+#endif
             measuresDialog->show();
             }
       }
@@ -2248,6 +2259,9 @@ MeasuresDialog::MeasuresDialog(QWidget* parent)
       {
       setupUi(this);
       setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+#ifdef TABLET
+      setWindowFlag(Qt::FramelessWindowHint);
+#endif
       measures->selectAll();
       }
 
@@ -4803,6 +4817,7 @@ void MuseScore::mpCmd(QAction* a)
                   paletteBox->setVisible(false);
                   paletteOneTools->setVisible(false);
                   paletteTwoTools->setVisible(true);
+                  mpPaletteAction->setChecked(false);
                   }
             else if (paletteTwoTools->isVisible())
                   {

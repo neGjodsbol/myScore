@@ -289,7 +289,7 @@ void MpKeyboard::functionKey(int key)
 {
     if (cmdOn)
         switch (key) {
-        case KEY_INS: emit keyAction("append-measure");
+        case KEY_INS: emit keyAction("append-measures");
             break;
         case KEY_DEL: emit keyAction("delete-measures");
             break;
@@ -302,7 +302,7 @@ void MpKeyboard::functionKey(int key)
         }
     else
         switch (key) {
-        case KEY_INS: emit keyAction("insert-measure");
+        case KEY_INS: emit keyAction("insert-measures");
             break;
         case KEY_DEL: emit keyAction("delete");
             break;

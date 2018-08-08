@@ -48,7 +48,7 @@ QT5_WRAP_UI (ui_headers
       note_groups.ui resourceManager.ui stafftypetemplates.ui
       startcenter.ui scorePreview.ui scoreBrowser.ui
       logindialog.ui uploadscoredialog.ui breaksdialog.ui
-      toolbarEditor.ui mpkeyboard.ui mpvoices.ui
+      toolbarEditor.ui mpkeyboard.ui mpvoices.ui mpinsertmeasures.ui mpmeasures.ui
 
       importmidi/importmidi_panel.ui
 
