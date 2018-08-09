@@ -940,10 +940,10 @@ MuseScore::MuseScore()
       menuFile = mb->addMenu("");
       menuFile->setObjectName("File");
 
+#ifndef TABLET
       a = getAction("startcenter");
       a->setCheckable(true);
       menuFile->addAction(a);
-#ifndef TABLET
       menuFile->addAction(getAction("file-new"));
       menuFile->addAction(getAction("file-open"));
 #endif
@@ -5149,8 +5149,10 @@ void MuseScore::cmd(QAction* a, const QString& cmd)
             undoRedo(false);
       else if (cmd == "toggle-palette")
             showPalette(a->isChecked());
+#ifndef TABLET
       else if (cmd == "startcenter")
             showStartcenter(a->isChecked());
+#endif
       else if (cmd == "inspector")
             showInspector(a->isChecked());
 #ifdef OMR
@@ -6899,7 +6901,7 @@ int main(int argc, char* av[])
 
       if (mscore->hasToCheckForUpdate())
             mscore->checkForUpdate();
-
+#ifndef TABLET
       if (!scoresOnCommandline && preferences.getBool(PREF_UI_APP_STARTUP_SHOWSTARTCENTER) && (!restoredSession || mscore->scores().size() == 0)) {
 #ifdef Q_OS_MAC
 // ugly, but on mac we get an event when a file is open.
@@ -6920,8 +6922,9 @@ int main(int argc, char* av[])
             getAction("startcenter")->setChecked(true);
             mscore->showStartcenter(true);
 #endif
-            }
 
+            }
+#endif
       mscore->showPlayPanel(preferences.getBool(PREF_UI_APP_STARTUP_SHOWPLAYPANEL));
       QSettings settings;
       if (settings.value("synthControlVisible", false).toBool())

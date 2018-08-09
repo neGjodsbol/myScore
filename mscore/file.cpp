@@ -482,6 +482,14 @@ MasterScore* MuseScore::getNewFile()
             newWizard = new NewWizard(this);
       else
             newWizard->restart();
+
+#ifdef TABLET
+      newWizard->setMinimumSize(this->size());
+      newWizard->setMaximumSize(this->size());
+      newWizard->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+      newWizard->move(this->pos().x(), this->pos().y());
+#endif
+
       if (newWizard->exec() != QDialog::Accepted)
             return 0;
       int measures            = newWizard->measures();
