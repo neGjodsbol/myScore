@@ -22,6 +22,7 @@
 #include "icons.h"
 #include "instrwidget.h"
 #include "stringutils.h"
+#include "mptablet.h"
 
 #include "libmscore/clef.h"
 #include "libmscore/instrtemplate.h"
@@ -120,9 +121,11 @@ void StaffListItem::initStaffTypeCombo(bool forceRecreate)
       if (part) {
             const StringData* stringData = part->it ? &(part->it->stringData) :
                         ( (part->part && part->part->instrument()) ? part->part->instrument()->stringData() : 0);
+#ifndef TABLET
             canUseTabs = stringData && stringData->strings() > 0;
             canUsePerc = part->it ? part->it->useDrumset :
                         ( (part->part && part->part->instrument()) ? part->part->instrument()->useDrumset() : false);
+#endif
             }
       _staffTypeCombo = new QComboBox();
       _staffTypeCombo->setAutoFillBackground(true);
@@ -175,6 +178,7 @@ void StaffListItem::setLinked(bool val)
 
 void StaffListItem::setStaffType(const StaffType* st)
       {
+#ifndef TABLET
       if (!st)                                        // if no staff type given, dault to stadard
             _staffTypeCombo->setCurrentIndex(0);      // staff type (at combo box index 0)
       else {
@@ -197,6 +201,9 @@ void StaffListItem::setStaffType(const StaffType* st)
             qDebug("StaffListItem::setStaffType: not found\n");
             _staffTypeCombo->setCurrentIndex(0);      // if none found, default to standard staff type
             }
+#else
+      _staffTypeCombo->setCurrentIndex(0); // Always use default staff tf type for TABLET
+#endif
       }
 
 //---------------------------------------------------------
@@ -205,9 +212,13 @@ void StaffListItem::setStaffType(const StaffType* st)
 
 void StaffListItem::setStaffType(int idx)
       {
+#ifndef TABLET
       int i = _staffTypeCombo->findData(idx);
       if (i != -1)
             _staffTypeCombo->setCurrentIndex(i);
+#else
+      _staffTypeCombo->setCurrentIndex(0);
+#endif
       }
 
 //---------------------------------------------------------
@@ -360,9 +371,11 @@ InstrumentsWidget::InstrumentsWidget(QWidget* parent)
    : QWidget(parent)
       {
       setupUi(this);
+#ifndef TABLET
       splitter->setStretchFactor(0, 10);
       splitter->setStretchFactor(1, 0);
       splitter->setStretchFactor(2, 15);
+#endif
       setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
       instrumentList->setSelectionMode(QAbstractItemView::ExtendedSelection);
@@ -378,8 +391,10 @@ InstrumentsWidget::InstrumentsWidget(QWidget* parent)
       removeButton->setEnabled(false);
       upButton->setEnabled(false);
       downButton->setEnabled(false);
+#ifndef TABLET
       belowButton->setEnabled(false);
       linkedButton->setEnabled(false);
+#endif
 
       connect(instrumentList, SIGNAL(clicked(const QModelIndex &)), SLOT(expandOrCollapse(const QModelIndex &)));
       }
@@ -505,8 +520,10 @@ void InstrumentsWidget::on_partiturList_itemSelectionChanged()
             removeButton->setEnabled(false);
             upButton->setEnabled(false);
             downButton->setEnabled(false);
+#ifndef TABLET
             linkedButton->setEnabled(false);
             belowButton->setEnabled(false);
+#endif
             return;
             }
       QTreeWidgetItem* item = wi.front();
@@ -539,8 +556,10 @@ void InstrumentsWidget::on_partiturList_itemSelectionChanged()
       removeButton->setEnabled(flag && !onlyOne);
       upButton->setEnabled(flag && !onlyOne && !first);
       downButton->setEnabled(flag && !onlyOne && !last);
+#ifndef TABLET
       linkedButton->setEnabled(item && item->type() == STAFF_LIST_ITEM);
       belowButton->setEnabled(item && item->type() == STAFF_LIST_ITEM);
+#endif
       }
 
 //---------------------------------------------------------
@@ -1024,8 +1043,10 @@ void InstrumentsWidget::init()
       removeButton->setEnabled(false);
       upButton->setEnabled(false);
       downButton->setEnabled(false);
+#ifndef TABLET
       linkedButton->setEnabled(false);
       belowButton->setEnabled(false);
+#endif
       emit completeChanged(false);
       }
 

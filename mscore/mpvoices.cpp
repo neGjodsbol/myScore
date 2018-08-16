@@ -5,10 +5,10 @@
 
 namespace Ms {
 
-MpVoices::MpVoices(QWidget *parent) :
-                   QDialog(parent)
+MpVoices::MpVoices(QWidget* ) :
+                   QDialog()
       {
-      this->setWindowFlag(Qt::FramelessWindowHint);
+//      this->setWindowFlag(Qt::FramelessWindowHint);
       this->setModal(false);
 
       setupUi(this);

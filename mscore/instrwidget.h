@@ -13,7 +13,9 @@
 #ifndef __INSTRWIDGET_H__
 #define __INSTRWIDGET_H__
 
+#include "mptablet.h"
 #include "ui_instrwidget.h"
+#include "ui_mpinstrwidget.h"
 #include "libmscore/clef.h"
 
 namespace Ms {
@@ -115,8 +117,11 @@ class InstrumentTemplateListItem : public QTreeWidgetItem {
 //---------------------------------------------------------
 //   InstrumentsWidget
 //---------------------------------------------------------
-
+#ifdef TABLET
+class InstrumentsWidget : public QWidget, public Ui::MpInstrumentsWidget {
+#else
 class InstrumentsWidget : public QWidget, public Ui::InstrumentsWidget {
+#endif
       Q_OBJECT
 
    private slots:

@@ -71,6 +71,7 @@ void InstrumentsDialog::accept()
 
 void InstrumentsDialog::on_saveButton_clicked()
       {
+#ifndef TABLET
       QString name = QFileDialog::getSaveFileName(
          this,
          tr("Save Instrument List"),
@@ -107,6 +108,7 @@ void InstrumentsDialog::on_saveButton_clicked()
             QString s = tr("Write Instruments File failed: %1").arg(f.errorString());
             QMessageBox::critical(this, tr("Write Instruments File"), s);
             }
+#endif
       }
 
 //---------------------------------------------------------
@@ -115,6 +117,7 @@ void InstrumentsDialog::on_saveButton_clicked()
 
 void InstrumentsDialog::on_loadButton_clicked()
       {
+#ifndef TABLET
       QString fn = QFileDialog::getOpenFileName(
          this, tr("Load Instrument List"),
           mscoreGlobalShare + "/templates",
@@ -133,6 +136,7 @@ void InstrumentsDialog::on_loadButton_clicked()
             return;
             }
       instrumentsWidget->buildTemplateList();
+#endif
       }
 
 //---------------------------------------------------------
@@ -180,8 +184,17 @@ void MuseScore::editInstrList()
       if (cs == 0)
             return;
       if (!instrList)
+            {
             instrList = new InstrumentsDialog(this);
-      else if (instrList->isVisible()) {
+#ifdef TABLET
+            instrList->setMinimumSize(this->size());
+            instrList->setMaximumSize(this->size());
+            instrList->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+            instrList->move(this->pos().x(), this->pos().y());
+#endif
+            }
+      else if (instrList->isVisible())
+            {
             instrList->done(0);
             return;
             }

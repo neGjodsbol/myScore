@@ -13,7 +13,9 @@
 #ifndef __INSTRDIALOG_H__
 #define __INSTRDIALOG_H__
 
+#include "mptablet.h"
 #include "ui_instrdialog.h"
+#include "ui_mpinstrdialog.h"
 
 namespace Ms {
 
@@ -23,7 +25,11 @@ class Score;
 //   InstrumentsDialog
 //---------------------------------------------------------
 
+#ifdef TABLET
+class InstrumentsDialog : public QDialog, public Ui::MpInstrumentsDialog {
+#else
 class InstrumentsDialog : public QDialog, public Ui::InstrumentsDialog {
+#endif
       Q_OBJECT
 
       void readSettings();

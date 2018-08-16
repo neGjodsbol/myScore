@@ -199,6 +199,7 @@ NewWizardPage2::NewWizardPage2(QWidget* parent)
       grid->setContentsMargins(0, 0, 0, 0);
       grid->addWidget(w, 0, 0);
       setLayout(grid);
+      w->show();
       connect(w, SIGNAL(completeChanged(bool)), SLOT(setComplete(bool)));
       }
 

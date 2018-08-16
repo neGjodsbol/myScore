@@ -4790,11 +4790,9 @@ void MuseScore::mpCmd(QAction* a)
       else if (cmdn == "toggle-voices")
             {
             if (mpVoiceBox->isVisible()) {
-//                  voicePanel->setVisible(false);
                   mpVoiceBox->setVisible(false);
                   }
             else {
-//                  voicePanel->setVisible(true);
                   mpVoiceBox->setVisible(true);
                   }
             }
@@ -6103,7 +6101,7 @@ void MuseScore::mpInit ()
 
       mpPrepareToolbars();
 
-      mpPaletteAction = new QAction();
+      mpPaletteAction = new QAction(); //Hold info on last used palette.
 
       mpKeyboardPanel = new QDockWidget (this);
       mpKeyboardPanel->setAllowedAreas(Qt::BottomDockWidgetArea);
