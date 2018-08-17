@@ -190,7 +190,11 @@ NewWizardPage2::NewWizardPage2(QWidget* parent)
       {
       setFinalPage(true);
       setTitle(tr("Create New Score"));
+#ifdef TABLET
+      setSubTitle(tr("Choose instruments at the top to add to instrument list below:"));
+#else
       setSubTitle(tr("Choose instruments on the left to add to instrument list on the right:"));
+#endif
       setAccessibleName(title());
       setAccessibleDescription(subTitle());
       w        = new InstrumentsWidget;

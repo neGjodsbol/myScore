@@ -23,6 +23,8 @@
 
 #include "ui_timesigwizard.h"
 #include "ui_newwizard.h"
+#include "ui_mpnewwizard.h"
+#include "mptablet.h"
 
 #include <QWizard>
 
@@ -62,7 +64,11 @@ class TimesigWizard : public QWidget, private Ui::TimesigWizard {
 //   TitleWizard
 //---------------------------------------------------------
 
+#ifdef TABLET
+class TitleWizard : public QWidget, public Ui::MpNewWizard {
+#else
 class TitleWizard : public QWidget, public Ui::NewWizard {
+#endif
       Q_OBJECT
 
    public:
