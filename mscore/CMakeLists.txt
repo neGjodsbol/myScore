@@ -49,7 +49,7 @@ QT5_WRAP_UI (ui_headers
       startcenter.ui scorePreview.ui scoreBrowser.ui
       logindialog.ui uploadscoredialog.ui breaksdialog.ui
       toolbarEditor.ui mpkeyboard.ui mpvoices.ui mpinsertmeasures.ui mpmeasures.ui mpinstrdialog.ui mpinstrwidget.ui
-	  mpnewwizard.ui
+	  mpnewwizard.ui mpeditstyle.ui
 
       importmidi/importmidi_panel.ui
 

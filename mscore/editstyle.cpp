@@ -45,6 +45,7 @@ EditStyle::EditStyle(Score* s, QWidget* parent)
       buttonApplyToAllParts->setEnabled(!cs->isMaster());
       setModal(true);
 
+#ifndef TABLET
       // create button groups for every set of radio button widgets
       // use this group widgets in list styleWidgets
       // This works for groups which represent an int enumeration.
@@ -89,9 +90,10 @@ EditStyle::EditStyle(Score* s, QWidget* parent)
             pedalLineStyle->addItem(trs, data);
             ++data;
             }
-
+#endif
       styleWidgets = {
       //   idx                --- showPercent      --- widget          --- resetButton
+#ifndef TABLET
       { Sid::figuredBassAlignment,    false, fbAlign,                 0                    },
       { Sid::figuredBassStyle,        false, fbStyle,                 0                    },
       { Sid::tabClef,                 false, clefTypeGroup,           0                    },
@@ -102,8 +104,10 @@ EditStyle::EditStyle(Score* s, QWidget* parent)
 
       { Sid::staffUpperBorder,        false, staffUpperBorder,        resetStaffUpperBorder  },
       { Sid::staffLowerBorder,        false, staffLowerBorder,        resetStaffLowerBorder  },
+#endif
       { Sid::staffDistance,           false, staffDistance,           resetStaffDistance     },
       { Sid::akkoladeDistance,        false, akkoladeDistance,        resetAkkoladeDistance  },
+#ifndef TABLET
       { Sid::minSystemDistance,       false, minSystemDistance,       resetMinSystemDistance },
       { Sid::maxSystemDistance,       false, maxSystemDistance,       resetMaxSystemDistance },
 
@@ -268,7 +272,6 @@ EditStyle::EditStyle(Score* s, QWidget* parent)
       { Sid::startBarlineMultiple,    false, showStartBarlineMultiple,     0 },
       { Sid::dividerLeftSym,          false, dividerLeftSym,               0 },
       { Sid::dividerRightSym,         false, dividerRightSym,              0 },
-
       { Sid::showMeasureNumber,          false, showMeasureNumber,            0 },
       { Sid::showMeasureNumberOne,       false, showFirstMeasureNumber,       0 },
       { Sid::measureNumberInterval,      false, intervalMeasureNumber,        0 },
@@ -340,7 +343,6 @@ EditStyle::EditStyle(Score* s, QWidget* parent)
       { Sid::oddFooterL,              false, oddFooterL,                   0 },
       { Sid::oddFooterC,              false, oddFooterC,                   0 },
       { Sid::oddFooterR,              false, oddFooterR,                   0 },
-
       { Sid::ottavaNumbersOnly,       false, ottavaNumbersOnly,            resetOttavaNumbersOnly },
       { Sid::capoPosition,            false, capoPosition,                 0 },
       { Sid::fretNumMag,              true,  fretNumMag,                   0 },
@@ -350,11 +352,9 @@ EditStyle::EditStyle(Score* s, QWidget* parent)
       { Sid::fretMag,                 false, fretMag,                      0 },
       { Sid::scaleBarlines,           false, scaleBarlines,                0 },
       { Sid::crossMeasureValues,      false, crossMeasureValues,           0 },
-
       { Sid::MusicalSymbolFont,       false, musicalSymbolFont,            0 },
       { Sid::MusicalTextFont,         false, musicalTextFont,              0 },
       { Sid::autoplaceHairpinDynamicsDistance, false, autoplaceHairpinDynamicsDistance, resetAutoplaceHairpinDynamicsDistance },
-
 
       { Sid::dynamicsPlacement,       false, dynamicsPlacement,          resetDynamicsPlacement },
       { Sid::dynamicsPosAbove,        false, dynamicsPosAbove,           resetDynamicsPosAbove },
@@ -392,8 +392,9 @@ EditStyle::EditStyle(Score* s, QWidget* parent)
       { Sid::bendFontUnderline, false, bendFontUnderline, resetBendFontUnderline },
       { Sid::bendLineWidth,     false, bendLineWidth,     resetBendLineWidth     },
       { Sid::bendArrowWidth,    false, bendArrowWidth,    resetBendArrowWidth     },
+#endif
       };
-
+#ifndef TABLET
       for (QComboBox* cb : std::vector<QComboBox*> {
             lyricsPlacement, textLinePlacement, hairpinPlacement, pedalLinePlacement,
             trillLinePlacement, vibratoLinePlacement, dynamicsPlacement, tempoTextPlacement, rehearsalMarkPlacement
@@ -444,7 +445,7 @@ EditStyle::EditStyle(Score* s, QWidget* parent)
             comboFBFont->addItem(family);
       comboFBFont->setCurrentIndex(0);
       connect(comboFBFont, SIGNAL(currentIndexChanged(int)), SLOT(on_comboFBFont_currentIndexChanged(int)));
-
+#endif
       setValues();
 
       // keep in sync with implementation in Page::replaceTextMacros (page.cpp)
@@ -504,10 +505,12 @@ EditStyle::EditStyle(Score* s, QWidget* parent)
             toolTipHeaderFooter += QString("<tr><td>%1</td><td>-</td><td>%2</td></tr>").arg(i.key()).arg(i.value());
             }
       toolTipHeaderFooter += QString("</table></body></html>");
+#ifndef TABLET
       showHeader->setToolTip(toolTipHeaderFooter);
       showFooter->setToolTip(toolTipHeaderFooter);
-
+#endif
       connect(buttonBox,           SIGNAL(clicked(QAbstractButton*)), SLOT(buttonClicked(QAbstractButton*)));
+#ifndef TABLET
       connect(headerOddEven,       SIGNAL(toggled(bool)),             SLOT(toggleHeaderOddEven(bool)));
       connect(footerOddEven,       SIGNAL(toggled(bool)),             SLOT(toggleFooterOddEven(bool)));
       connect(chordDescriptionFileButton, SIGNAL(clicked()),          SLOT(selectChordDescriptionFile()));
@@ -524,7 +527,7 @@ EditStyle::EditStyle(Score* s, QWidget* parent)
       connect(lyricsDashMaxLength, SIGNAL(valueChanged(double)),      SLOT(lyricsDashMaxLengthValueChanged(double)));
       connect(minSystemDistance,   SIGNAL(valueChanged(double)),      SLOT(systemMinDistanceValueChanged(double)));
       connect(maxSystemDistance,   SIGNAL(valueChanged(double)),      SLOT(systemMaxDistanceValueChanged(double)));
-
+#endif
       QSignalMapper* mapper  = new QSignalMapper(this);     // reset style signals
       QSignalMapper* mapper2 = new QSignalMapper(this);     // value change signals
 
@@ -616,12 +619,14 @@ void EditStyle::buttonClicked(QAbstractButton* b)
 
 void EditStyle::on_comboFBFont_currentIndexChanged(int index)
       {
+#ifndef TABLET
       qreal size, lineHeight;
 
       if (FiguredBass::fontData(index, 0, 0, &size, &lineHeight)) {
             doubleSpinFBSize->setValue(size);
             spinFBLineHeight->setValue((int)(lineHeight * 100.0));
             }
+#endif
       }
 
 //---------------------------------------------------------
@@ -803,7 +808,7 @@ void EditStyle::setValues()
       //TODO: convert the rest:
 
       QString unit(lstyle.value(Sid::swingUnit).toString());
-
+#ifndef TABLET
       if (unit == TDuration(TDuration::DurationType::V_EIGHTH).name()) {
             swingEighth->setChecked(true);
             swingBox->setEnabled(true);
@@ -868,6 +873,7 @@ void EditStyle::setValues()
 
       toggleHeaderOddEven(lstyle.value(Sid::headerOddEven).toBool());
       toggleFooterOddEven(lstyle.value(Sid::footerOddEven).toBool());
+#endif
       }
 
 //---------------------------------------------------------
@@ -876,10 +882,12 @@ void EditStyle::setValues()
 
 void EditStyle::selectChordDescriptionFile()
       {
+#ifndef TABLET
       QString fn = mscore->getChordStyleFilename(true);
       if (fn.isEmpty())
             return;
       chordDescriptionFile->setText(fn);
+#endif
       }
 
 //---------------------------------------------------------
@@ -888,6 +896,7 @@ void EditStyle::selectChordDescriptionFile()
 
 void EditStyle::setSwingParams(bool checked)
       {
+#ifndef TABLET
       if (!checked)
             return;
       QVariant val;
@@ -905,6 +914,7 @@ void EditStyle::setSwingParams(bool checked)
             }
       cs->undo(new ChangeStyleVal(cs, Sid::swingUnit, val));
       cs->update();
+#endif
       }
 
 //---------------------------------------------------------
@@ -913,6 +923,7 @@ void EditStyle::setSwingParams(bool checked)
 
 void EditStyle::setChordStyle(bool checked)
       {
+#ifndef TABLET
       if (!checked)
             return;
       QVariant val;
@@ -938,6 +949,7 @@ void EditStyle::setChordStyle(bool checked)
             cs->undo(new ChangeStyleVal(cs, Sid::chordDescriptionFile, file));
             cs->update();
             }
+#endif
       }
 
 //---------------------------------------------------------
@@ -946,6 +958,7 @@ void EditStyle::setChordStyle(bool checked)
 
 void EditStyle::toggleHeaderOddEven(bool checked)
       {
+#ifndef TABLET
       if (!showHeader->isChecked())
             return;
       labelEvenHeader->setEnabled(checked);
@@ -958,6 +971,7 @@ void EditStyle::toggleHeaderOddEven(bool checked)
             labelOddHeader->setText(odd); // restore
       else
             labelOddHeader->setText(odd + "\n" + even); // replace
+#endif
       return;
       }
 
@@ -967,6 +981,7 @@ void EditStyle::toggleHeaderOddEven(bool checked)
 
 void EditStyle::toggleFooterOddEven(bool checked)
       {
+#ifndef TABLET
       if (!showFooter->isChecked())
             return;
       labelEvenFooter->setEnabled(checked);
@@ -979,6 +994,7 @@ void EditStyle::toggleFooterOddEven(bool checked)
             labelOddFooter->setText(odd); // restore
       else
             labelOddFooter->setText(odd + "\n" + even); // replace
+#endif
       return;
       }
 
@@ -990,16 +1006,20 @@ void EditStyle::toggleFooterOddEven(bool checked)
 
 void EditStyle::lyricsDashMaxLengthValueChanged(double val)
       {
+#ifndef TABLET
       double otherVal = lyricsDashMinLength->value();
       if (otherVal > val)
             lyricsDashMaxLength->setValue(otherVal);
+#endif
       }
 
 void EditStyle::lyricsDashMinLengthValueChanged(double val)
       {
+#ifndef TABLET
       double otherVal = lyricsDashMaxLength->value();
       if (otherVal < val)
             lyricsDashMinLength->setValue(otherVal);
+#endif
       }
 
 //---------------------------------------------------------
@@ -1010,17 +1030,21 @@ void EditStyle::lyricsDashMinLengthValueChanged(double val)
 
 void EditStyle::systemMaxDistanceValueChanged(double val)
       {
+#ifndef TABLET
       double otherVal = minSystemDistance->value();
       if (otherVal > val)
             maxSystemDistance->setValue(otherVal);
+#endif
       }
 
 
 void EditStyle::systemMinDistanceValueChanged(double val)
       {
+#ifndef TABLET
       double otherVal = maxSystemDistance->value();
       if (otherVal < val)
             minSystemDistance->setValue(otherVal);
+#endif
       }
 //---------------------------------------------------------
 //   setPage
@@ -1028,7 +1052,9 @@ void EditStyle::systemMinDistanceValueChanged(double val)
 
 void EditStyle::setPage(int row)
       {
+#ifndef TABLET
       pageList->setCurrentRow(row);
+#endif
       }
 
 //---------------------------------------------------------
@@ -1053,6 +1079,7 @@ void EditStyle::valueChanged(int i)
       Sid idx = (Sid)i;
       QVariant val = getValue(idx);
       bool setValue = false;
+#ifndef TABLET
       if (idx == Sid::MusicalSymbolFont && optimizeStyleCheckbox->isChecked()) {
               ScoreFont* scoreFont = ScoreFont::fontFactory(val.toString());
               if (scoreFont) {
@@ -1067,6 +1094,7 @@ void EditStyle::valueChanged(int i)
                     }
               setValue = true;
               }
+#endif
       cs->undo(new ChangeStyleVal(cs, idx, val));
       cs->update();
       if (setValue)

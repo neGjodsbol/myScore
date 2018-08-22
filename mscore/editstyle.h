@@ -22,9 +22,11 @@
 #define __EDITSTYLE_H__
 
 #include "ui_editstyle.h"
+#include "ui_mpeditstyle.h"
 #include "globals.h"
 #include "libmscore/mscore.h"
 #include "libmscore/style.h"
+#include "mptablet.h"
 
 namespace Ms {
 
@@ -45,7 +47,11 @@ struct StyleWidget {
 //   EditStyle
 //---------------------------------------------------------
 
+#ifdef TABLET
+class EditStyle : public QDialog, private Ui::MpEditStyleBase {
+#else
 class EditStyle : public QDialog, private Ui::EditStyleBase {
+#endif
       Q_OBJECT
 
       Score* cs;
@@ -69,6 +75,7 @@ class EditStyle : public QDialog, private Ui::EditStyleBase {
       void toggleFooterOddEven(bool);
       void buttonClicked(QAbstractButton*);
       void setSwingParams(bool);
+
       void lyricsDashMinLengthValueChanged(double);
       void lyricsDashMaxLengthValueChanged(double);
       void systemMinDistanceValueChanged(double);
