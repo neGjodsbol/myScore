@@ -14,7 +14,9 @@
 #define __PAGESETTINGS_H__
 
 #include "ui_pagesettings.h"
+#include "ui_mppagesettings.h"
 #include "abstractdialog.h"
+#include "mptablet.h"
 
 namespace Ms {
 
@@ -25,8 +27,12 @@ class Navigator;
 //---------------------------------------------------------
 //   PageSettings
 //---------------------------------------------------------
-
+#ifdef TABLET
+class PageSettings : public AbstractDialog, private Ui::MpPageSettingsBase {
+#else
 class PageSettings : public AbstractDialog, private Ui::PageSettingsBase {
+#endif
+
       Q_OBJECT
 
       Navigator* preview;
