@@ -6316,8 +6316,11 @@ void MuseScore::mpPrepareToolbars ()
         mpSettingsButton->setMenu(mpSettingsMenu);
         mpSettingsMenu->addAction(getAction("file-export"));
         mpSettingsMenu->addSeparator();
-        mpSettingsMenu->addAction(getAction("settings-dialog"));
+
+        mpSettingsMenu->addAction(getAction("edit-style"));
+        mpSettingsMenu->addAction(getAction("page-settings"));
         mpSettingsMenu->addSeparator();
+
         QAction* helpMenu = getAction("help-menu");
         helpMenu->setMenu(mpHelpMenu);
         mpSettingsMenu->addAction(helpMenu);

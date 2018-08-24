@@ -37,26 +37,28 @@ PageSettings::PageSettings(QWidget* parent)
       NScrollArea* sa = new NScrollArea;
       preview = new Navigator(sa, this);
       preview->setPreviewOnly(true);
-
+#ifndef TABLET
       static_cast<QVBoxLayout*>(previewGroup->layout())->insertWidget(0, sa);
-
+#endif
       mmUnit = true;      // should be made a global configuration item
-
+#ifndef TABLET
       if (mmUnit)
             mmButton->setChecked(true);
       else
             inchButton->setChecked(true);
-
+#endif
       MuseScore::restoreGeometry(this);
-
+#ifndef TABLET
       for (int i = 0; i < QPageSize::LastPageSize; ++i)
             pageGroup->addItem(QPageSize::name(QPageSize::PageSizeId(i)), i);
 
       connect(mmButton,             SIGNAL(clicked()),            SLOT(mmClicked()));
       connect(inchButton,           SIGNAL(clicked()),            SLOT(inchClicked()));
+#endif
       connect(buttonApply,          SIGNAL(clicked()),            SLOT(apply()));
       connect(buttonApplyToAllParts,SIGNAL(clicked()),            SLOT(applyToAllParts()));
       connect(buttonOk,             SIGNAL(clicked()),            SLOT(ok()));
+#ifndef TABLET
       connect(portraitButton,       SIGNAL(clicked()),            SLOT(orientationClicked()));
       connect(landscapeButton,      SIGNAL(clicked()),            SLOT(orientationClicked()));
       connect(twosided,             SIGNAL(toggled(bool)),        SLOT(twosidedToggled(bool)));
@@ -73,6 +75,7 @@ PageSettings::PageSettings(QWidget* parent)
       connect(pageGroup,            SIGNAL(activated(int)),       SLOT(pageFormatSelected(int)));
       connect(spatiumEntry,         SIGNAL(valueChanged(double)), SLOT(spatiumChanged(double)));
       connect(pageOffsetEntry,      SIGNAL(valueChanged(int)),    SLOT(pageOffsetChanged(int)));
+#endif
       }
 
 //---------------------------------------------------------
@@ -113,6 +116,7 @@ void PageSettings::setScore(MasterScore* s)
 
 void PageSettings::blockSignals(bool block)
       {
+#ifndef TABLET
       for (auto w : { oddPageTopMargin, oddPageBottomMargin, oddPageLeftMargin, oddPageRightMargin,
          evenPageTopMargin, evenPageBottomMargin, evenPageLeftMargin, evenPageRightMargin, spatiumEntry,
          pageWidth, pageHeight } )
@@ -121,6 +125,9 @@ void PageSettings::blockSignals(bool block)
             }
       pageOffsetEntry->blockSignals(block);
       pageGroup->blockSignals(block);
+#else
+      spatiumEntry->blockSignals(block);
+#endif
       }
 
 //---------------------------------------------------------
@@ -129,10 +136,12 @@ void PageSettings::blockSignals(bool block)
 
 void PageSettings::setMarginsMax(double pw)
       {
+#ifndef TABLET
       oddPageLeftMargin->setMaximum(pw);
       oddPageRightMargin->setMaximum(pw);
       evenPageLeftMargin->setMaximum(pw);
       evenPageRightMargin->setMaximum(pw);
+#endif
       }
 
 //---------------------------------------------------------
@@ -143,13 +152,15 @@ void PageSettings::setMarginsMax(double pw)
 void PageSettings::updateValues()
       {
       Score* score = preview->score();
+#ifndef TABLET
       bool mm = mmButton->isChecked();
-
+#endif
       blockSignals(true);
 
       const char* suffix;
       double singleStepSize;
       double singleStepScale;
+#ifndef TABLET
       if (mm) {
             suffix = "mm";
             singleStepSize = 1.0;
@@ -166,10 +177,15 @@ void PageSettings::updateValues()
             w->setSuffix(suffix);
             w->setSingleStep(singleStepSize);
             }
+#else
+      bool mm = mmUnit;              // HACK for TABLET version
+      singleStepSize = 1.0;
+      singleStepScale = 0.2;
+#endif
       spatiumEntry->setSingleStep(singleStepScale);
 
       double f = mm ? INCH : 1.0;
-
+#ifndef TABLET
       double w = score->styleD(Sid::pageWidth);
       double h = score->styleD(Sid::pageHeight);
       setMarginsMax(w * f);
@@ -188,11 +204,11 @@ void PageSettings::updateValues()
       evenPageRightMargin->setValue((w - pw - score->styleD(Sid::pageEvenLeftMargin)) * f);
       pageHeight->setValue(h * f);
       pageWidth->setValue(w * f);
-
+#endif
       double f1 = mm ? 1.0/DPMM : 1.0/DPI;
       spatiumEntry->setValue(score->spatium() * f1);
 
-
+#ifndef TABLET
       bool _twosided = score->styleB(Sid::pageTwosided);
       evenPageTopMargin->setEnabled(_twosided);
       evenPageBottomMargin->setEnabled(_twosided);
@@ -214,7 +230,7 @@ void PageSettings::updateValues()
       twosided->setChecked(_twosided);
 
       pageOffsetEntry->setValue(score->pageNumberOffset() + 1);
-
+#endif
       blockSignals(false);
       }
 
@@ -224,8 +240,10 @@ void PageSettings::updateValues()
 
 void PageSettings::inchClicked()
       {
+#ifndef TABLET
       mmUnit = false;
       updateValues();
+#endif
       }
 
 //---------------------------------------------------------
@@ -234,8 +252,10 @@ void PageSettings::inchClicked()
 
 void PageSettings::mmClicked()
       {
+#ifndef TABLET
       mmUnit = true;
       updateValues();
+#endif
       }
 
 //---------------------------------------------------------
@@ -245,6 +265,7 @@ void PageSettings::mmClicked()
 
 void PageSettings::orientationClicked()
       {
+#ifndef TABLET
       qreal w = preview->score()->styleD(Sid::pageWidth);
       qreal h = preview->score()->styleD(Sid::pageHeight);
 
@@ -255,6 +276,7 @@ void PageSettings::orientationClicked()
       preview->score()->style().set(Sid::pagePrintableWidth, h - (oddPageLeftMargin->value() + oddPageRightMargin->value()) * f);
       updateValues();
       updatePreview(0);
+#endif
       }
 
 //---------------------------------------------------------
@@ -263,9 +285,11 @@ void PageSettings::orientationClicked()
 
 void PageSettings::twosidedToggled(bool flag)
       {
+#ifndef TABLET
       preview->score()->style().set(Sid::pageTwosided, flag);
       updateValues();
       updatePreview(1);
+#endif
       }
 
 //---------------------------------------------------------
@@ -287,7 +311,7 @@ void PageSettings::applyToScore(Score* s)
       s->startCmd();
       double f  = mmUnit ? 1.0/INCH : 1.0;
       double f1 = mmUnit ? DPMM : DPI;
-
+#ifndef TABLET
       s->undoChangeStyleVal(Sid::pageWidth, pageWidth->value() * f);
       s->undoChangeStyleVal(Sid::pageHeight, pageHeight->value() * f);
       s->undoChangeStyleVal(Sid::pagePrintableWidth, (pageWidth->value() - oddPageLeftMargin->value() - oddPageRightMargin->value())  * f);
@@ -298,6 +322,7 @@ void PageSettings::applyToScore(Score* s)
       s->undoChangeStyleVal(Sid::pageOddBottomMargin, oddPageBottomMargin->value() * f);
       s->undoChangeStyleVal(Sid::pageOddLeftMargin, oddPageLeftMargin->value() * f);
       s->undoChangeStyleVal(Sid::pageTwosided, twosided->isChecked());
+#endif
       s->undoChangeStyleVal(Sid::spatium, spatiumEntry->value() * f1);
 
       s->endCmd();
@@ -339,6 +364,7 @@ void PageSettings::done(int val)
 
 void PageSettings::pageFormatSelected(int size)
       {
+#ifndef TABLET
       if (size >= 0) {
             Score* s  = preview->score();
             int id    = pageGroup->currentData().toInt();
@@ -352,6 +378,7 @@ void PageSettings::pageFormatSelected(int size)
             updateValues();
             updatePreview(0);
             }
+ #endif
       }
 
 //---------------------------------------------------------
@@ -360,10 +387,12 @@ void PageSettings::pageFormatSelected(int size)
 
 void PageSettings::otmChanged(double val)
       {
+#ifndef TABLET
       if (mmUnit)
             val /= INCH;
       preview->score()->style().set(Sid::pageOddTopMargin, val);
       updatePreview(1);
+#endif
       }
 
 //---------------------------------------------------------
@@ -372,6 +401,7 @@ void PageSettings::otmChanged(double val)
 
 void PageSettings::olmChanged(double val)
       {
+#ifndef TABLET
       if (mmUnit)
             val /= INCH;
 
@@ -390,6 +420,7 @@ void PageSettings::olmChanged(double val)
       s->style().set(Sid::pagePrintableWidth, s->styleD(Sid::pageWidth) - s->styleD(Sid::pageEvenLeftMargin) - val);
 
       updatePreview(0);
+#endif
       }
 
 //---------------------------------------------------------
@@ -398,6 +429,7 @@ void PageSettings::olmChanged(double val)
 
 void PageSettings::ormChanged(double val)
       {
+#ifndef TABLET
       if (mmUnit)
             val /= INCH;
 
@@ -415,6 +447,7 @@ void PageSettings::ormChanged(double val)
             }
       s->style().set(Sid::pagePrintableWidth, s->styleD(Sid::pageWidth) - s->styleD(Sid::pageOddLeftMargin) - val);
       updatePreview(0);
+#endif
       }
 
 //---------------------------------------------------------
@@ -423,10 +456,12 @@ void PageSettings::ormChanged(double val)
 
 void PageSettings::obmChanged(double val)
       {
+#ifndef TABLET
       if (mmUnit)
             val /= INCH;
       preview->score()->style().set(Sid::pageOddBottomMargin, val);
       updatePreview(1);
+#endif
       }
 
 //---------------------------------------------------------
@@ -435,10 +470,12 @@ void PageSettings::obmChanged(double val)
 
 void PageSettings::etmChanged(double val)
       {
+ #ifndef TABLET
       if (mmUnit)
             val /= INCH;
       preview->score()->style().set(Sid::pageEvenTopMargin, val);
       updatePreview(1);
+#endif
       }
 
 //---------------------------------------------------------
@@ -447,6 +484,7 @@ void PageSettings::etmChanged(double val)
 
 void PageSettings::elmChanged(double val)
       {
+#ifndef TABLET
       double f  = mmUnit ? 1.0/INCH : 1.0;
       val *= f;
 
@@ -459,6 +497,7 @@ void PageSettings::elmChanged(double val)
       s->style().set(Sid::pageEvenLeftMargin, val);
       s->style().set(Sid::pagePrintableWidth, s->styleD(Sid::pageWidth) - evenPageRightMargin->value() * f - val);
       updatePreview(0);
+#endif
       }
 
 //---------------------------------------------------------
@@ -467,6 +506,7 @@ void PageSettings::elmChanged(double val)
 
 void PageSettings::ermChanged(double val)
       {
+#ifndef TABLET
       if (mmUnit)
             val /= INCH;
 
@@ -479,6 +519,7 @@ void PageSettings::ermChanged(double val)
       s->style().set(Sid::pagePrintableWidth, s->styleD(Sid::pageWidth) - s->styleD(Sid::pageEvenLeftMargin) - val);
       s->style().set(Sid::pageOddLeftMargin, val);
       updatePreview(0);
+#endif
       }
 
 //---------------------------------------------------------
@@ -487,10 +528,12 @@ void PageSettings::ermChanged(double val)
 
 void PageSettings::ebmChanged(double val)
       {
+#ifndef TABLET
       if (mmUnit)
             val /= INCH;
       preview->score()->style().set(Sid::pageEvenBottomMargin, val);
       updatePreview(1);
+#endif
       }
 
 //---------------------------------------------------------
@@ -512,8 +555,10 @@ void PageSettings::spatiumChanged(double val)
 
 void PageSettings::pageOffsetChanged(int val)
       {
+#ifndef TABLET
       preview->score()->setPageNumberOffset(val-1);
       updatePreview(0);
+#endif
       }
 
 //---------------------------------------------------------
@@ -522,6 +567,7 @@ void PageSettings::pageOffsetChanged(int val)
 
 void PageSettings::pageHeightChanged(double val)
       {
+#ifndef TABLET
       double val2 = pageWidth->value();
       if (mmUnit) {
             val /= INCH;
@@ -532,6 +578,7 @@ void PageSettings::pageHeightChanged(double val)
       preview->score()->style().set(Sid::pageHeight, val2);
 
       updatePreview(1);
+#endif
       }
 
 //---------------------------------------------------------
@@ -540,6 +587,7 @@ void PageSettings::pageHeightChanged(double val)
 
 void PageSettings::pageWidthChanged(double val)
       {
+#ifndef TABLET
       setMarginsMax(val);
 
       double f    = mmUnit ? 1.0/INCH : 1.0;
@@ -550,6 +598,7 @@ void PageSettings::pageWidthChanged(double val)
       preview->score()->style().set(Sid::pageHeight, val2);
       preview->score()->style().set(Sid::pagePrintableWidth, val - (oddPageLeftMargin->value() + evenPageLeftMargin->value()) * f);
       updatePreview(0);
+#endif
       }
 
 //---------------------------------------------------------
