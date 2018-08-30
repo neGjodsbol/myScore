@@ -49,7 +49,7 @@ QT5_WRAP_UI (ui_headers
       startcenter.ui scorePreview.ui scoreBrowser.ui
       logindialog.ui uploadscoredialog.ui breaksdialog.ui
       toolbarEditor.ui mpkeyboard.ui mpvoices.ui mpinsertmeasures.ui mpmeasures.ui mpinstrdialog.ui mpinstrwidget.ui
-	  mpnewwizard.ui mpeditstyle.ui mppagesettings.ui
+	  mpnewwizard.ui mpeditstyle.ui mppagesettings.ui mpzoombox.ui
 
       importmidi/importmidi_panel.ui
 
@@ -273,7 +273,7 @@ add_executable ( ${ExecutableName}
       workspace.cpp chordview.cpp
       albummanager.cpp
       stafftextproperties.cpp splitstaff.cpp
-      tupletdialog.cpp mpkeyboard.cpp mpvoices.cpp
+      tupletdialog.cpp mpkeyboard.cpp mpvoices.cpp mpzoombox.cpp
       articulationprop.cpp
       fretproperties.cpp sectionbreakprop.cpp
       bendproperties.cpp tremolobarprop.cpp file.cpp keyb.cpp osc.cpp

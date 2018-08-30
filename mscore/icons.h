@@ -63,7 +63,7 @@ enum class Icons : int
       timesig_allabreve_ICON, timesig_common_ICON, timesig_prolatio01_ICON, timesig_prolatio02_ICON,
       timesig_prolatio03_ICON, timesig_prolatio04_ICON, timesig_prolatio05_ICON, timesig_prolatio07_ICON,
       timesig_prolatio08_ICON, timesig_prolatio10_ICON, timesig_prolatio11_ICON, edit_ICON, reset_ICON, close_ICON,
-      arrowUp_ICON, arrowDown_ICON,
+      arrowUp_ICON, arrowDown_ICON, zoomOut_ICON, zoomIn_ICON, zoom100_ICON,
 // TABLET icons
       myscore_ICON, palette_ICON, clefs_ICON, keysignatures_ICON, timesignatures_ICON, accidentals_ICON,
       articulations_ICON, lines_ICON, barlines_ICON, texts_ICON, tempi_ICON, dynamics_ICON, endings_ICON, jumps_ICON,

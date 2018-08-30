@@ -157,6 +157,9 @@ static const char* iconNames[] = {
       "window-close.svg",
       "arrow_up.svg",
       "arrow_down.svg",
+      "zoom-out.svg",
+      "zoom-in.svg",
+      "zoom-original.svg",
 
 // TABLET icons
 

@@ -184,5 +184,8 @@
         <file alias="data/icons/application-exit.svg">data/icons/tablet/application-exit.svg</file>
         <file alias="data/icons/myscore-logo.svg">data/icons/tablet/myscore-logo.svg</file>
         <file alias="data/icons/magnifying-glass.svg">data/icons/tablet/magnifying-glass.svg</file>
+        <file>data/icons/zoom-in.svg</file>
+        <file>data/icons/zoom-original.svg</file>
+        <file>data/icons/zoom-out.svg</file>
     </qresource>
 </RCC>
